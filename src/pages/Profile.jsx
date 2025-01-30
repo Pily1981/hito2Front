@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import "./stylesheets/Profile.css";
+import "../Componentes/stylesheets/Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 

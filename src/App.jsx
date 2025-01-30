@@ -10,6 +10,9 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Productos from "./pages/Productos";
+import Formulario from "./pages/Formulario";
+import Profile from "./pages/Profile";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Productos" element={<Productos />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/upload" element={<Formulario />} />
+          <Route path="/product/:id" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
