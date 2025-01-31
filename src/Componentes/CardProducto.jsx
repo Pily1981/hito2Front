@@ -12,19 +12,15 @@ function CardProducto({ producto }) {
         alt={producto.name}
         style={{ height: "250px", objectFit: "cover" }}
       />
-      <Card.Body className="Cardproducto">
+      <Card.Body className="Cardproducto d-flex flex-column align-items-center">
         <Card.Title className="text-center">
           <strong>{producto.name}</strong>
         </Card.Title>
         <Card.Text className="text-center">Precio: ${producto.price}</Card.Text>
+        <Button type="button" className="w-100 mt-2" id="buttonCompras">
+          Comprar
+        </Button>
       </Card.Body>
-      <Button
-        type="button"
-        className="w-100 d-flex justify-content-center align-items-center"
-        id="buttonCompras"
-      >
-        Comprar
-      </Button>
     </Card>
   );
 }
