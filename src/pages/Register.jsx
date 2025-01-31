@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -126,6 +127,9 @@ const Register = () => {
           <Button type="submit" id="button" onClick={(e) => validarDatos(e)}>
             Crear Cuenta
           </Button>
+          <NavLink to="/Login" className="text-primary text-decoration-none">
+            ¿Ya estás registrado? Iniciar Sesión
+          </NavLink>
         </div>
       </div>
     </Container>

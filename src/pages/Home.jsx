@@ -8,20 +8,21 @@ const Home = () => {
   return (
     <>
       <Header />
+      <h2 className="mt-5 d-flex justify-content-around">Ultimos añadidos</h2>
       <Container className="mt-5 d-flex justify-content-center">
-          <Row>
-            {productos.map((producto) => (
-              <Col
-                key={producto.id}
-                lg={3}
-                md={6}
-                xs={12}
-                className="mb-5 d-flex justify-content-center"
-              >
-                <CardProducto producto={producto} />
-              </Col>
-            ))}
-          </Row>
+        <Row>
+          {productos.map((producto) => (
+            <Col
+              key={producto.id}
+              lg={3}
+              md={6}
+              xs={12}
+              className="mb-5 d-flex justify-content-center"
+            >
+              <CardProducto producto={producto} />
+            </Col>
+          ))}
+        </Row>
       </Container>
     </>
   );
