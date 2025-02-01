@@ -18,6 +18,11 @@ function NavbarApp() {
               Home
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/products" className={setActiveClass}>
+              Galery
+            </NavLink>
+          </li>
         </ul>
         <ul className="navbar-nav mb-2 ms-5 mb-lg-2">
           <li className="nav-item">
