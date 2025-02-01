@@ -8,7 +8,9 @@ function NavbarApp() {
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar" sticky="top">
       <Navbar.Brand className="text-white" id="brand">
-        BabiesMarket
+        <NavLink to="/" className="text-white nav-item">
+          Babiesmarket
+        </NavLink>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -20,7 +22,7 @@ function NavbarApp() {
           </li>
           <li className="nav-item galery">
             <NavLink to="/products" className={setActiveClass}>
-              Galery
+              Market
             </NavLink>
           </li>
         </ul>
