@@ -108,17 +108,17 @@ textarea {
 
 @media (max-width: 768px) {
   .container-pf {
-    flex-direction: column; /* Apila los elementos en columna */
-    align-items: center; /* Centra los elementos en móviles */
+    flex-direction: column;
+    align-items: center;
   }
 
   .profile-content {
-    order: -1; /* Mueve profile-content arriba */
-    width: 100%; /* Para que ocupe todo el ancho */
+    order: -1;
+    width: 100%;
   }
 
   .profile-sidebar {
-    width: 100%; /* Ajusta el ancho al contenedor */
-    text-align: center; /* Centra los elementos */
+    width: 100%;
+    text-align: center;
   }
 }

@@ -1,7 +1,5 @@
 import Button from "react-bootstrap/Button";
 import "../Componentes/stylesheets/Product.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const Formulario = () => {
@@ -34,21 +32,6 @@ const Formulario = () => {
 
   return (
     <div className="container">
-      {/* <aside className="profile-sidebar">
-        <ul className="menu-list">
-          <li className="menu-item">
-            Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-          </li>
-          <li className="menu-item">
-            Mis publicaciones
-            <FontAwesomeIcon icon={faChevronRight} />
-          </li>
-          <li className="menu-item">
-            Cerrar Sesión
-            <FontAwesomeIcon icon={faChevronRight} />
-          </li>
-        </ul>
-      </aside> */}
       <main className="profile-content">
         <h2>Subir Producto</h2>
         <form onSubmit={handleSubmit} className="product-form">
