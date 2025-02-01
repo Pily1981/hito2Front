@@ -1,7 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 function CardProducto({ producto }) {
@@ -20,10 +18,10 @@ function CardProducto({ producto }) {
         </Card.Title>
         <Card.Text className="text-center">Precio: ${producto.price}</Card.Text>
         <NavLink to={`/product/${producto.id}`}>
-        <Button type="button" className="w-90 mt-2" id="buttonCompras">
+          <Button type="button" className="w-90 mt-2" id="buttonCompras">
             Comprar
-        </Button>
-      </NavLink>
+          </Button>
+        </NavLink>
       </Card.Body>
     </Card>
   );

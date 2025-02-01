@@ -20,6 +20,7 @@ body {
   margin-bottom: 10px;
   height: auto;
   flex-grow: 1;
+  min-height: 100vh;
 }
 
 .profile-sidebar {
@@ -104,6 +105,11 @@ body {
 textarea {
   resize: vertical;
   min-height: 80px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
 }
 
 @media (max-width: 768px) {

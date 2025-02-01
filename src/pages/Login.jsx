@@ -35,55 +35,53 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="container-rg">     
-        <div
-          className="tarjeta"
-        >
-          <div className="photo">
-            <img src={perfil} alt="Imagen perfil" />
-          </div>
-          <InputGroup size="sm" className="p-2">
-            <Form.Control
-              id="email"
-              type="email"
-              className="text-dark"
-              placeholder="✉         EMAIL"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="p-2">
-            <Form.Control
-              id="password"
-              type="text"
-              className="text-dark"
-              placeholder="🔒          PASSWORD"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </InputGroup>
-          <div>
-            <input
-              id="checkbox"
-              className="form-check-input"
-              type="checkbox"
-              value=""
-            />
-            <label className="form-check-label" htmlFor="flexCheckDefault">
-              Remember me
-            </label>
-          </div>
-          <Button
-            type="submit"
-            id="button"
-            className="mt-3 mb-5"
-            onClick={(e) => validarDatos(e)}
-          >
-            Iniciar Sesión
-          </Button>
+    <Container className="container-rg">
+      <div className="tarjeta">
+        <div className="photo">
+          <img src={perfil} alt="Imagen perfil" />
         </div>
+        <InputGroup size="sm" className="p-2">
+          <Form.Control
+            id="email"
+            type="email"
+            className="text-dark"
+            placeholder="✉         EMAIL"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </InputGroup>
+        <InputGroup size="sm" className="p-2">
+          <Form.Control
+            id="password"
+            type="text"
+            className="text-dark"
+            placeholder="🔒          PASSWORD"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </InputGroup>
+        <div>
+          <input
+            id="checkbox"
+            className="form-check-input"
+            type="checkbox"
+            value=""
+          />
+          <label className="form-check-label" htmlFor="flexCheckDefault">
+            Remember me
+          </label>
+        </div>
+        <Button
+          type="submit"
+          id="button"
+          className="mt-3 mb-5"
+          onClick={(e) => validarDatos(e)}
+        >
+          Iniciar Sesión
+        </Button>
+      </div>
     </Container>
   );
 };

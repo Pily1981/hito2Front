@@ -3,8 +3,9 @@
   padding: 0;
 }
 
-Body {
+body {
   font-family: "Karla", serif;
+  height: 100%;
 }
 
 /**NavBar**/
@@ -108,6 +109,10 @@ img {
 }
 
 /** Tarjeta Login**/
+
+.container-rg {
+  min-height: 100vh;
+}
 #email,
 #password {
   background-color: #d9d9d9;
@@ -135,7 +140,7 @@ img {
   margin: 0px 10px 0px 10px;
 }
 
-.container-rg{
+.container-rg {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,7 +148,7 @@ img {
   align-items: center;
 }
 
-.tarjeta{
+.tarjeta {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,16 +162,11 @@ img {
   border-radius: 10px;
 }
 
-
-
 @media (max-width: 768px) {
   .container-rg {
     width: 80%;
   }
-  
-  .tarjeta{
+  .tarjeta {
     width: 80%;
   }
-
 }
- 
