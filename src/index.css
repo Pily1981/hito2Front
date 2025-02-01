@@ -70,11 +70,11 @@ header {
 Footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   height: 30px;
+  padding-top: 5px;
   background-color: #000000;
-  position: relative;
-  bottom: 0;
 }
 
 Footer h6 {
