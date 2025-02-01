@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function CardProducto({ producto }) {
   return (
