@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <Container className="d-flex flex-column align-items-center">
+    <Container className="d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex justify-content-center align-items-center">
         <div
           className="d-flex flex-column justify-content-center align-items-center bg-light rounded-2 gap-2 mt-2 mb-2 pt-3 pb-3"
