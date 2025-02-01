@@ -35,11 +35,9 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="d-flex flex-column align-items-center">
-      <div className="d-flex justify-content-center align-items-center">
+    <Container className="container-rg">     
         <div
-          className="d-flex flex-column justify-content-center align-items-center bg-light rounded-2 gap-2 mt-2 mb-2 pt-3 pb-3"
-          style={{ width: "500px" }}
+          className="tarjeta"
         >
           <div className="photo">
             <img src={perfil} alt="Imagen perfil" />
@@ -80,13 +78,12 @@ const LoginPage = () => {
           <Button
             type="submit"
             id="button"
-            className="mt-4 mb-5"
+            className="mt-3 mb-5"
             onClick={(e) => validarDatos(e)}
           >
             Iniciar Sesión
           </Button>
         </div>
-      </div>
     </Container>
   );
 };

@@ -49,11 +49,9 @@ const Register = () => {
   };
 
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center">
-      <div className="d-flex justify-content-center align-items-center">
+    <Container className="container-rg">      
         <div
-          className="d-flex flex-column justify-content-center align-items-center bg-light rounded-2 gap-2 mt-2 mb-2 pt-3 pb-3"
-          style={{ width: "500px" }}
+          className="tarjeta"
         >
           <div className="photo">
             <img src={perfil} alt="Imagen perfil" />
@@ -133,7 +131,7 @@ const Register = () => {
             ¿Ya estás registrado? Iniciar Sesión
           </NavLink>
         </div>
-      </div>
+    
     </Container>
   );
 };
