@@ -33,14 +33,14 @@ function NavbarApp() {
         <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
           <li className="nav-item">
             <NavLink to="/Login" className={setActiveClass}>
-              Inicio Sesión
+              Log In
             </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav mb-2 mx-5 mb-lg-0">
           <li className="nav-item">
             <NavLink to="/Register" className={setActiveClass}>
-              Register
+              Sign Up
             </NavLink>
           </li>
         </ul>

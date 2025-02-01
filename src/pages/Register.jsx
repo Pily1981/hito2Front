@@ -58,7 +58,7 @@ const Register = () => {
           <div className="photo">
             <img src={perfil} alt="Imagen perfil" />
           </div>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="name"
               className="text-dark"
@@ -69,7 +69,7 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="lastname"
               type="text"
@@ -80,7 +80,7 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="email1"
               type="email"
@@ -91,7 +91,7 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="nickname"
               type="text"
@@ -102,7 +102,7 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="password1"
               type="text"
@@ -113,7 +113,7 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="confirmpassword"
               type="text"

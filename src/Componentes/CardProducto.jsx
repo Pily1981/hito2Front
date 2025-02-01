@@ -17,7 +17,7 @@ function CardProducto({ producto }) {
           <strong>{producto.name}</strong>
         </Card.Title>
         <Card.Text className="text-center">Precio: ${producto.price}</Card.Text>
-        <Button type="button" className="w-100 mt-2" id="buttonCompras">
+        <Button type="button" className="w-90 mt-2" id="buttonCompras">
           Comprar
         </Button>
       </Card.Body>

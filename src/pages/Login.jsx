@@ -44,7 +44,7 @@ const LoginPage = () => {
           <div className="photo">
             <img src={perfil} alt="Imagen perfil" />
           </div>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="email"
               type="email"
@@ -55,7 +55,7 @@ const LoginPage = () => {
               required
             />
           </InputGroup>
-          <InputGroup className="p-2">
+          <InputGroup size="sm" className="p-2">
             <Form.Control
               id="password"
               type="text"
