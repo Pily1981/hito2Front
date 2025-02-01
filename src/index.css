@@ -42,6 +42,10 @@ nav {
   border: none;
 }
 
+.galery {
+  margin-left: 50px;
+}
+
 /**Header**/
 header {
   background-image: url(/src/assets/img/header.jpg);

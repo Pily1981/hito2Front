@@ -125,7 +125,9 @@ const Register = () => {
             />
           </InputGroup>
           <Button type="submit" id="button" onClick={(e) => validarDatos(e)}>
-            Crear Cuenta
+            <NavLink to="/login" className="text-decoration-none text-white">
+              Crear Cuenta
+            </NavLink>
           </Button>
           <NavLink to="/Login" className="text-primary text-decoration-none">
             ¿Ya estás registrado? Iniciar Sesión
