@@ -21,7 +21,11 @@ const Formulario = () => {
     if (file && file.type.startsWith("image/")) {
       setProduct((prev) => ({ ...prev, image: file }));
     } else {
-      alert("Por favor, selecciona un archivo de imagen válido.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, selecciona un archivo de imagen válido.",
+      });
     }
   };
 
@@ -33,7 +37,7 @@ const Formulario = () => {
   return (
     <div className="container">
       <main className="profile-content">
-        <h2>Subir Producto</h2>
+        <h2>Crear publicación</h2>
         <form onSubmit={handleSubmit} className="product-form">
           <div className="form-group">
             <label htmlFor="name">Nombre del Producto</label>

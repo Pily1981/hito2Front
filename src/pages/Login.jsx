@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Container, Form, Button, InputGroup } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const emailCheck = (email) => {
     const check = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
@@ -16,19 +19,39 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (!emailCheck(email)) {
-      alert("Ingrese un email válido");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debes ingresar un email válido!",
+      });
       return false;
     }
     if (email === "" || password === "") {
-      alert("Todos los campos son obligatorios");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son obligatorios!",
+      });
       return;
     }
 
     if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "La contraseña debe tener al menos 6 carácteres!",
+      });
       return;
     }
-    alert("Inicio de sesion exitoso!");
+
+    navigate("/profile");
+
+    Swal.fire({
+      title: "Inicio de sesión exitoso!",
+      icon: "success",
+      draggable: true,
+    });
+
     setEmail("");
     setPassword("");
     return true;
