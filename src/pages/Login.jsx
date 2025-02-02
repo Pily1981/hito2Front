@@ -19,16 +19,28 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (!emailCheck(email)) {
-      alert("Ingrese un email válido");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debes ingresar un email válido!",
+      });
       return false;
     }
     if (email === "" || password === "") {
-      alert("Todos los campos son obligatorios");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son obligatorios!",
+      });
       return;
     }
 
     if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "La contraseña debe tener al menos 6 carácteres!",
+      });
       return;
     }
 

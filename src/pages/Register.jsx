@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -21,24 +22,44 @@ const Register = () => {
     e.preventDefault();
 
     if (!emailCheck(email)) {
-      alert("Ingrese un email válido");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debes ingresar un email válido!",
+      });
       return false;
     }
 
     if (email === "" || password === "" || confPassword === "") {
-      alert("Todos los campos son obligatorios");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son obligatorios!",
+      });
       return false;
     }
 
     if (password.length < 6) {
-      alert("El password debe tener al menos 6 caracteres");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "La contraseña debe tener al menos 6 carácteres!",
+      });
       return false;
     }
     if (password !== confPassword) {
-      alert("El password y la confirmación del password deben ser iguales");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El password y la confirmación del password deben ser iguales",
+      });
       return false;
     }
-    alert("Formulario enviado con éxito!");
+    Swal.fire({
+      title: "Formulario enviado con éxito!",
+      icon: "success",
+      draggable: true,
+    });
     setName("");
     setLastName("");
     setEmail("");

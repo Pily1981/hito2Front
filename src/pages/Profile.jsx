@@ -10,6 +10,10 @@ const Profile = () => {
   const logout = () => {
     navigate("/");
   };
+
+  const createPublication = () => {
+    navigate("/upload");
+  };
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
@@ -19,6 +23,9 @@ const Profile = () => {
           </li>
           <li className="menu-item">
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+          </li>
+          <li className="menu-item" onClick={createPublication}>
+            Crear publicación <FontAwesomeIcon icon={faChevronRight} />
           </li>
           <li className="menu-item" onClick={logout}>
             Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
