@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Container, Form, Button, InputGroup } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const emailCheck = (email) => {
     const check = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
@@ -28,7 +31,15 @@ const LoginPage = () => {
       alert("La contraseña debe tener al menos 6 caracteres");
       return;
     }
-    alert("Inicio de sesion exitoso!");
+
+    navigate("/profile");
+
+    Swal.fire({
+      title: "Inicio de sesión exitoso!",
+      icon: "success",
+      draggable: true,
+    });
+
     setEmail("");
     setPassword("");
     return true;

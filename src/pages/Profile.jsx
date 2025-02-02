@@ -2,8 +2,14 @@ import Button from "react-bootstrap/Button";
 import "../Componentes/stylesheets/Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    navigate("/");
+  };
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
@@ -14,7 +20,7 @@ const Profile = () => {
           <li className="menu-item">
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item">
+          <li className="menu-item" onClick={logout}>
             Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
           </li>
         </ul>
