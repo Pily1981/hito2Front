@@ -35,8 +35,8 @@ const ProductPage = () => {
         <p>{producto.desc}</p>
       </div>
       <div className="pd-comm">
-        <h3>Comentarios</h3>
-        <p>No hay comentarios aún.</p>
+        <h3>Comentarios</h3> {/*esto debe ser un input despues*/}
+        <p className="comments">No hay comentarios aún.</p>
       </div>
     </div>
   );

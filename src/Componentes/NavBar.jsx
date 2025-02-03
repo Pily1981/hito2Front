@@ -27,15 +27,18 @@ function NavbarApp() {
           </li>
         </ul>
         <ul className="navbar-nav mb-2 ms-5 mb-lg-2">
-          <li className="nav-item">
-            <input
-              className="form-control"
-              id="search"
-              type="search"
-              placeholder="🔎"
-              aria-label="Search"
-            />
-          </li>
+          <div className="searcher">
+            <li className="nav-item">
+              <input
+                className="form-control"
+                id="search"
+                type="search"
+                placeholder=""
+                aria-label="Search"
+              />
+              <div id="lupa">🔎</div>
+            </li>
+          </div>
         </ul>
         <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
           <li className="nav-item">
