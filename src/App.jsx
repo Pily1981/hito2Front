@@ -12,6 +12,7 @@ import Productos from "./pages/Productos";
 import Formulario from "./pages/Formulario";
 import Profile from "./pages/Profile";
 import ProductPage from "./pages/ProductPage";
+import MyPublications from "./pages/myPublications";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/products" element={<Productos />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/upload" element={<Formulario />} />
+          <Route path="/myPublications" element={<MyPublications />} />
           <Route path="/product/:id" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>

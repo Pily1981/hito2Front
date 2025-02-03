@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Form, Button, InputGroup } from "react-bootstrap";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 
@@ -103,7 +103,9 @@ const LoginPage = () => {
           className="mt-3 mb-5"
           onClick={(e) => validarDatos(e)}
         >
-          Iniciar Sesión
+          <NavLink to="/profile" className="text-decoration-none text-white">
+             Iniciar Sesión
+          </NavLink>
         </Button>
       </div>
     </Container>

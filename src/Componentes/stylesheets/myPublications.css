@@ -1,0 +1,47 @@
+.container-mp {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+  }
+  
+  .publication-content-mp {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+    
+   .mp-inf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px;
+    background-color: lightgray;
+    width: 500px;
+  }
+
+  .mp-inf h6 {
+    font-size: 20px;
+ }
+  
+   .fontawesome {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    text-decoration: none;
+    color: black;
+  }
+  
+
+@media (max-width: 768px) {
+    .container-mp {
+      width: 80%;
+    }
+
+    .mp-inf{
+        width: 90%;
+  }
+ }

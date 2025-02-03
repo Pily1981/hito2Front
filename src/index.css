@@ -17,6 +17,13 @@ nav {
   height: 50px;
 }
 
+.nav-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+}
+
 .collapse {
   background-color: #000000;
 }
@@ -45,6 +52,10 @@ nav {
 
 .galery {
   margin-left: 50px;
+}
+
+#lupa {
+  font-size: 25px;
 }
 
 /**Header**/
