@@ -35,8 +35,8 @@ const Formulario = () => {
   };
 
   return (
-    <div className="container">
-      <main className="profile-content">
+    <div className="container form-upload">
+      <main className="profile-content containter-form">
         <h2>Crear publicación</h2>
         <form onSubmit={handleSubmit} className="product-form">
           <div className="form-group">
@@ -117,9 +117,11 @@ const Formulario = () => {
               required
             />
           </div>
-          <Button className="save-bt" type="submit" variant="warning">
-            Guardar
-          </Button>
+          <div className="upload">
+            <Button className="up_bt" type="submit" variant="warning">
+              Guardar
+            </Button>
+          </div>
         </form>
       </main>
     </div>
