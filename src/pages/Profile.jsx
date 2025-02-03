@@ -11,6 +11,10 @@ const Profile = () => {
     navigate("/");
   };
 
+  const myPublications = () => {
+    navigate("/myPublications/P001");
+  };
+
   const createPublication = () => {
     navigate("/upload");
   };
@@ -21,7 +25,7 @@ const Profile = () => {
           <li className="menu-item">
             Datos Personales <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item">
+          <li className="menu-item" onClick={myPublications}>
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
           </li>
           <li className="menu-item" onClick={createPublication}>

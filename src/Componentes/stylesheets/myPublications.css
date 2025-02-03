@@ -1,0 +1,41 @@
+
+.container-mp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.publication-content-mp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.mp-inf{
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #d3d3d3 ;
+    padding: 20px;
+    margin: 20px;
+    width: 500px;
+}
+
+.fontawesome {
+    text-decoration: none;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .container-mp {
+      width: 80%;
+    }
+
+    .mp-inf{
+        width: 95%;
+  }
+ }
