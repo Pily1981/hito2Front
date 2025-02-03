@@ -5,24 +5,24 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "react-bootstrap";
 
-
- const MyPublications = () => {
+const MyPublications = () => {
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
         <ul className="menu-list">
-          <li className="menu-item" onClick={Profile}>
+          <li className="menu-item">
             Datos Personales <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={myPublications}>
+          <li className="menu-item">
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={createPublication}>
+          <li className="menu-item">
             Crear publicación <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={logout}>
+          <li className="menu-item">
             Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
           </li>
         </ul>
@@ -30,15 +30,22 @@ import { Container } from "react-bootstrap";
       <main className="publication-content-mp profile-content">
         <h2>Mis Publicaciones</h2>
         {productos.map((producto) => (
-        <div className="mp-inf" key={producto.id}>         
-          <h6>{producto.name}</h6>       
-          <h6>${producto.price}</h6>       
-        <NavLink to="/profile" className="fontawesome">
-          <span>  <FontAwesomeIcon icon={faPen} /></span> |
-          <span>  <FontAwesomeIcon icon={faTrash} /></span>
-        </NavLink>
-        </div>
-      ))}
+          <div className="mp-inf" key={producto.id}>
+            <h6>{producto.name}</h6>
+            <h6>${producto.price}</h6>
+            <NavLink to="/profile" className="fontawesome">
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faPen} />
+              </span>{" "}
+              |
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+            </NavLink>
+          </div>
+        ))}
       </main>
     </div>
   );

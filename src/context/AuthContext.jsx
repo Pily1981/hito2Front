@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
         }),
       };
 
-      const resp = await fetch("", options);// endpoint de backend para inicio de sesión
+      const resp = await fetch("", options); // endpoint de backend para inicio de sesión
       if (resp.status != 200) {
         Swal.fire({
           title: "Error!",
@@ -40,8 +40,8 @@ const AuthProvider = ({ children }) => {
       }
       const data = await resp.json();
       setToken(data.token);
-      localStorage.setItem("authToken", data.token);// revisar cuando se conecte el back
-      localStorage.setItem("userEmail", email);// revisar cuando se conecte el back
+      localStorage.setItem("authToken", data.token); // revisar cuando se conecte el back
+      localStorage.setItem("userEmail", email); // revisar cuando se conecte el back
       return true;
     } catch (error) {
       console.log(error);
@@ -55,14 +55,15 @@ const AuthProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ // faltan parametros del formulario register
+        body: JSON.stringify({
+          // faltan parametros del formulario register
           email,
           password,
-          confirmPassword
+          confirmPassword,
         }),
       };
 
-      const resp = await fetch("", options); //falta endpoint del registro de usuario 
+      const resp = await fetch("", options); //falta endpoint del registro de usuario
       if (resp.status != 200) {
         Swal.fire({
           title: "Error!",
@@ -75,17 +76,16 @@ const AuthProvider = ({ children }) => {
       }
       const data = await resp.json();
       console.log("register -->", data);
-      
+
       setToken(data.token);
-      localStorage.setItem("authToken", data.token);//revisar cuando se conecte el back
-      localStorage.setItem("userEmail", email);//revisar cuando se conecte el back
+      localStorage.setItem("authToken", data.token); //revisar cuando se conecte el back
+      localStorage.setItem("userEmail", email); //revisar cuando se conecte el back
       return true;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  
   return (
     <AuthContext.Provider
       value={{
@@ -95,7 +95,7 @@ const AuthProvider = ({ children }) => {
         userLogin,
         user,
         setUser,
-        registerUser
+        registerUser,
       }}
     >
       {children}
