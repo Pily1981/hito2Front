@@ -179,14 +179,14 @@ img {
 
 .search-input {
   width: 100%;
-  padding-right: 35px; /* Espacio para el icono */
+  padding-right: 35px; 
 }
 
 .search-icon {
   position: absolute;
   right: 10px;
   color: #aaa;
-  pointer-events: none; /* Para que no bloquee el input */
+  pointer-events: none; 
 }
 
 
