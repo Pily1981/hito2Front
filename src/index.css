@@ -54,9 +54,6 @@ nav {
   margin-left: 50px;
 }
 
-#lupa {
-  font-size: 25px;
-}
 
 /**Header**/
 header {
@@ -84,8 +81,8 @@ Footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 30px;
-  padding-top: 5px;
+  height: 50px;
+  padding-top: 10px;
   background-color: #000000;
 }
 
@@ -172,6 +169,26 @@ img {
   background-color: #f7f5f5;
   border-radius: 10px;
 }
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding-right: 35px; /* Espacio para el icono */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  color: #aaa;
+  pointer-events: none; /* Para que no bloquee el input */
+}
+
 
 @media (max-width: 768px) {
   .container-rg {
