@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <h2 className="mt-5 d-flex justify-content-around">Ultimos añadidos</h2>
+      <h2 className="mt-5 d-flex justify-content-around">ultimos añadidos</h2>
       <Container className="mt-5 d-flex justify-content-center">
         <Row>
           {productos.map((producto) => (
