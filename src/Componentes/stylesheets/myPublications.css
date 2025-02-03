@@ -12,19 +12,24 @@
   align-items: center;
   text-align: center;
   gap: 10px;
+  border: 1px solid #ddd; 
+  border-radius: 8px;
 }
 
 .mp-inf {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   background-color: lightgray;
   width: 500px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 .mp-inf h6 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .fontawesome {

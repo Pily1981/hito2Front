@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function NavbarApp() {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : "NoActive");
@@ -29,14 +31,19 @@ function NavbarApp() {
         <ul className="navbar-nav mb-2 ms-5 mb-lg-2">
           <div className="searcher">
             <li className="nav-item">
-              <input
-                className="form-control"
-                id="search"
-                type="search"
-                placeholder=""
-                aria-label="Search"
-              />
-              <div id="lupa">🔎</div>
+              <div className="search-container">
+                <input
+                  className="form-control search-input"
+                  id="search"
+                  type="search"
+                  placeholder="Buscar..."
+                  aria-label="Search"
+                />
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="search-icon"
+                />
+              </div>
             </li>
           </div>
         </ul>

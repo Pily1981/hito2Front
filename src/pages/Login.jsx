@@ -24,9 +24,10 @@ const LoginPage = () => {
         title: "Oops...",
         text: "Debes ingresar un email válido!",
       });
-      return false;
+      return;
     }
-    if (email === "" || password === "") {
+    console.log("lala", email);
+    if (email.trim() === "" || password.trim() === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -54,7 +55,7 @@ const LoginPage = () => {
 
     setEmail("");
     setPassword("");
-    return true;
+    return;
   };
 
   return (
