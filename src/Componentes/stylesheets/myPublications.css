@@ -10,19 +10,11 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-<<<<<<< HEAD
     text-align: center;
     gap: 10px;
   }
     
    .mp-inf {
-=======
-    justify-items: center;
-    height: 100vh;
-}
-
-.publication-content-mp{
->>>>>>> cd2ffa4629c08732b3c1e8e945efd33b66398560
     display: flex;
     justify-content: space-between;
     align-items: center; 
