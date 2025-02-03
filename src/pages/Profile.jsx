@@ -12,7 +12,7 @@ const Profile = () => {
   };
 
   const myPublications = () => {
-    navigate("/myPublications/P001");
+    navigate("/myPublications");
   };
 
   const createPublication = () => {
