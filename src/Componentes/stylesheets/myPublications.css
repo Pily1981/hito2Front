@@ -12,7 +12,7 @@
   align-items: center;
   text-align: center;
   gap: 10px;
-  border: 1px solid #ddd; 
+  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
@@ -31,6 +31,7 @@
 .mp-inf h6 {
   font-size: 18px;
 }
+
 
 .fontawesome {
   display: flex;
