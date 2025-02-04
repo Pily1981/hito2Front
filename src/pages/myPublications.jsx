@@ -5,25 +5,35 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Container } from "react-bootstrap";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
- const MyPublications = () => {
+
+const MyPublications = () => {
   return (
-   <Container className="container-mp">
-      <main className="publication-content-mp">
+
+    <div className="container-pf">
+      <main className="publication-content-mp profile-content">
         <h2>Mis Publicaciones</h2>
         {productos.map((producto) => (
-        <div className="mp-inf" key={producto.id}>         
-          <h6>{producto.name}</h6>       
-          <h6>${producto.price}</h6>       
-        <NavLink to="/profile" className="fontawesome">
-          <span>  <FontAwesomeIcon icon={faPen} /></span> |
-          <span>  <FontAwesomeIcon icon={faTrash} /></span>
-        </NavLink>
-        </div>
-      ))}
+          <div className="mp-inf" key={producto.id}>
+            <h6>{producto.name}</h6>
+            <h6>${producto.price}</h6>
+            <NavLink to="/profile" className="fontawesome">
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faPen} />
+              </span>{" "}
+              |
+              <span>
+                {" "}
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+            </NavLink>
+          </div>
+        ))}
       </main>
-      </Container>
+      </div>
+
     
   );
 };
