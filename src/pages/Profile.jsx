@@ -3,13 +3,42 @@ import "../Componentes/stylesheets/Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { user, logout, token } = useContext(AuthContext);
+  const [data, setData] = useState(null);
 
-  const logout = () => {
-    navigate("/");
-  };
+  // Redirige si no hay token
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/");
+  //   }
+  // }, [token, navigate]);
+
+  // Obtiene datos del usuario
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      if (!token || !user?.id) return;
+
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/find_user_by_id/${user.id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Error al obtener los datos del usuario:", error);
+      }
+    };
+
+    fetchProfileData();
+  }, [token, user]); // 👈 Aquí está el arreglo de dependencias
 
   const myPublications = () => {
     navigate("/myPublications");
@@ -18,6 +47,7 @@ const Profile = () => {
   const createPublication = () => {
     navigate("/upload");
   };
+
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
@@ -31,15 +61,39 @@ const Profile = () => {
           <li className="menu-item" onClick={createPublication}>
             Crear publicación <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={logout}>
+          <li
+            className="menu-item"
+            onClick={() => {
+              logout();
+              navigate("/login");
+            }}
+          >
             Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
           </li>
         </ul>
       </aside>
       <main className="profile-content">
         <h2>Datos Personales</h2>
-        <p>Aquí se mostrarán los datos personales del usuario.</p>
-        <br></br>
+        {data ? (
+          <p>
+            Nombre: {data.name} {data.last_name}
+          </p>
+        ) : (
+          <p>Cargando datos del usuario...</p>
+        )}
+        <br />
+        {data ? (
+          <p>Email: {data.email}</p>
+        ) : (
+          <p>Cargando datos del usuario...</p>
+        )}
+        <br />
+        {data ? (
+          <p>Usuario: {data.nick_name}</p>
+        ) : (
+          <p>Cargando datos del usuario...</p>
+        )}
+        <br />
         <Button className="save-bt" variant="warning">
           Guardar
         </Button>

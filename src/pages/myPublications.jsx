@@ -7,8 +7,10 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
+
 const MyPublications = () => {
   return (
+
     <div className="container-pf">
       <main className="publication-content-mp profile-content">
         <h2>Mis Publicaciones</h2>
@@ -30,7 +32,7 @@ const MyPublications = () => {
           </div>
         ))}
       </main>
-    </div>
+      </div>
   );
 };
 
