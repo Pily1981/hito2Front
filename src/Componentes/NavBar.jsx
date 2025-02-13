@@ -3,6 +3,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import "./stylesheets/Navbar.css";
 
 function NavbarApp() {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : "NoActive");
