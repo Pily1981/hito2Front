@@ -1,12 +1,53 @@
 import Button from "react-bootstrap/Button";
+import Swal from "sweetalert2";
 import "../Componentes/stylesheets/Product.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
+  // Redirige si no hay token
+  const navigate = useNavigate();
+  const { token } = useContext(AuthContext);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          console.error("Token no encontrado");
+          return;
+        }
+        if (userId) {
+          const response = await axios.get(
+            `http://localhost:3000/find_user_by_id/${userId}`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          setUserId(response.data.id);
+        }
+      } catch (error) {
+        console.error("Error obteniendo el usuario:", error);
+      }
+    };
+
+    fetchUserId();
+  }, [userId]);
   const [product, setProduct] = useState({
     name: "",
     description: "",
     price: "",
+    category: "",
     state: "",
     image: null,
   });
@@ -23,15 +64,87 @@ const Formulario = () => {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Por favor, selecciona un archivo de imagen válido.",
+        title: "Archivo no válido",
+        text: "Por favor, selecciona una imagen válida.",
       });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Producto subido:", product);
+
+    if (
+      !product.name.trim() ||
+      !product.description.trim() ||
+      !product.price ||
+      !product.category ||
+      !product.state ||
+      !product.image
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Campos incompletos",
+        text: "Completa todos los campos antes de enviar.",
+      });
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append("user_id", userId);
+      formData.append("name", product.name);
+      formData.append("price", Number(product.price));
+      formData.append("category_id", mapCategoryToId(product.category));
+      formData.append("description", product.description);
+      formData.append("image", product.image);
+      formData.append("state", product.state);
+
+      const response = await axios.post(
+        "http://localhost:3000/create_publication",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+
+      console.log("Producto subido:", response.data);
+      Swal.fire({
+        icon: "success",
+        title: "¡Éxito!",
+        text: "El producto se ha subido correctamente.",
+      });
+
+      // Resetear formulario
+      setProduct({
+        name: "",
+        description: "",
+        price: "",
+        category: "",
+        state: "",
+        image: null,
+      });
+
+      // Resetear input file manualmente
+      document.getElementById("image").value = "";
+    } catch (error) {
+      console.error("Error al subir la publicación:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Hubo un problema al subir el producto.",
+      });
+    }
+  };
+
+  const mapCategoryToId = (category) => {
+    const categories = {
+      Ropa: 1,
+      Calzado: 2,
+      Rodados: 3,
+      Muebles: 4,
+      Accesorios: 5,
+    };
+    return categories[category] || null;
   };
 
   return (

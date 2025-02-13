@@ -71,7 +71,11 @@ const MyPublications = () => {
           </div>
         ))}
       </main>
+<<<<<<< HEAD
       </div>    
+=======
+      </div>
+>>>>>>> 3f9d2e74b890282f3f5d27e517385718e4d7df8d
   );
 };
 
