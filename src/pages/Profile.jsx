@@ -13,11 +13,11 @@ const Profile = () => {
   const [data, setData] = useState(null);
 
   // Redirige si no hay token
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/");
-  //   }
-  // }, [token, navigate]);
+   useEffect(() => {
+     if (!token) {
+       navigate("/");
+     }
+   }, [token, navigate]);
 
   // Obtiene datos del usuario
   useEffect(() => {

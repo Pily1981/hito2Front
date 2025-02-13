@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
+//realizar un useEffect donde traiga la id del producto
 function CardProducto({ producto }) {
   return (
     <Card className="border border-dark">

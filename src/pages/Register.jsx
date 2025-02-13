@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios"; 
+import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,32 +15,33 @@ const Register = () => {
     confPassword: "",
   });
 
-  const navigate = useNavigate(); 
-  const token = localStorage.getItem("token"); 
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (token) {
       const validateToken = async () => {
         try {
-          const response = await axios.get("http://localhost:3000/api/validate_token", {
-            headers: {
-              Authorization: `Bearer ${token}`, 
-            },
-          });
+          const response = await axios.get(
+            "http://localhost:3000/validate_token",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
           if (response.data.success) {
-            
             navigate("/profile");
           }
         } catch (error) {
-          
           console.log("Token inválido o expirado");
         }
       };
 
       validateToken();
     }
-  }, [token, navigate]); 
+  }, [token, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,7 +79,10 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/create_user", formData);
+      const response = await axios.post(
+        "http://localhost:3000/create_user",
+        formData
+      );
       if (response.data.success) {
         Swal.fire({
           icon: "success",
@@ -185,7 +189,10 @@ const Register = () => {
               Crear Cuenta
             </Button>
           </div>
-          <NavLink to="/Login" className="text-primary text-decoration-none d-flex justify-content-center">
+          <NavLink
+            to="/Login"
+            className="text-primary text-decoration-none d-flex justify-content-center"
+          >
             ¿Ya estás registrado? Iniciar Sesión
           </NavLink>
         </form>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 import { useUserContext } from "../context/UserContext";
+import { AuthContext } from "../context/AuthContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const LoginPage = () => {
     return check.test(String(email).toLowerCase());
   };
 
-    const validarDatos = async (e) => {
+  const validarDatos = async (e) => {
     e.preventDefault();
 
     if (!emailCheck(email)) {
@@ -39,7 +40,6 @@ const LoginPage = () => {
       return;
     }
 
-    
     try {
       await login(email, password);
       navigate("/profile");
@@ -79,7 +79,7 @@ const LoginPage = () => {
         <InputGroup size="sm" className="p-2">
           <Form.Control
             id="password"
-            type="password" 
+            type="password"
             className="text-dark"
             placeholder="🔒          PASSWORD"
             value={password}
@@ -103,7 +103,7 @@ const LoginPage = () => {
           id="button"
           className="mt-3 mb-5"
           onClick={(e) => validarDatos(e)}
-        > 
+        >
           Iniciar Sesión
         </Button>
       </div>

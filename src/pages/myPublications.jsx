@@ -8,11 +8,9 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-
 const MyPublications = () => {
-
   const navigate = useNavigate();
-    
+
   const logout = () => {
     navigate("/");
   };
@@ -28,13 +26,13 @@ const MyPublications = () => {
   const createPublication = () => {
     navigate("/upload");
   };
-  
+
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
         <ul className="menu-list">
           <li className="menu-item" onClick={profile}>
-            Datos Personales <FontAwesomeIcon icon={faChevronRight}/>
+            Datos Personales <FontAwesomeIcon icon={faChevronRight} />
           </li>
           <li className="menu-item" onClick={myPublications}>
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
@@ -51,11 +49,11 @@ const MyPublications = () => {
         <h2>Mis Publicaciones</h2>
         {productos.map((producto) => (
           <div className="mp-inf" key={producto.id}>
-             <div className="prodname">
-            <h6>{producto.name}</h6>
+            <div className="prodname">
+              <h6>{producto.name}</h6>
             </div>
             <div className="price">
-            <h6>${producto.price}</h6>
+              <h6>${producto.price}</h6>
             </div>
             <NavLink to="/profile" className="fontawesome">
               <span>
@@ -71,7 +69,7 @@ const MyPublications = () => {
           </div>
         ))}
       </main>
-      </div>    
+    </div>
   );
 };
 
