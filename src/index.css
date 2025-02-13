@@ -8,53 +8,6 @@ body {
   height: 100%;
 }
 
-/**NavBar**/
-nav {
-  display: flex;
-  font-family: "Karla", serif;
-  font-weight: 500;
-  background-color: #000000;
-  height: 50px;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: end;
-}
-
-.collapse {
-  background-color: #000000;
-}
-
-#brand {
-  margin-left: 30px;
-}
-
-#search {
-  height: 35px;
-  width: 350px;
-  margin-top: 5px;
-}
-
-.active {
-  color: #808080;
-  text-decoration: none;
-  border: none;
-}
-
-.NoActive {
-  color: #ffffff;
-  text-decoration: none;
-  border: none;
-}
-
-.galery {
-  margin-left: 50px;
-}
-
-
 /**Header**/
 header {
   background-image: url(/src/assets/img/header.jpg);
@@ -70,9 +23,11 @@ header {
 }
 
 /**Boton Login/Register **/
+
 #button {
   background-color: #000000;
   border: 0px;
+  margin: 6px;
 }
 
 /**Footer**/
@@ -120,6 +75,8 @@ img {
 
 .container-rg {
   min-height: 100vh;
+  display:flex;
+  flex-direction: column;
 }
 #email,
 #password {
@@ -146,14 +103,7 @@ img {
 #confirmpassword {
   background-color: #d9d9d9;
   margin: 0px 10px 0px 10px;
-}
-
-.container-rg {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+  width: 460px;
 }
 
 .tarjeta {
@@ -164,7 +114,7 @@ img {
   align-items: center;
   width: 500px;
   gap: 10px;
-  margin: 10px 0px 10px 0px;
+  margin: 40px 0px 10px 0px;
   padding: 20px 0px 20px 0px;
   background-color: #f7f5f5;
   border-radius: 10px;
@@ -189,6 +139,13 @@ img {
   pointer-events: none; 
 }
 
+input:invalid {
+  border-color: #d9d9d9; 
+}
+
+input:valid {
+  border-color: #d9d9d9; 
+}
 
 @media (max-width: 768px) {
   .container-rg {
@@ -197,4 +154,15 @@ img {
   .tarjeta {
     width: 80%;
   }
+  #name,
+  #lastname,
+  #email1,
+  #nickname,
+  #password1,
+  #confirmpassword {
+   width: 80%;
+  }
+  
+
+  
 }

@@ -30,6 +30,7 @@
 
 .mp-inf h6 {
   font-size: 18px;
+  margin: 5px;
 }
 
 .fontawesome {
@@ -38,6 +39,19 @@
   align-items: center;
   text-decoration: none;
   color: black;
+}
+
+.prodname{
+  width: 200px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+ }
+
+.price{
+  display:flex;
+  justify-content: flex-start;
+  width: 20px;
 }
 
 @media (max-width: 768px) {

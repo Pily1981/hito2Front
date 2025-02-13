@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Container, Form, Button, InputGroup } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
+import { useUserContext } from "../context/UserContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useUserContext();
   const navigate = useNavigate();
 
   const emailCheck = (email) => {
@@ -14,8 +16,7 @@ const LoginPage = () => {
     return check.test(String(email).toLowerCase());
   };
 
-  // Validaciones:
-  const validarDatos = (e) => {
+    const validarDatos = async (e) => {
     e.preventDefault();
 
     if (!emailCheck(email)) {
@@ -26,7 +27,7 @@ const LoginPage = () => {
       });
       return;
     }
-    console.log("lala", email);
+
     if (email.trim() === "" || password.trim() === "") {
       Swal.fire({
         icon: "error",
@@ -36,26 +37,24 @@ const LoginPage = () => {
       return;
     }
 
-    if (password.length < 6) {
+    
+    try {
+      await login(email, password);
+      navigate("/profile");
+      Swal.fire({
+        title: "Inicio de sesión exitoso!",
+        icon: "success",
+        draggable: true,
+      });
+      setEmail("");
+      setPassword("");
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "La contraseña debe tener al menos 6 carácteres!",
+        text: "Error al iniciar sesión. Verifica tus credenciales.",
       });
-      return;
     }
-
-    navigate("/profile");
-
-    Swal.fire({
-      title: "Inicio de sesión exitoso!",
-      icon: "success",
-      draggable: true,
-    });
-
-    setEmail("");
-    setPassword("");
-    return;
   };
 
   return (
@@ -78,7 +77,7 @@ const LoginPage = () => {
         <InputGroup size="sm" className="p-2">
           <Form.Control
             id="password"
-            type="text"
+            type="password" 
             className="text-dark"
             placeholder="🔒          PASSWORD"
             value={password}
@@ -102,10 +101,8 @@ const LoginPage = () => {
           id="button"
           className="mt-3 mb-5"
           onClick={(e) => validarDatos(e)}
-        >
-          <NavLink to="/profile" className="text-decoration-none text-white">
-             Iniciar Sesión
-          </NavLink>
+        > 
+          Iniciar Sesión
         </Button>
       </div>
     </Container>

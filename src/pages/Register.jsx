@@ -1,72 +1,104 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; 
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios"; 
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [LastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [NickName, setNickName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    lastName: "",
+    nick_name: "",
+    email: "",
+    password: "",
+    confPassword: "",
+  });
 
-  const emailCheck = (email) => {
-    const check = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-    return check.test(String(email).toLowerCase());
+  const navigate = useNavigate(); 
+  const token = localStorage.getItem("token"); 
+
+  useEffect(() => {
+    if (token) {
+      const validateToken = async () => {
+        try {
+          const response = await axios.get("http://localhost:3000/api/validate_token", {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          });
+
+          if (response.data.success) {
+            
+            navigate("/profile");
+          }
+        } catch (error) {
+          
+          console.log("Token inválido o expirado");
+        }
+      };
+
+      validateToken();
+    }
+  }, [token, navigate]); 
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  // Validaciones:
-  const validarDatos = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!emailCheck(email)) {
+    if (formData.password !== formData.confPassword) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Debes ingresar un email válido!",
+        title: "Error",
+        text: "Las contraseñas no coinciden.",
       });
-      return false;
+      return;
     }
 
-    if (email === "" || password === "" || confPassword === "") {
+    if (
+      !formData.name ||
+      !formData.lastName ||
+      !formData.nick_name ||
+      !formData.email ||
+      !formData.password
+    ) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Todos los campos son obligatorios!",
+        title: "Error",
+        text: "Todos los campos son obligatorios.",
       });
-      return false;
+      return;
     }
 
-    if (password.length < 6) {
+    try {
+      const response = await axios.post("http://localhost:3000/api/create_user", formData);
+      if (response.data.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Registrado exitosamente",
+          text: "Ahora puedes iniciar sesión.",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: response.data.message,
+        });
+      }
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "La contraseña debe tener al menos 6 carácteres!",
+        title: "Error en el servidor",
+        text: "Hubo un problema al procesar tu solicitud.",
       });
-      return false;
     }
-    if (password !== confPassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "El password y la confirmación del password deben ser iguales",
-      });
-      return false;
-    }
-    Swal.fire({
-      title: "Formulario enviado con éxito!",
-      icon: "success",
-      draggable: true,
-    });
-    setName("");
-    setLastName("");
-    setEmail("");
-    setNickName("");
-    setPassword("");
-    setConfPassword("");
-    return true;
   };
 
   return (
@@ -75,80 +107,88 @@ const Register = () => {
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />
         </div>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="name"
-            className="text-dark"
-            type="text"
-            placeholder=" 👤         NAME"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="lastname"
-            type="text"
-            className="text-dark"
-            placeholder=" 👤         LAST NAME"
-            value={LastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="email1"
-            type="email"
-            className="text-dark"
-            placeholder="✉         EMAIL"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="nickname"
-            type="text"
-            className="text-dark"
-            placeholder=" 👤         NICK NAME"
-            value={NickName}
-            onChange={(e) => setNickName(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="password1"
-            type="text"
-            className="text-dark"
-            placeholder="🔒          PASSWORD"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <InputGroup size="sm" className="p-2">
-          <Form.Control
-            id="confirmpassword"
-            type="text"
-            className="text-dark"
-            placeholder="🔒          CONFIRM PASSWORD"
-            value={confPassword}
-            onChange={(e) => setConfPassword(e.target.value)}
-            required
-          />
-        </InputGroup>
-        <Button type="submit" id="button" onClick={(e) => validarDatos(e)}>
-          <NavLink to="/login" className="text-decoration-none text-white">
-            Crear Cuenta
+        <form onSubmit={handleSubmit}>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="name"
+              name="name"
+              className="text-dark"
+              type="text"
+              placeholder=" 👤         NAME"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="lastname"
+              name="lastName"
+              type="text"
+              className="text-dark"
+              placeholder=" 👤         LAST NAME"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="email1"
+              name="email"
+              type="email"
+              className="text-dark"
+              placeholder="✉         EMAIL"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="nickname"
+              name="nick_name"
+              type="text"
+              className="text-dark"
+              placeholder=" 👤         NICK NAME"
+              value={formData.nick_name}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="password1"
+              name="password"
+              type="password"
+              className="text-dark"
+              placeholder="🔒          PASSWORD"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <InputGroup size="sm" className="p-2">
+            <Form.Control
+              id="confirmpassword"
+              name="confPassword"
+              type="password"
+              className="text-dark"
+              placeholder="🔒          CONFIRM PASSWORD"
+              value={formData.confPassword}
+              onChange={handleChange}
+              required
+            />
+          </InputGroup>
+          <div className="d-flex justify-content-center">
+            <Button type="submit" id="button">
+              Crear Cuenta
+            </Button>
+          </div>
+          <NavLink to="/Login" className="text-primary text-decoration-none d-flex justify-content-center">
+            ¿Ya estás registrado? Iniciar Sesión
           </NavLink>
-        </Button>
-        <NavLink to="/Login" className="text-primary text-decoration-none">
-          ¿Ya estás registrado? Iniciar Sesión
-        </NavLink>
+        </form>
       </div>
     </Container>
   );
