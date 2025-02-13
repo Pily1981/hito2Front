@@ -22,16 +22,21 @@ const Profile = () => {
   // Obtiene datos del usuario
   useEffect(() => {
     const fetchProfileData = async () => {
-      if (!token || !user?.id) return;
-
+      console.log("aNTES");
+      
+      if (!token || !user.user_id) return;
+      console.log("despues");
+      
       try {
         const response = await axios.get(
-          `http://localhost:3000/find_user_by_id/${user.id}`,
+          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
         setData(response.data);
+        console.log("data -->", data);
+        
       } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
       }

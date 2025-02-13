@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Componentes/stylesheets/myPublications.css";
 import productos from "../Componentes/Productos";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 const MyPublications = () => {
+    const { user, token } = useContext(AuthContext);
+  const [publications, setPublications] = useState([])
+  useEffect(() => {
+    const fetchPublicationsData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/publication_user_by_id/${user.user_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setPublications(response.data);
+        
+      } catch (error) {
+        console.error("Error al obtener las publicaciones del usuario:", error);
+      }
+    }
+    fetchPublicationsData();
+  }, [])
+  
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -26,6 +49,7 @@ const MyPublications = () => {
   const createPublication = () => {
     navigate("/upload");
   };
+console.log(publications);
 
   return (
     <div className="container-pf">
@@ -47,10 +71,10 @@ const MyPublications = () => {
       </aside>
       <main className="publication-content-mp profile-content">
         <h2>Mis Publicaciones</h2>
-        {productos.map((producto) => (
+        { publications.map((producto) => (
           <div className="mp-inf" key={producto.id}>
             <div className="prodname">
-              <h6>{producto.name}</h6>
+              <h6>{producto.title ? producto.title: "sin titulo"}</h6>
             </div>
             <div className="price">
               <h6>${producto.price}</h6>

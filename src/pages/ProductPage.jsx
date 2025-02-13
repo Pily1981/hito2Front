@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Componentes/stylesheets/Product.css";
+import { AuthContext } from "../context/AuthContext";
 
 const ProductPage = () => {
   const { id } = useParams();
+    const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
@@ -14,7 +16,7 @@ const ProductPage = () => {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`http://localhost:3000/find_publication_by_id/${id}`)
+      .get(`http://localhost:3000/api/find_publication_by_id/${id}`)
       .then((response) => setProducto(response.data))
       .catch((error) =>
         console.error("Error al cargar la publicación:", error)
@@ -24,7 +26,7 @@ const ProductPage = () => {
   // 🚀 Obtener comentarios del backend al cargar la página
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/find_comment_by_id/${id}`)
+      .get(`http://localhost:3000/api/find_comment_by_publication_id/${id}`)
       .then((response) => setComentarios(response.data))
       .catch((error) => console.error("Error al cargar comentarios", error));
   }, [id]);
@@ -36,11 +38,13 @@ const ProductPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/create_comment",
+        "http://localhost:3000/api/create_comment",
         {
           publication_id: id,
-          user_id: 1,
+          user_id: user.user_id,
           comment: nuevoComentario,
+        },  {
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
@@ -55,7 +59,7 @@ const ProductPage = () => {
   // 🗑 Eliminar comentario corregir ruta
   const handleEliminarComentario = async (comment_id) => {
     try {
-      await axios.delete(`http://localhost:3000/delete_comment/${id}`);
+      await axios.delete(`http://localhost:3000/api/delete_comment/${id}`);
       setComentarios(
         comentarios.filter((comentario) => comentario.comment_id !== comment_id)
       );
@@ -78,17 +82,17 @@ const ProductPage = () => {
   return (
     <div className="container">
       <div className="pd-img">
-        <img src={producto.img} alt={producto.name} className="img-fluid" />
+        <img src={producto.image} alt={producto.title} className="img-fluid" />
       </div>
       <div className="pd-inf">
-        <h1>{producto.name}</h1>
+        <h1>{producto.title}</h1>
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
         <Button variant="warning">Comprar</Button>
       </div>
       <div className="pd-desc">
-        <p>{producto.desc}</p>
+        <p>{producto.description}</p>
       </div>
 
       {/* 📝 Sección de Comentarios */}

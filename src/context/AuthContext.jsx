@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
 
   const userLogin = async (email, password) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/login", {
+      const { data } = await axios.post("http://localhost:3000/api/login", {
         email,
         password,
       });
@@ -57,37 +57,37 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (email, password, confirmPassword) => {
-    try {
-      const { data } = await axios.post("http://localhost:3000/create_user", {
-        email,
-        password,
-        confirmPassword,
-      });
+  //const registerUser = async (email, password, confirmPassword) => {
+  //  try {
+  //    const { data } = await axios.post("http://localhost:3000/api/create_user", {
+  //      email,
+  //      password,
+  //      confirmPassword,
+  //    });
 
-      setToken(data.token);
-      setUser(data.user);
-      localStorage.setItem("authToken", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+  //    setToken(data.token);
+  //    setUser(data.user);
+  //    localStorage.setItem("authToken", data.token);
+  //    localStorage.setItem("user", JSON.stringify(data.user));
 
-      return true;
-    } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Error en el servidor";
-      Swal.fire({
-        title: "Error!",
-        text: errorMessage,
-        icon: "error",
-        confirmButtonText: "Cerrar",
-      });
-      console.error("Error en registro:", error);
-      return false;
-    }
-  };
+  //    return true;
+  //  } catch (error) {
+  //    const errorMessage =
+  //      error.response?.data?.message || "Error en el servidor";
+  //    Swal.fire({
+  //      title: "Error!",
+  //      text: errorMessage,
+  //      icon: "error",
+  //      confirmButtonText: "Cerrar",
+  //    });
+  //    console.error("Error en registro:", error);
+  //    return false;
+  //  }
+  //};
 
   return (
     <AuthContext.Provider
-      value={{ token, user, logout, userLogin, registerUser }}
+      value={{ token, user, logout, userLogin }}
     >
       {children}
     </AuthContext.Provider>

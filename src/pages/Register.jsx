@@ -16,32 +16,6 @@ const Register = () => {
   });
 
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    if (token) {
-      const validateToken = async () => {
-        try {
-          const response = await axios.get(
-            "http://localhost:3000/validate_token",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          if (response.data.success) {
-            navigate("/profile");
-          }
-        } catch (error) {
-          console.log("Token inválido o expirado");
-        }
-      };
-
-      validateToken();
-    }
-  }, [token, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,10 +54,11 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/create_user",
+        "http://localhost:3000/api/create_user",
         formData
       );
-      if (response.data.success) {
+      if (response.data) {
+        navigate('/login')
         Swal.fire({
           icon: "success",
           title: "Registrado exitosamente",

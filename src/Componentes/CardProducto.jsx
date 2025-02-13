@@ -3,22 +3,22 @@ import { Card, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 //realizar un useEffect donde traiga la id del producto
-function CardProducto({ producto }) {
+function CardProducto({ product }) {
   return (
     <Card className="border border-dark">
       <Card.Img
         className="p-3"
         variant="top"
-        src={producto.img}
-        alt={producto.name}
+        src={product?.image || "producto sin imagen"}
+        alt={product?.title || "Sin título" }
         style={{ height: "250px", objectFit: "cover" }}
       />
       <Card.Body className="Cardproducto d-flex flex-column align-items-center">
         <Card.Title className="text-center">
-          <strong>{producto.name}</strong>
+          <strong>{product?.title || "Sin título" }</strong>
         </Card.Title>
-        <Card.Text className="text-center">Precio: ${producto.price}</Card.Text>
-        <NavLink to={`/product/${producto.id}`}>
+        <Card.Text className="text-center">Precio: ${product.price}</Card.Text>
+        <NavLink to={`/product/${product.publication_id}`}>
           <Button type="button" className="w-90 mt-2" id="buttonCompras">
             Comprar
           </Button>
@@ -29,10 +29,10 @@ function CardProducto({ producto }) {
 }
 
 CardProducto.propTypes = {
-  producto: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string,
     price: PropTypes.number.isRequired,
-    img: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
 };
 

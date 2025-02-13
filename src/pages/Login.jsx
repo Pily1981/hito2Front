@@ -3,16 +3,13 @@ import { Container, Form, Button, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
-import { useUserContext } from "../context/UserContext";
 import { AuthContext } from "../context/AuthContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useUserContext();
   const navigate = useNavigate();
-  const { user, setUser } = useContext(AuthContext); // 🔹 Solución agregada
-  const token = localStorage.getItem("token");
+  const {  userLogin } = useContext(AuthContext); // 🔹 Solución agregada
 
   const emailCheck = (email) => {
     const check = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
@@ -41,7 +38,7 @@ const LoginPage = () => {
     }
 
     try {
-      await login(email, password);
+      await userLogin(email, password);
       navigate("/profile");
       Swal.fire({
         title: "Inicio de sesión exitoso!",
