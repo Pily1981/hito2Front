@@ -63,8 +63,8 @@ const LoginPage = () => {
 
 
   return (
-    <Container className="container-rg">
-      <div className="tarjeta">
+    <Container className="container-login">
+      <div className="tarjeta-login">
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />
         </div>

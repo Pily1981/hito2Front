@@ -5,7 +5,7 @@
     
   /** Tarjeta Login-Register**/
   
-  .container-rg {
+  .container-login.container {
     min-height: 100vh;
     display:flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
     width: 400px;
   }
   
-  .tarjeta {
+  .tarjeta-login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,10 +63,10 @@
   }
   
   @media (max-width: 768px) {
-    .container-rg {
+    .container-login {
       width: 100%;
     }
-    .tarjeta {
+    .tarjeta-login {
       width: 100%;
     }
     #name,
