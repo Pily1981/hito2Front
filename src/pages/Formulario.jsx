@@ -68,6 +68,13 @@ const Formulario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log(product.name);
+    console.log(product.description);
+    console.log(product.price);
+    console.log(product.category);
+    console.log(product.state);
+
+    console.log(product.image);
     if (
       !product.name.trim() ||
       !product.description.trim() ||
@@ -197,7 +204,7 @@ const Formulario = () => {
               onChange={handleChange}
               required
             >
-              <option value="" disabled>
+              <option value="">
                 Selecciona una categoría
               </option>
               {categories.map((cat) => (

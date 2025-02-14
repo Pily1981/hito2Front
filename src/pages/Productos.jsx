@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardProducto from "../Componentes/CardProducto";
 import { Container, Row, Col } from "react-bootstrap";
 import productos from "../Componentes/Productos";
-
+import axios from "axios";
 const Productos = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchAllPublicationsData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/publication_all`
+        );
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error al obtener las publicaciones del usuario:", error);
+      }
+    };
+    fetchAllPublicationsData();
+  }, []);
+
   return (
     <Container className="mt-5 d-flex flex-column align-items-center">
       <Row className="mt-5">
-        {productos.map((producto) => (
+        {products.map((product) => (
+          
           <Col
-            key={producto.id}
+            key={product.publication_id}
             lg={3}
             md={6}
             xs={12}
             className="mb-5 d-flex justify-content-around"
           >
-            <CardProducto producto={producto} />
+            <CardProducto product={product} />
           </Col>
         ))}
       </Row>

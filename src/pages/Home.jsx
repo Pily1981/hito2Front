@@ -13,7 +13,7 @@ const Home = () => {
         const response = await axios.get(
           `http://localhost:3000/api/publication_all`
         );
-        setProducts(response.data);
+        setProducts(response.data.splice(0, 3));
       } catch (error) {
         console.error("Error al obtener las publicaciones del usuario:", error);
       }
