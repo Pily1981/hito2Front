@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import "../Componentes/stylesheets/Navbar.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "./stylesheets/Navbar.css";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 
 function NavbarApp() {
+  const { token, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
   const setActiveClass = ({ isActive }) => (isActive ? "active" : "NoActive");
+
+  const handleLogout = () => {
+    logout();
+    navigate ("/login");
+  }
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar" sticky="top">
@@ -48,6 +58,25 @@ function NavbarApp() {
             </li>
           </div>
         </ul>
+        {token ? (
+          <>
+        <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
+          <li className="nav-item">
+            <NavLink to="/profile" className={setActiveClass}>
+              Profile
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
+          <li className="nav-item">
+            <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
+              Logout
+            </NavLink>
+          </li>
+        </ul>
+          </>
+         ) : (
+          <>
         <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
           <li className="nav-item">
             <NavLink to="/Login" className={setActiveClass}>
@@ -62,6 +91,8 @@ function NavbarApp() {
             </NavLink>
           </li>
         </ul>
+        </>
+         )}
       </Navbar.Collapse>
     </Navbar>
   );

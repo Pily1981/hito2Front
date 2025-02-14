@@ -80,6 +80,11 @@ const Register = () => {
     }
   };
 
+  const handleButtonClick = () => {
+    navigate("/"); //Boton Volver
+  };
+
+
   return (
     <Container className="container-rg">
       <div className="tarjeta">
@@ -113,7 +118,7 @@ const Register = () => {
           </InputGroup>
           <InputGroup size="sm" className="p-2">
             <Form.Control
-              id="email1"
+              id="email"
               name="email"
               type="email"
               className="text-dark"
@@ -137,7 +142,7 @@ const Register = () => {
           </InputGroup>
           <InputGroup size="sm" className="p-2">
             <Form.Control
-              id="password1"
+              id="password"
               name="password"
               type="password"
               className="text-dark"
@@ -159,11 +164,14 @@ const Register = () => {
               required
             />
           </InputGroup>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center mt-3 mb-2">
             <Button type="submit" id="button">
               Crear Cuenta
             </Button>
-          </div>
+            <Button type="submit" id="button" onClick={handleButtonClick} >
+            Volver
+            </Button>
+           </div>
           <NavLink
             to="/Login"
             className="text-primary text-decoration-none d-flex justify-content-center"

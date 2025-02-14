@@ -22,14 +22,6 @@ header {
   text-align: center;
 }
 
-/**Boton Login/Register **/
-
-#button {
-  background-color: #000000;
-  border: 0px;
-  margin: 6px;
-}
-
 /**Footer**/
 Footer {
   display: flex;
@@ -71,17 +63,12 @@ img {
   margin: auto;
 }
 
-/** Tarjeta Login**/
+/** Tarjeta Login-Register**/
 
 .container-rg {
   min-height: 100vh;
   display:flex;
   flex-direction: column;
-}
-#email,
-#password {
-  background-color: #d9d9d9;
-  margin: 0px 10px 0px 10px;
 }
 
 #checkbox {
@@ -91,19 +78,20 @@ img {
   width: 18px;
   display: inline-flex;
   justify-content: start;
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-left: 15px;
+  margin-top: 5px;
 }
 
-/** Tarjeta Register**/
 #name,
 #lastname,
-#email1,
 #nickname,
-#password1,
-#confirmpassword {
+#confirmpassword, 
+#email,
+#password  {
   background-color: #d9d9d9;
   margin: 0px 10px 0px 10px;
-  width: 460px;
+  width: 400px;
 }
 
 .tarjeta {
@@ -118,6 +106,12 @@ img {
   padding: 20px 0px 20px 0px;
   background-color: #f7f5f5;
   border-radius: 10px;
+}
+
+#button {
+  background-color: #000000;
+  border: 0px;
+  margin: 8px 15px 5px 15px ;
 }
 
 .search-container {
@@ -156,13 +150,11 @@ input:valid {
   }
   #name,
   #lastname,
-  #email1,
+  #email,
   #nickname,
-  #password1,
-  #confirmpassword {
+  #password,
+  #confirmpassword { 
    width: 80%;
   }
-  
-
-  
+    
 }

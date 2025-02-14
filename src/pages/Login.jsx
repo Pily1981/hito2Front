@@ -56,12 +56,18 @@ const LoginPage = () => {
     }
   };
 
+  const handleButtonClick = () => {
+    navigate("/"); //Boton Volver
+  };
+
+
   return (
     <Container className="container-rg">
       <div className="tarjeta">
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />
         </div>
+        <form>
         <InputGroup size="sm" className="p-2">
           <Form.Control
             id="email"
@@ -91,18 +97,19 @@ const LoginPage = () => {
             type="checkbox"
             value=""
           />
-          <label className="form-check-label" htmlFor="flexCheckDefault">
+          <label className="form-check-label5" htmlFor="flexCheckDefault">
             Remember me
           </label>
         </div>
-        <Button
-          type="submit"
-          id="button"
-          className="mt-3 mb-5"
-          onClick={(e) => validarDatos(e)}
-        >
-          Iniciar Sesión
-        </Button>
+        <div className="d-flex justify-content-center mt-3 mb-5">
+            <Button type="submit" id="button"  onClick={(e) => validarDatos(e)}>
+              Iniciar Sesion
+            </Button>
+            <Button type="submit" id="button"  onClick={handleButtonClick} >
+              Volver
+            </Button>
+          </div> 
+          </form>  
       </div>
     </Container>
   );

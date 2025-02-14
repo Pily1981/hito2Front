@@ -55,6 +55,21 @@
   width: 20px;
 }
 
+.edit-btn{
+  border: none;
+  text-decoration: none;
+  background-color: lightgray;
+  margin: 10px;
+}
+
+.delete-btn{
+  border: none;
+  text-decoration: none;
+  background-color: lightgray;
+  margin: 10px;
+  padding-right: 10px;
+}
+
 @media (max-width: 768px) {
   .container-mp {
     width: 80%;

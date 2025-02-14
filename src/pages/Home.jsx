@@ -25,7 +25,7 @@ const Home = () => {
       <Header />
       <h2 className="mt-5 d-flex justify-content-around">Últimos añadidos</h2>
       <Container className="mt-5 d-flex justify-content-center">
-        <Row>
+        <Row classname="home">
           {products.map((product) => (
             <Col
               key={product.publication_id}

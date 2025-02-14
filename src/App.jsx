@@ -15,6 +15,7 @@ import ProductPage from "./pages/ProductPage";
 import MyPublications from "./pages/myPublications";
 import PrivateRoute from "./context/PrivateRoute";
 import AuthProvider from "./context/AuthContext";
+import EditPublication from "./pages/editpublication";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/myPublications" element={<MyPublications />} />
+              <Route path="/editpublication/:publication_id" element={<EditPublication/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

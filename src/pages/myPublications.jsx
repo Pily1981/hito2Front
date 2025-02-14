@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../Componentes/stylesheets/myPublications.css";
-import productos from "../Componentes/Productos";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
 const MyPublications = () => {
-    const { user, token } = useContext(AuthContext);
-  const [publications, setPublications] = useState([])
+  const { user, token } = useContext(AuthContext);
+  const [publications, setPublications] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchPublicationsData = async () => {
       try {
@@ -23,73 +22,73 @@ const MyPublications = () => {
           }
         );
         setPublications(response.data);
-        
       } catch (error) {
         console.error("Error al obtener las publicaciones del usuario:", error);
       }
-    }
+    };
     fetchPublicationsData();
-  }, [])
-  
+  }, [user.user_id, token]);
 
-  const navigate = useNavigate();
-
-  const logout = () => {
-    navigate("/");
+  // Función para eliminar una publicación
+  const handleDelete = async (publication_id) => {
+    const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+    if (confirmDelete) {
+      try {
+      
+        await axios.delete(`http://localhost:3000/api/delete_publication/${publication_id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+          
+        alert("Publicación eliminada con éxito.");
+      } catch (error) {
+        console.error("Error al eliminar la publicación:", error);
+        alert("Hubo un problema al eliminar la publicación.");
+      }
+    }
+    
   };
 
-  const profile = () => {
-    navigate("/profile");
+  const handleEdit = (publication_id) => {
+    navigate(`/editpublication/${publication_id}`);
   };
-
-  const myPublications = () => {
-    navigate("/myPublications");
-  };
-
-  const createPublication = () => {
-    navigate("/upload");
-  };
-console.log(publications);
 
   return (
     <div className="container-pf">
       <aside className="profile-sidebar">
         <ul className="menu-list">
-          <li className="menu-item" onClick={profile}>
+          <li className="menu-item" onClick={() => navigate("/profile")}>
             Datos Personales <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={myPublications}>
+          <li className="menu-item" onClick={() => navigate("/myPublications")}>
             Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={createPublication}>
+          <li className="menu-item" onClick={() => navigate("/upload")}>
             Crear publicación <FontAwesomeIcon icon={faChevronRight} />
           </li>
-          <li className="menu-item" onClick={logout}>
+          <li className="menu-item" onClick={() => navigate("/")}>
             Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
           </li>
         </ul>
       </aside>
+
       <main className="publication-content-mp profile-content">
         <h2>Mis Publicaciones</h2>
-        { publications.map((producto) => (
+        {publications.map((producto) => (
           <div className="mp-inf" key={producto.id}>
             <div className="prodname">
-              <h6>{producto.title ? producto.title: "sin titulo"}</h6>
+              <h6>{producto.title ? producto.title : "sin título"}</h6>
             </div>
             <div className="price">
               <h6>${producto.price}</h6>
             </div>
-            <NavLink to="/profile" className="fontawesome">
-              <span>
-                {" "}
-                <FontAwesomeIcon icon={faPen} />
-              </span>{" "}
-              |
-              <span>
-                {" "}
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-            </NavLink>
+            <div className="action-buttons">
+              <button onClick={() => handleEdit(producto.id)} className="edit-btn">
+                <FontAwesomeIcon icon={faPen} /> 
+              </button>
+              <button onClick={() => handleDelete(producto.id)} className="delete-btn">
+                <FontAwesomeIcon icon={faTrash} /> 
+              </button>
+            </div>
           </div>
         ))}
       </main>
