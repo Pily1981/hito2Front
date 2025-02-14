@@ -1,31 +1,24 @@
-/**NavBar**/
-nav {
-  display: flex;
+body {
   font-family: "Karla", serif;
-  font-weight: 500;
-  background-color: #000000;
-  height: 50px;
+  height: 100%;
 }
 
-.nav-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: end;
+.custom-navbar {
+  background-color: #000000; 
+  padding: 1rem 2rem;
+  text-decoration: none;
 }
 
-.collapse {
-  background-color: #000000;
+.nav-home {
+  margin-right: 20px;
 }
 
-#brand {
-  margin-left: 30px;
+.nav-profile{
+  margin-right: 7px;
 }
 
-#search {
-  height: 35px;
-  width: 350px;
-  margin-top: 5px;
+.nav-logout{
+  margin-right:52px;
 }
 
 .active {
@@ -40,6 +33,67 @@ nav {
   border: none;
 }
 
-.galery {
-  margin-left: 50px;
+.custom-navbar .navbar-nav .nav-link {
+  color: #ffffff;
+  margin-left: 20px;
+  text-decoration: none;
 }
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  color: #696868;
+}
+
+.search-input {
+  padding-right: 20px;
+  padding-left: 20px; 
+}
+
+#brand {
+  margin-left: 30px;
+  text-decoration: none;
+}
+
+#search {
+  height: 35px;
+  width: 300px;
+  margin-top: 5px;
+}
+
+@media (max-width: 991px) {
+  .custom-navbar .navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .navbar-collapse {
+    text-align: left;
+  }
+
+  .navbar-nav {
+    padding-left: 0;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%; 
+  }
+ }
+
+/* Personaliza el tamaño de las tarjetas y la separación en pantallas pequeñas */
+@media (max-width: 768px) {
+  .custom-navbar .navbar-nav .nav-link {
+    margin-left: 10px;
+  }
+  #search {
+   width: 60%;
+  }
+}
+

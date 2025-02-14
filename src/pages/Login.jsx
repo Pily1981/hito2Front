@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 import { AuthContext } from "../context/AuthContext";
+import "../Componentes/stylesheets/login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

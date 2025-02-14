@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import CardProducto from "../Componentes/CardProducto";
 import { Container, Row, Col } from "react-bootstrap";
 import productos from "../Componentes/Productos";
+import "../Componentes/stylesheets/Home.css"
 import axios from "axios";
+
 const Productos = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -26,10 +28,10 @@ const Productos = () => {
           
           <Col
             key={product.publication_id}
-            lg={3}
+            lg={4}
             md={6}
             xs={12}
-            className="mb-5 d-flex justify-content-around"
+            className="mb-5 g-5 mt-1 d-flex justify-content-around"
           >
             <CardProducto product={product} />
           </Col>

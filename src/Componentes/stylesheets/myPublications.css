@@ -1,3 +1,8 @@
+body {
+  font-family: "Karla", serif;
+  height: 100%;
+}
+
 .container-mp {
   display: flex;
   flex-direction: column;
@@ -33,17 +38,16 @@
   margin: 5px;
 }
 
-
 .fontawesome {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   text-decoration: none;
   color: black;
 }
 
 .prodname{
-  width: 200px;
+  width: 150px;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -52,27 +56,31 @@
 .price{
   display:flex;
   justify-content: flex-start;
-  width: 20px;
+  width: 65px;
+}
+
+.action-buttons{
+  width: 100px;
 }
 
 .edit-btn{
   border: none;
   text-decoration: none;
   background-color: lightgray;
-  margin: 10px;
+  margin-left: 10px;
 }
 
 .delete-btn{
   border: none;
   text-decoration: none;
   background-color: lightgray;
-  margin: 10px;
+  margin-left: 10px;
   padding-right: 10px;
 }
 
 @media (max-width: 768px) {
   .container-mp {
-    width: 80%;
+    width: 90%;
   }
 
   .mp-inf {
