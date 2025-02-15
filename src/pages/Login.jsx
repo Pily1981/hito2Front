@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import perfil from "../assets/img/photo.jpg";
 import { AuthContext } from "../context/AuthContext";
+import "../Componentes/stylesheets/login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -61,8 +62,8 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="container-rg">
-      <div className="tarjeta">
+    <Container className="container-login">
+      <div className="tarjeta-login">
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />
         </div>
