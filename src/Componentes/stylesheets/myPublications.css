@@ -46,31 +46,31 @@ body {
   color: black;
 }
 
-.prodname{
+.prodname {
   width: 150px;
   display: flex;
   justify-content: left;
   align-items: center;
- }
+}
 
-.price{
-  display:flex;
+.price {
+  display: flex;
   justify-content: flex-start;
   width: 65px;
 }
 
-.action-buttons{
+.action-buttons {
   width: 100px;
 }
 
-.edit-btn{
+.edit-btn {
   border: none;
   text-decoration: none;
   background-color: lightgray;
   margin-left: 10px;
 }
 
-.delete-btn{
+.delete-btn {
   border: none;
   text-decoration: none;
   background-color: lightgray;

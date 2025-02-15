@@ -1,55 +1,52 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Karla", serif;
+  height: 100%;
+}
+
+/**Header**/
+header {
+  background-image: url(/src/assets/img/header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 393px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/**Tarjeta Producto**/
+.product {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.Cardproducto.card-body {
+  display: flex;
+  width: 250px;
+}
+
+.Cardproducto,
+h5 {
+  font-size: 20px;
+}
+
+#buttonCompras {
+  background-color: #000000;
+  border: 0px;
+  margin: 10px 70px 10px 70px;
+}
+
+@media (max-width: 768px) {
+  .Cardproducto {
+    width: 100%;
   }
-  
-  body {
-    font-family: "Karla", serif;
-    height: 100%;
-  }
-  
-  /**Header**/
-  header {
-    background-image: url(/src/assets/img/header.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 393px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  
-  /**Tarjeta Producto**/
-  .product {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
-  }
-  
-  .Cardproducto.card-body {
-    display: flex;
-    width: 250px;
-  }
-  
-  .Cardproducto,
-  h5 {
-    font-size: 20px;
-  }
-  
-  #buttonCompras {
-    background-color: #000000;
-    border: 0px;
-    margin: 10px 70px 10px 70px;
-  }
-  
-  @media (max-width: 768px) {
-    .Cardproducto{ 
-        width: 100%;
-    }
-  
-  }
-  
+}

@@ -10,18 +10,21 @@ export const UserProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/login', { email, password });
+      const response = await axios.post("http://localhost:3000/api/login", {
+        email,
+        password,
+      });
       const { token } = response.data;
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       setToken(token);
       setUser({ email });
     } catch (error) {
-      throw new Error('Error en el login');
+      throw new Error("Error en el login");
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setToken(null);
     setUser(null);
   };
@@ -32,4 +35,3 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-
