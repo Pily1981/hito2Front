@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Header from "../Componentes/Header";
 import CardProducto from "../Componentes/CardProducto";
 import { Container, Row, Col } from "react-bootstrap";
-import productos from "../Componentes/Productos";
 import axios from "axios";
 
 const Home = () => {
@@ -25,7 +24,7 @@ const Home = () => {
       <Header />
       <h2 className="mt-5 d-flex justify-content-around">Últimos añadidos</h2>
       <Container className="mt-5 d-flex justify-content-center">
-        <Row classname="home">
+        <Row className="home">
           {products.map((product) => (
             <Col
               key={product.publication_id}

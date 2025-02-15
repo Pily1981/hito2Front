@@ -3,7 +3,11 @@ import "../Componentes/stylesheets/myPublications.css";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faTrash,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
@@ -31,21 +35,24 @@ const MyPublications = () => {
 
   // Función para eliminar una publicación
   const handleDelete = async (publication_id) => {
-    const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar esta publicación?"
+    );
     if (confirmDelete) {
       try {
-      
-        await axios.delete(`http://localhost:3000/api/delete_publication/${publication_id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-          
+        await axios.delete(
+          `http://localhost:3000/api/delete_publication/${publication_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
         alert("Publicación eliminada con éxito.");
       } catch (error) {
         console.error("Error al eliminar la publicación:", error);
         alert("Hubo un problema al eliminar la publicación.");
       }
     }
-    
   };
 
   const handleEdit = (publication_id) => {
@@ -82,11 +89,17 @@ const MyPublications = () => {
               <h6>${producto.price}</h6>
             </div>
             <div className="action-buttons">
-              <button onClick={() => handleEdit(producto.id)} className="edit-btn">
-                <FontAwesomeIcon icon={faPen} /> 
+              <button
+                onClick={() => handleEdit(producto.id)}
+                className="edit-btn"
+              >
+                <FontAwesomeIcon icon={faPen} />
               </button>
-              <button onClick={() => handleDelete(producto.id)} className="delete-btn">
-                <FontAwesomeIcon icon={faTrash} /> 
+              <button
+                onClick={() => handleDelete(producto.id)}
+                className="delete-btn"
+              >
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </div>
           </div>

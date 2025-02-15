@@ -13,7 +13,7 @@ const Formulario = () => {
   const [categories, setCategories] = useState([]);
 
   console.log("token", token);
-  
+
   useEffect(() => {
     if (!token) {
       navigate("/");
@@ -204,9 +204,7 @@ const Formulario = () => {
               onChange={handleChange}
               required
             >
-              <option value="">
-                Selecciona una categoría
-              </option>
+              <option value="">Selecciona una categoría</option>
               {categories.map((cat) => (
                 <option key={cat.category_id} value={cat.category_id}>
                   {cat.name_category}

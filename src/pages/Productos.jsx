@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardProducto from "../Componentes/CardProducto";
 import { Container, Row, Col } from "react-bootstrap";
-import productos from "../Componentes/Productos";
 import axios from "axios";
 const Productos = () => {
   const [products, setProducts] = useState([]);
@@ -23,7 +22,6 @@ const Productos = () => {
     <Container className="mt-5 d-flex flex-column align-items-center">
       <Row className="mt-5">
         {products.map((product) => (
-          
           <Col
             key={product.publication_id}
             lg={3}

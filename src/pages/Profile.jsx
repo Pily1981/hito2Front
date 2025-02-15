@@ -13,20 +13,20 @@ const Profile = () => {
   const [data, setData] = useState(null);
 
   // Redirige si no hay token
-   useEffect(() => {
-     if (!token) {
-       navigate("/");
-     }
-   }, [token, navigate]);
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   // Obtiene datos del usuario
   useEffect(() => {
     const fetchProfileData = async () => {
       console.log("aNTES");
-      
+
       if (!token || !user.user_id) return;
       console.log("despues");
-      
+
       try {
         const response = await axios.get(
           `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
@@ -36,7 +36,6 @@ const Profile = () => {
         );
         setData(response.data);
         console.log("data -->", data);
-        
       } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
       }

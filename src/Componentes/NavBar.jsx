@@ -7,7 +7,6 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-
 function NavbarApp() {
   const { token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -15,8 +14,8 @@ function NavbarApp() {
 
   const handleLogout = () => {
     logout();
-    navigate ("/login");
-  }
+    navigate("/login");
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar" sticky="top">
@@ -60,39 +59,43 @@ function NavbarApp() {
         </ul>
         {token ? (
           <>
-        <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
-          <li className="nav-item">
-            <NavLink to="/profile" className={setActiveClass}>
-              Profile
-            </NavLink>
-          </li>
-        </ul>
-        <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
-          <li className="nav-item">
-            <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
-              Logout
-            </NavLink>
-          </li>
-        </ul>
+            <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
+              <li className="nav-item">
+                <NavLink to="/profile" className={setActiveClass}>
+                  Profile
+                </NavLink>
+              </li>
+            </ul>
+            <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
+              <li className="nav-item">
+                <NavLink
+                  to="/"
+                  className={setActiveClass}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </NavLink>
+              </li>
+            </ul>
           </>
-         ) : (
+        ) : (
           <>
-        <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
-          <li className="nav-item">
-            <NavLink to="/Login" className={setActiveClass}>
-              Log In
-            </NavLink>
-          </li>
-        </ul>
-        <ul className="navbar-nav mb-2 mx-5 mb-lg-0">
-          <li className="nav-item">
-            <NavLink to="/Register" className={setActiveClass}>
-              Sign Up
-            </NavLink>
-          </li>
-        </ul>
-        </>
-         )}
+            <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
+              <li className="nav-item">
+                <NavLink to="/Login" className={setActiveClass}>
+                  Log In
+                </NavLink>
+              </li>
+            </ul>
+            <ul className="navbar-nav mb-2 mx-5 mb-lg-0">
+              <li className="nav-item">
+                <NavLink to="/Register" className={setActiveClass}>
+                  Sign Up
+                </NavLink>
+              </li>
+            </ul>
+          </>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );
