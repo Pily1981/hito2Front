@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
-import "../Componentes/stylesheets/Product.css";
+import "../Componentes/stylesheets/upload.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
