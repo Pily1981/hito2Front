@@ -59,7 +59,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container-pf">
+    <div className="container-profile">
       <div className="grid-container">
         <div className="left-column">
           <div className="left-row-1">

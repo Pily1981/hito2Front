@@ -1,10 +1,10 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Karla", sans-serif;
   background-color: #f4f4f4;
 }
 
-.container-pf {
+.container-profile {
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
@@ -113,14 +113,14 @@ textarea {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 3fr; /* 1fr para la columna izquierda, 3fr para la columna central */
-  gap: 20px; /* Espacio entre columnas */
+  grid-template-columns: 1fr 3fr; 
+  gap: 20px; 
 }
 
 .left-column {
-  display: grid; /* Contenedor para la columna izquierda, que será una grilla interna */
-  grid-template-rows: 0.5fr 1fr; /* Dos filas en la columna izquierda */
-  gap: 10px; /* Espacio entre las dos filas */
+  display: grid; 
+  grid-template-rows: 0.5fr 1fr; 
+  gap: 10px; 
 }
 
 .left-row-1,
@@ -148,6 +148,7 @@ textarea {
   justify-items: center;
 }
 
+
 .icon-menu {
   display: inline;
   padding-left: 5px;
@@ -157,16 +158,16 @@ textarea {
 
 .container {
   display: flex;
-  justify-content: center; /* Centra la columna */
+  justify-content: center; 
   padding: 20px;
 }
 
 .central-column {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Tres filas: 1 fila para la parte superior, 1 para las columnas medias, 1 para la parte inferior */
+  grid-template-rows: auto 1fr auto; 
   justify-items: center;
   width: 100%;
-  max-width: 600px; /* Ancho máximo de la columna central */
+  max-width: 600px; 
 }
 
 .top-row {
@@ -177,8 +178,8 @@ textarea {
 
 .middle-row {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas para las columnas medias */
-  grid-template-rows: 1fr 1fr; /* Dos filas dentro de la parte intermedia */
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
   gap: 10px;
 }
 

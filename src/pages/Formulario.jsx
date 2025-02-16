@@ -5,14 +5,21 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faBookOpen,
+  faPenToSquare,
+  faChevronRight,
+  faPowerOff,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Formulario = () => {
   // Redirige si no hay token
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
-
-  console.log("token", token);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     if (!token) {
@@ -29,14 +36,32 @@ const Formulario = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        setCategories(response.data); // Asegúrate de que la respuesta sea un array de categorías
+        setCategories(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
       }
     };
-
     fetchCategories();
   }, [token]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setData(response.data);
+        console.log("data -->", data);
+      } catch (error) {
+        console.log("Error al obtener los datos del usuario:");
+      }
+    };
+
+    fetchUser();
+  }, [user.user_id, token]);
 
   const [product, setProduct] = useState({
     name: "",
@@ -51,6 +76,19 @@ const Formulario = () => {
     const { name, value } = e.target;
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
+
+  //const handleFileChange = (e) => {
+  //  const file = e.target.files[0];
+  //  if (file && file.type.startsWith("image/")) {
+  //    setProduct((prev) => ({ ...prev, image: file }));
+  //  } else {
+  //    Swal.fire({
+  //      icon: "error",
+  //      title: "Archivo no válido",
+  //      text: "Por favor, selecciona una imagen válida.",
+  //    });
+  //  }
+  //};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +117,14 @@ const Formulario = () => {
     }
 
     try {
+      //const formData = new FormData();
+      //formData.append("user_id", userId);
+      //formData.append("name", product.name);
+      //formData.append("price", Number(product.price));
+      //formData.append("category_id", mapCategoryToId(product.category));
+      //formData.append("description", product.description);
+      //formData.append("image", product.image);
+      //formData.append("state", product.state);
       const payload = {
         user_id: user.user_id,
         title: product.name,
@@ -126,94 +172,171 @@ const Formulario = () => {
     }
   };
 
+  //const mapCategoryToId = (category) => {
+  //  const categories = {
+  //    Ropa: 1,
+  //    Calzado: 2,
+  //    Rodados: 3,
+  //    Muebles: 4,
+  //    Accesorios: 5,
+  //  };
+  //  return categories[category] || null;
+  //};
+
   return (
-    <div className="container form-upload">
-      <main className="profile-content containter-form">
-        <h3>Crear publicación</h3>
-        <form onSubmit={handleSubmit} className="product-form">
-          <div className="form-group">
-            <label htmlFor="name">Nombre del producto</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={product.name}
-              onChange={handleChange}
-              required
-            />
+    <div className="container-ep">
+      <div className="grid-container-ep">
+        <div className="left-column">
+          <div className="left-row-one">
+            <div className="Welcome">
+              {data ? (
+                <p>Hola, {data.name}</p>
+              ) : (
+                <p>Cargando datos del usuario...</p>
+              )}
+            </div>
+            <div className="image-text-container">
+              <div className="icon-profile">
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+              <div className="text-wrapper">Crear Publicacion</div>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Descripción</label>
-            <textarea
-              id="description"
-              name="description"
-              value={product.description}
-              onChange={handleChange}
-              required
-            ></textarea>
+
+          <div className="left-row-2">
+            <aside className="profile-sidebar">
+              <ul className="menu-list">
+                <li className="menu-item" onClick={() => navigate("/profile")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faUser} />
+                  </div>
+                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => navigate("/myPublications")}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBookOpen} />
+                  </div>
+                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={() => navigate("/upload")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </div>
+                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPowerOff} />
+                  </div>
+                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+              </ul>
+            </aside>
           </div>
-          <div className="form-group">
-            <label htmlFor="price">Precio</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              min="1"
-              value={product.price}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="category">Categoría</label>
-            <select
-              id="category"
-              name="category"
-              value={product.category}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Selecciona una categoría</option>
-              {categories.map((cat) => (
-                <option key={cat.category_id} value={cat.category_id}>
-                  {cat.name_category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="state">Estado</label>
-            <select
-              id="state"
-              name="state"
-              value={product.state}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Selecciona un estado
-              </option>
-              <option value="Usado">Usado</option>
-              <option value="Nuevo">Nuevo</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="image">Imagen del producto</label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="upload">
-            <Button className="up_bt bt_up" type="submit" variant="warning">
-              Guardar
-            </Button>
-          </div>
-        </form>
-      </main>
+        </div>
+        <div className="center-column">
+          <main className="profile-upload">
+            <div className="top-row-item">
+              <h3>Crear publicación</h3>
+              <form onSubmit={handleSubmit} className="product-form">
+                <div className="form-group">
+                  <label htmlFor="name">Nombre del producto</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={product.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description">Descripción</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={product.description}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="price">Precio</label>
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    value={product.price}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="category">Categoría</label>
+                  <select
+                    id="category"
+                    name="category"
+                    value={product.category}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Selecciona una categoría</option>
+                    {categories.map((cat) => (
+                      <option key={cat.category_id} value={cat.category_id}>
+                        {cat.name_category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="state">Estado</label>
+                  <select
+                    id="state"
+                    name="state"
+                    value={product.state}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled>
+                      Selecciona un estado
+                    </option>
+                    <option value="Usado">Usado</option>
+                    <option value="Nuevo">Nuevo</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="image">Imagen del producto</label>
+                  <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="upload">
+                  <Button
+                    className="upload_btn"
+                    type="submit"
+                    variant="warning"
+                  >
+                    Guardar
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </main>
+        </div>
+      </div>
     </div>
   );
 };

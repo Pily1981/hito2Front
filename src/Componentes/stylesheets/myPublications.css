@@ -3,22 +3,65 @@ body {
   height: 100%;
 }
 
+
 .container-mp {
+  background-color: #ffffff;
+  border-radius: 10px;
   display: flex;
+  align-content: space-around;
   flex-direction: column;
   justify-content: center;
-  align-content: space-around;
+  align-items: center;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: auto;
+  flex-grow: 1;
+  min-height: 100vh;
 }
 
-.publication-content-mp {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
+.profile-sidebar-mp {
+  width: 250px;
+  background-color: #d9d9d9;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-content-mp {
+  padding: 20px;
+  margin-top: 90px;
+  margin-bottom: 20px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  gap: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 570px;
+}
+
+.grid-container-mp{
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  gap: 20px; 
+}
+
+.left-column {
+  display: grid; 
+  grid-template-rows: 0.5fr 1fr; 
+  gap: 10px; 
+}
+
+.left-row-1,
+.left-row-2 {
+  padding: 20px;
+}
+
+.left-row-1 {
+  justify-content: center;
+  justify-items: center;
 }
 
 .mp-inf {
@@ -26,10 +69,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  background-color: lightgray;
+  background-color: #d9d9d9;
   width: 500px;
   text-align: center;
-  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
@@ -46,44 +88,34 @@ body {
   color: black;
 }
 
-.prodname {
+.prodname{
   width: 150px;
   display: flex;
   justify-content: left;
   align-items: center;
-}
+ }
 
-.price {
-  display: flex;
+.price{
+  display:flex;
   justify-content: flex-start;
   width: 65px;
 }
 
-.action-buttons {
+.buttons-mp{
   width: 100px;
 }
 
-.edit-btn {
+.edit_button{
   border: none;
   text-decoration: none;
-  background-color: lightgray;
-  margin-left: 10px;
-}
-
-.delete-btn {
-  border: none;
-  text-decoration: none;
-  background-color: lightgray;
-  margin-left: 10px;
+  background-color: #d9d9d9;
   padding-right: 10px;
 }
 
-@media (max-width: 768px) {
-  .container-mp {
-    width: 90%;
-  }
-
-  .mp-inf {
-    width: 90%;
-  }
+.delete_btn{
+  border: none;
+  text-decoration: none;
+  background-color: #d9d9d9;
+  margin-left: 10px;
+  padding-right: 10px;
 }

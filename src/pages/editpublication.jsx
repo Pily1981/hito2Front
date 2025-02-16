@@ -2,6 +2,14 @@ import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import "../Componentes/stylesheets/editpublications.css";
 import { useContext, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faBookOpen,
+  faPenToSquare,
+  faChevronRight,
+  faPowerOff,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,6 +19,7 @@ const EditPublication = () => {
   const navigate = useNavigate();
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);
+  const [data, setData] = useState(null);
 
   const [product, setProduct] = useState({
     name: "",
@@ -42,7 +51,6 @@ const EditPublication = () => {
         console.error("Error al obtener categorías:", error);
       }
     };
-
     fetchCategories();
   }, [token]);
 
@@ -76,6 +84,25 @@ const EditPublication = () => {
 
     fetchPublication();
   }, [publication_id, token]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setData(response.data);
+        console.log("data -->", data);
+      } catch (error) {
+        console.log("Error al obtener los datos del usuario:");
+      }
+    };
+
+    fetchUser();
+  }, [user.user_id, token]);
 
   // Función para manejar los cambios en los campos del formulario
   const handleChange = (e) => {
@@ -147,101 +174,164 @@ const EditPublication = () => {
   };
 
   return (
-    <div className="container form-upload">
-      <main className="profile-content containter-form">
-        <h2>Editar publicación</h2>
-        <form onSubmit={handleSubmit} className="product-form">
-          <div className="form-group">
-            <label htmlFor="name">Nombre del Producto</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={product.name}
-              onChange={handleChange}
-              required
-            />
+    <div className="container-ep">
+      <div className="grid-container-ep">
+        <div className="left-column">
+          <div className="left-row-one">
+            <div className="Welcome">
+              {data ? (
+                <p>Hola, {data.name}</p>
+              ) : (
+                <p>Cargando datos del usuario...</p>
+              )}
+            </div>
+            <div className="image-text-container">
+              <div className="icon-profile">
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+              <div className="text-wrapper">Editar Publicacion</div>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Descripción</label>
-            <textarea
-              id="description"
-              name="description"
-              value={product.description}
-              onChange={handleChange}
-              required
-            ></textarea>
+
+          <div className="left-row-two">
+            <aside className="profile-sidebar-ep">
+              <ul className="menu-list">
+                <li className="menu-item" onClick={() => navigate("/profile")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faUser} />
+                  </div>
+                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => navigate("/myPublications")}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBookOpen} />
+                  </div>
+                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={() => navigate("/upload")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </div>
+                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPowerOff} />
+                  </div>
+                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+              </ul>
+            </aside>
           </div>
-          <div className="form-group">
-            <label htmlFor="price">Precio</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={product.price}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="category">Categoría</label>
-            <select
-              id="category"
-              name="category"
-              value={product.category}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Selecciona una categoría</option>
-              {categories.map((cat) => (
-                <option key={cat.category_id} value={cat.category_id}>
-                  {cat.name_category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="state">Estado</label>
-            <select
-              id="state"
-              name="state"
-              value={product.state}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Selecciona un estado
-              </option>
-              <option value="Usado">Usado</option>
-              <option value="Nuevo">Nuevo</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="image">Imagen del Producto</label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              value={product.image}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="upload">
-            <Button className="up_bt" type="submit" variant="warning">
-              Guardar cambios
-            </Button>
-            <Button
-              onClick={handleButtonClick}
-              className="up_bt"
-              type="submit"
-              variant="warning"
-            >
-              Volver
-            </Button>
-          </div>
-        </form>
-      </main>
+        </div>
+        <div className="center-column">
+          <main className="profile-edit">
+            <div className="top-row-item">
+              <h3>Editar publicación</h3>
+            </div>
+            <form onSubmit={handleSubmit} className="product-form">
+              <div className="form-group">
+                <label htmlFor="name">Nombre del Producto</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={product.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Descripción</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={product.description}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="price">Precio</label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  value={product.price}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="category">Categoría</label>
+                <select
+                  id="category"
+                  name="category"
+                  value={product.category}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Selecciona una categoría</option>
+                  {categories.map((cat) => (
+                    <option key={cat.category_id} value={cat.category_id}>
+                      {cat.name_category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="state">Estado</label>
+                <select
+                  id="state"
+                  name="state"
+                  value={product.state}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Selecciona un estado
+                  </option>
+                  <option value="Usado">Usado</option>
+                  <option value="Nuevo">Nuevo</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="image">Imagen del Producto</label>
+                <input
+                  type="text"
+                  id="image"
+                  name="image"
+                  value={product.image}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="edit-btn">
+                <Button className="edit-button" type="submit" variant="warning">
+                  Guardar cambios
+                </Button>
+                <Button
+                  onClick={handleButtonClick}
+                  className="edit-button"
+                  type="submit"
+                  variant="warning"
+                >
+                  Volver
+                </Button>
+              </div>
+            </form>
+          </main>
+        </div>
+      </div>
     </div>
   );
 };
