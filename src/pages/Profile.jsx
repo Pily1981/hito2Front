@@ -28,7 +28,7 @@ const Profile = () => {
   // Obtiene datos del usuario
   useEffect(() => {
     const fetchProfileData = async () => {
-      console.log("aNTES");
+      console.log("antes");
 
       if (!token || !user.user_id) return;
       console.log("despues");
@@ -119,7 +119,7 @@ const Profile = () => {
         <div className="center-column">
           <main className="profile-content">
             <div className="top-row-item">
-              <h2>Datos Personales</h2>
+              <h3>Datos Personales</h3>
             </div>
             <div className="middle-row">
               <div className="middle-left item">

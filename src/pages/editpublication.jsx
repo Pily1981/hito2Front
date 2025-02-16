@@ -16,7 +16,7 @@ const EditPublication = () => {
     name: "",
     description: "",
     price: "",
-    category: null,
+    category: "",
     state: "",
     image: "",
   });
@@ -51,7 +51,7 @@ const EditPublication = () => {
     const fetchPublication = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/publications/find_publication_by_id/${user.publication_id}`,
+          `http://localhost:3000/api/find_publication_by_id/${publication_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -117,7 +117,7 @@ const EditPublication = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/api/publications/update_publication/${publication_id}`,
+        `http://localhost:3000/api/update_publication/${publication_id}`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -130,7 +130,7 @@ const EditPublication = () => {
         text: "La publicación se ha actualizado correctamente.",
       });
 
-      // Redirige a la lista de publicaciones
+      // Redirige a la lista de publicaciones/
       navigate("/myPublications");
     } catch (error) {
       console.error("Error al actualizar la publicación:", error);

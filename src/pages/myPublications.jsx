@@ -79,9 +79,9 @@ const MyPublications = () => {
       </aside>
 
       <main className="publication-content-mp profile-content">
-        <h2>Mis Publicaciones</h2>
+        <h3>Mis Publicaciones</h3>
         {publications.map((producto) => (
-          <div className="mp-inf" key={producto.id}>
+          <div className="mp-inf" key={producto.publication_id}>
             <div className="prodname">
               <h6>{producto.title ? producto.title : "sin título"}</h6>
             </div>
@@ -90,13 +90,14 @@ const MyPublications = () => {
             </div>
             <div className="action-buttons">
               <button
-                onClick={() => handleEdit(producto.id)}
+                onClick={() => handleEdit(producto.publication_id)}
                 className="edit-btn"
               >
                 <FontAwesomeIcon icon={faPen} />
               </button>
+               |
               <button
-                onClick={() => handleDelete(producto.id)}
+                onClick={() => handleDelete(producto.publication_id)}
                 className="delete-btn"
               >
                 <FontAwesomeIcon icon={faTrash} />

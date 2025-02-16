@@ -129,10 +129,10 @@ const Formulario = () => {
   return (
     <div className="container form-upload">
       <main className="profile-content containter-form">
-        <h2>Crear publicación</h2>
+        <h3>Crear publicación</h3>
         <form onSubmit={handleSubmit} className="product-form">
           <div className="form-group">
-            <label htmlFor="name">Nombre del Producto</label>
+            <label htmlFor="name">Nombre del producto</label>
             <input
               type="text"
               id="name"
@@ -198,7 +198,7 @@ const Formulario = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="image">Imagen del Producto</label>
+            <label htmlFor="image">Imagen del producto</label>
             <input
               type="text"
               id="image"
