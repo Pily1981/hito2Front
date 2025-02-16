@@ -71,7 +71,11 @@ const MyPublications = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-
+        setPublications((prevPublications) =>
+          prevPublications.filter(
+            (publication) => publication.publication_id !== publication_id
+          )
+        );
         alert("Publicación eliminada con éxito.");
       } catch (error) {
         console.error("Error al eliminar la publicación:", error);

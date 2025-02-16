@@ -10,16 +10,22 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { userLogin } = useContext(AuthContext); // 🔹 Solución agregada
+  const { userLogin, token } = useContext(AuthContext); // 🔹 Solución agregada
 
   const emailCheck = (email) => {
     const check = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     return check.test(String(email).toLowerCase());
   };
 
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [token, navigate]);
+
   const validarDatos = async (e) => {
     e.preventDefault();
-
+  
     if (!emailCheck(email)) {
       Swal.fire({
         icon: "error",
@@ -28,7 +34,7 @@ const LoginPage = () => {
       });
       return;
     }
-
+  
     if (email.trim() === "" || password.trim() === "") {
       Swal.fire({
         icon: "error",
@@ -37,18 +43,20 @@ const LoginPage = () => {
       });
       return;
     }
-
-    try {
-      await userLogin(email, password);
-      navigate("/profile");
+  
+    // Llamada al login
+    const loginSuccess = await userLogin(email, password);
+  
+    if (loginSuccess) {
+      setEmail("");
+      setPassword("");
       Swal.fire({
         title: "Inicio de sesión exitoso!",
         icon: "success",
         draggable: true,
       });
-      setEmail("");
-      setPassword("");
-    } catch (error) {
+      navigate("/profile"); // Redirige al perfil
+    } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
