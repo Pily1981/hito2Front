@@ -35,7 +35,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

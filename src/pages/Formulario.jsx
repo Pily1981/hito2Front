@@ -31,7 +31,7 @@ const Formulario = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/get_categories",
+          "https://proyecto-final-backend-1u96.onrender.com/api/get_categories",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -48,7 +48,7 @@ const Formulario = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -115,7 +115,7 @@ const Formulario = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/create_publication",
+        "https://proyecto-final-backend-1u96.onrender.com/api/create_publication",
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },

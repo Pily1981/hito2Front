@@ -41,7 +41,7 @@ const EditPublication = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/get_categories",
+          "https://proyecto-final-backend-1u96.onrender.com/api/get_categories",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -59,7 +59,7 @@ const EditPublication = () => {
     const fetchPublication = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_publication_by_id/${publication_id}`,
+          `https://proyecto-final-backend-1u96.onrender.com/api/find_publication_by_id/${publication_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -89,7 +89,7 @@ const EditPublication = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -144,7 +144,7 @@ const EditPublication = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/api/update_publication/${publication_id}`,
+        `https://proyecto-final-backend-1u96.onrender.com/api/update_publication/${publication_id}`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },

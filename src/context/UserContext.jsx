@@ -10,10 +10,13 @@ export const UserProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://proyecto-final-backend-1u96.onrender.com/api/login",
+        {
+          email,
+          password,
+        }
+      );
       const { token } = response.data;
       localStorage.setItem("token", token);
       setToken(token);

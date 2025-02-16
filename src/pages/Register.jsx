@@ -55,7 +55,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/create_user",
+        "https://proyecto-final-backend-1u96.onrender.com/api/create_user",
         formData
       );
       if (response.data) {

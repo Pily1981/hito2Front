@@ -10,7 +10,7 @@ const Productos = () => {
     const fetchAllPublicationsData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/publication_all`
+          `https://proyecto-final-backend-1u96.onrender.com/api/publication_all`
         );
         setProducts(response.data);
       } catch (error) {
