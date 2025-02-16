@@ -4,7 +4,7 @@ body {
 }
 
 .custom-navbar {
-  background-color: #000000;
+  background-color: #000000; 
   padding: 1rem 2rem;
   text-decoration: none;
 }
@@ -13,12 +13,12 @@ body {
   margin-right: 20px;
 }
 
-.nav-profile {
+.nav-profile{
   margin-right: 7px;
 }
 
-.nav-logout {
-  margin-right: 52px;
+.nav-logout{
+  margin-right:52px;
 }
 
 .active {
@@ -53,7 +53,7 @@ body {
 
 .search-input {
   padding-right: 20px;
-  padding-left: 20px;
+  padding-left: 20px; 
 }
 
 #brand {
@@ -83,22 +83,17 @@ body {
   }
 
   .navbar-nav .nav-item {
-    width: 100%;
+    width: 100%; 
   }
-  .search-icon {
-    display: none;
-  }
-}
+ }
 
 /* Personaliza el tamaño de las tarjetas y la separación en pantallas pequeñas */
 @media (max-width: 768px) {
   .custom-navbar .navbar-nav .nav-link {
     margin-left: 10px;
   }
-  .search-icon {
-    display: none;
-  }
   #search {
-    width: 60%;
+   width: 60%;
   }
 }
+

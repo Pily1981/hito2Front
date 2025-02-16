@@ -21,22 +21,16 @@ header {
   align-items: center;
   text-align: center;
 }
-
 /**Tarjeta Producto**/
 .product {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 40px;
-}
-.Cardproducto {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: 400px;
 }
 
 .Cardproducto.card-body {
   display: flex;
+  width: 250px;
 }
 
 .Cardproducto,

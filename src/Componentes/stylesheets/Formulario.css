@@ -2,8 +2,7 @@ body {
   font-family: "Karla", serif;
   height: 100%;
 }
-
-.container-ep {
+.container-form {
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
@@ -20,30 +19,30 @@ body {
   min-height: 100vh;
 }
 
-.grid-container-ep {
+.grid-container-formulario {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 20px; 
+  gap: 20px;
 }
 
-.left-row-edit,
-.left-row-ep {
-  padding-left: 20px;
-}
-
-.left-row-edit {
-  padding-top: 125px;
-  display: flex;
-  flex-direction: column;
-}
-
-.left-row-ep {
+.left-row-2-form {
   display: flex;
   justify-content: flex-start;
   padding-top: 40px;
 }
 
-.profile-sidebar-edit {
+.left-row-1-form {
+  padding-top: 125px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-row-1-form,
+.left-row-2-form {
+  padding-left: 20px;
+}
+
+.profile-sidebar-formulario {
   width: 250px;
   background-color: #d9d9d9;
   margin-top: 0px;
@@ -52,7 +51,7 @@ body {
   padding: 10px;
 }
 
-.profile-edit {
+.profile-form {
   padding: 20px;
   margin-top: 90px;
   margin-bottom: 20px;
@@ -63,41 +62,23 @@ body {
   width: 570px;
 }
 
-#description,
-#name,
-#category,
-#state,
-#image {
-  display: flex;
-  justify-items: left;
-  background-color: #ffffff;
-  width: 530px;
-  margin: 0px;
+.Welcome-form {
+  font-family: "kaushan script", sans-serif;
+  font-size: 35px;
+  text-align: center;
 }
 
-#price {
-  background-color: #ffffff;
-  width: 530px;
-  margin: 0px;
-}
-
-.edit-btn {
-  display: flex;
-  justify-items: center;
-  justify-content: space-evenly;
-  background-color: #d9d9d9;
-}
-
-.edit-button {
+.upload-btn-form {
   border-radius: 10px;
   font-weight: bolder;
   padding: 5px 5px;
   cursor: pointer;
- padding: 35px;
+  padding:  35px;
 }
 
-.Welcome-edit {
-  font-family: "kaushan script", sans-serif;
-  font-size: 35px;
-  text-align: center;
+.upload-form {
+  display: flex;
+  justify-items: center;
+  justify-content: space-evenly;
+  background-color: #d9d9d9;
 }

@@ -16,7 +16,7 @@ function NavbarApp() {
   const handleLogout = () => {
     logout();
     navigate("/login");
-  };
+  }
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar" sticky="top">
@@ -27,17 +27,17 @@ function NavbarApp() {
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
+      
       <Navbar.Collapse id="responsive-navbar-nav">
         <ul className="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
           <li className="nav-home">
             <NavLink to="/" className={setActiveClass}>
-              Inicio
+              Home
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/products" className={setActiveClass}>
-              Publicaciones
+              Market
             </NavLink>
           </li>
         </ul>
@@ -53,7 +53,7 @@ function NavbarApp() {
                   placeholder="Buscar..."
                   aria-label="Search"
                 />
-                <FontAwesomeIcon
+               <FontAwesomeIcon
                   icon={faMagnifyingGlass}
                   className="search-icon"
                 />
@@ -61,24 +61,20 @@ function NavbarApp() {
             </li>
           </div>
         </ul>
-
+     
         {token ? (
           <>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-profile">
                 <NavLink to="/profile" className={setActiveClass}>
-                  Perfil
+                  Profile
                 </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-logout">
-                <NavLink
-                  to="/"
-                  className={setActiveClass}
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
+                <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
+                  Logout
                 </NavLink>
               </li>
             </ul>
@@ -88,14 +84,14 @@ function NavbarApp() {
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-item">
                 <NavLink to="/login" className={setActiveClass}>
-                  Iniciar sesión
+                  Log In
                 </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 mx-5 mb-lg-0">
               <li className="nav-item">
                 <NavLink to="/register" className={setActiveClass}>
-                  Registrarse
+                  Sign Up
                 </NavLink>
               </li>
             </ul>

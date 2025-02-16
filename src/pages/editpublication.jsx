@@ -15,7 +15,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditPublication = () => {
-  const { user, token, logout } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);
@@ -37,6 +37,7 @@ const EditPublication = () => {
     }
   }, [token, navigate]);
 
+  // Obtener categorías
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -54,7 +55,7 @@ const EditPublication = () => {
     fetchCategories();
   }, [token]);
 
-  // Obtener los datos de la publicación cuando el componente se monta
+  // Obtener los datos de la publicación
   useEffect(() => {
     const fetchPublication = async () => {
       try {
@@ -85,6 +86,7 @@ const EditPublication = () => {
     fetchPublication();
   }, [publication_id, token]);
 
+  // Obtener los datos del usuario
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -95,7 +97,6 @@ const EditPublication = () => {
           }
         );
         setData(response.data);
-        console.log("data -->", data);
       } catch (error) {
         console.log("Error al obtener los datos del usuario:");
       }
@@ -104,7 +105,7 @@ const EditPublication = () => {
     fetchUser();
   }, [user.user_id, token]);
 
-  // Función para manejar los cambios en los campos del formulario
+  // Maneja los cambios en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct((prev) => ({ ...prev, [name]: value }));
@@ -131,6 +132,17 @@ const EditPublication = () => {
       return;
     }
 
+    // Verifica que todos los campos estén bien
+    console.log("Payload a enviar:", {
+      user_id: user.user_id,
+      title: product.name,
+      price: Number(product.price),
+      category_id: product.category,
+      description: product.description,
+      image: product.image,
+      state: product.state,
+    });
+
     // Si todos los campos están completos, puedes enviar los datos a la API
     try {
       const payload = {
@@ -151,34 +163,45 @@ const EditPublication = () => {
         }
       );
 
-      Swal.fire({
-        icon: "success",
-        title: "¡Éxito!",
-        text: "La publicación se ha actualizado correctamente.",
-      });
+      // Verificar que la respuesta sea exitosa
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "¡Éxito!",
+          text: "La publicación se ha actualizado correctamente.",
+        });
 
-      // Redirige a la lista de publicaciones/
-      navigate("/myPublications");
+        // Redirige a la lista de publicaciones
+        navigate("/myPublications");
+      } else {
+        // Si el servidor no responde con éxito, mostramos un mensaje de error
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Hubo un problema al actualizar la publicación.",
+        });
+      }
     } catch (error) {
       console.error("Error al actualizar la publicación:", error);
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Hubo un problema al actualizar la publicación.",
+        text: "Hubo un problema al realizar la solicitud.",
       });
     }
   };
 
+  // Botón Volver
   const handleButtonClick = () => {
-    navigate("/myPublications"); //Boton Volver
+    navigate("/myPublications");
   };
 
   return (
     <div className="container-ep">
       <div className="grid-container-ep">
-        <div className="left-column">
-          <div className="left-row-one">
-            <div className="Welcome">
+        <div className="left-column-edit">
+          <div className="left-row-edit">
+            <div className="Welcome-edit">
               {data ? (
                 <p>Hola, {data.name}</p>
               ) : (
@@ -193,8 +216,8 @@ const EditPublication = () => {
             </div>
           </div>
 
-          <div className="left-row-two">
-            <aside className="profile-sidebar-ep">
+          <div className="left-row-ep">
+            <aside className="profile-sidebar-edit">
               <ul className="menu-list">
                 <li className="menu-item" onClick={() => navigate("/profile")}>
                   <div className="icon-menu">
@@ -243,7 +266,7 @@ const EditPublication = () => {
                 <label htmlFor="name">Nombre del Producto</label>
                 <input
                   type="text"
-                  id="name"
+                  id="name-edit"
                   name="name"
                   value={product.name}
                   onChange={handleChange}
@@ -322,7 +345,7 @@ const EditPublication = () => {
                 <Button
                   onClick={handleButtonClick}
                   className="edit-button"
-                  type="submit"
+                  type="button"
                   variant="warning"
                 >
                   Volver

@@ -60,9 +60,9 @@ const Profile = () => {
 
   return (
     <div className="container-profile">
-      <div className="grid-container">
+      <div className="grid-container-pf">
         <div className="left-column">
-          <div className="left-row-1">
+          <div className="left-row-1-pf">
             <div className="Welcome">
               {data ? (
                 <p>Hola, {data.name}</p>
@@ -78,7 +78,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="left-row-2">
+          <div className="left-row-2-pf">
             <aside className="profile-sidebar">
               <ul className="menu-list">
                 <li className="menu-item">
@@ -116,8 +116,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="center-column">
-          <main className="profile-content">
+        <div className="center-column-profile">
+          <main className="profile-content-profile">
             <div className="top-row-item">
               <h3>Datos Personales</h3>
             </div>
