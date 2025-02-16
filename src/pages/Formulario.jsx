@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
-import "../Componentes/stylesheets/upload.css";
+import "../Componentes/stylesheets/Formulario.css";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -17,7 +17,7 @@ import {
 const Formulario = () => {
   // Redirige si no hay token
   const navigate = useNavigate();
-  const { user, token, logout } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
 
@@ -77,6 +77,19 @@ const Formulario = () => {
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
+  //const handleFileChange = (e) => {
+  //  const file = e.target.files[0];
+  //  if (file && file.type.startsWith("image/")) {
+  //    setProduct((prev) => ({ ...prev, image: file }));
+  //  } else {
+  //    Swal.fire({
+  //      icon: "error",
+  //      title: "Archivo no válido",
+  //      text: "Por favor, selecciona una imagen válida.",
+  //    });
+  //  }
+  //};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -104,6 +117,14 @@ const Formulario = () => {
     }
 
     try {
+      //const formData = new FormData();
+      //formData.append("user_id", userId);
+      //formData.append("name", product.name);
+      //formData.append("price", Number(product.price));
+      //formData.append("category_id", mapCategoryToId(product.category));
+      //formData.append("description", product.description);
+      //formData.append("image", product.image);
+      //formData.append("state", product.state);
       const payload = {
         user_id: user.user_id,
         title: product.name,
@@ -151,12 +172,28 @@ const Formulario = () => {
     }
   };
 
+  //const mapCategoryToId = (category) => {
+  //  const categories = {
+  //    Ropa: 1,
+  //    Calzado: 2,
+  //    Rodados: 3,
+  //    Muebles: 4,
+  //    Accesorios: 5,
+  //  };
+  //  return categories[category] || null;
+  //};
+
+  // Botón Volver
+  const handleButtonClick = () => {
+    navigate("/myPublications");
+  };
+
   return (
-    <div className="container-ep">
-      <div className="grid-container-ep">
-        <div className="left-column">
-          <div className="left-row-one">
-            <div className="Welcome">
+    <div className="container-form">
+      <div className="grid-container-formulario">
+        <div className="left-column-form">
+          <div className="left-row-1-form">
+            <div className="Welcome-form">
               {data ? (
                 <p>Hola, {data.name}</p>
               ) : (
@@ -171,8 +208,8 @@ const Formulario = () => {
             </div>
           </div>
 
-          <div className="left-row-2">
-            <aside className="profile-sidebar">
+          <div className="left-row-2-form">
+            <aside className="profile-sidebar-formulario">
               <ul className="menu-list">
                 <li className="menu-item" onClick={() => navigate("/profile")}>
                   <div className="icon-menu">
@@ -212,7 +249,7 @@ const Formulario = () => {
           </div>
         </div>
         <div className="center-column">
-          <main className="profile-upload">
+          <main className="profile-form">
             <div className="top-row-item">
               <h3>Crear publicación</h3>
               <form onSubmit={handleSubmit} className="product-form">
@@ -220,7 +257,7 @@ const Formulario = () => {
                   <label htmlFor="name">Nombre del producto</label>
                   <input
                     type="text"
-                    id="name"
+                    id="name-form"
                     name="name"
                     value={product.name}
                     onChange={handleChange}
@@ -230,7 +267,7 @@ const Formulario = () => {
                 <div className="form-group">
                   <label htmlFor="description">Descripción</label>
                   <textarea
-                    id="description"
+                    id="description-form"
                     name="description"
                     value={product.description}
                     onChange={handleChange}
@@ -241,7 +278,7 @@ const Formulario = () => {
                   <label htmlFor="price">Precio</label>
                   <input
                     type="number"
-                    id="price"
+                    id="price-form"
                     name="price"
                     value={product.price}
                     onChange={handleChange}
@@ -251,7 +288,7 @@ const Formulario = () => {
                 <div className="form-group">
                   <label htmlFor="category">Categoría</label>
                   <select
-                    id="category"
+                    id="category-form"
                     name="category"
                     value={product.category}
                     onChange={handleChange}
@@ -268,7 +305,7 @@ const Formulario = () => {
                 <div className="form-group">
                   <label htmlFor="state">Estado</label>
                   <select
-                    id="state"
+                    id="state-form"
                     name="state"
                     value={product.state}
                     onChange={handleChange}
@@ -291,13 +328,21 @@ const Formulario = () => {
                     required
                   />
                 </div>
-                <div className="upload">
+                <div className="upload-form">
                   <Button
-                    className="upload_btn"
+                    className="upload_btn_form"
                     type="submit"
                     variant="warning"
                   >
-                    Guardar
+                    Guardar cambios
+                  </Button>
+                  <Button
+                    onClick={handleButtonClick}
+                    className="upload_btn_form"
+                    type="button"
+                    variant="warning"
+                  >
+                    Volver
                   </Button>
                 </div>
               </form>

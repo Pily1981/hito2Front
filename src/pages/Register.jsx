@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
+import "../Componentes/stylesheets/Register.css"
 
 import Swal from "sweetalert2";
 import axios from "axios";

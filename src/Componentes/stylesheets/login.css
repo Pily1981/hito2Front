@@ -4,10 +4,17 @@ body {
 }
 
 /** Tarjeta Login-Register**/
+.photo,
+img {
+  border-radius: 100px;
+  height: 180px;
+  margin: auto;
+}
 
 .container-login.container {
   min-height: 100vh;
   display: flex;
+  margin-top: 0px;
   flex-direction: column;
 }
 
@@ -41,9 +48,8 @@ body {
   justify-items: center;
   align-items: center;
   width: 500px;
-  gap: 10px;
-  margin: 40px 0px 10px 0px;
-  padding: 20px 0px 20px 0px;
+  margin-bottom: 10px;
+  padding: 10px 0px 20px 0px;
   background-color: #f7f5f5;
   border-radius: 10px;
 }
@@ -69,12 +75,9 @@ input:valid {
   .tarjeta-login {
     width: 100%;
   }
-  #name,
-  #lastname,
+
   #email,
-  #nickname,
-  #password,
-  #confirmpassword {
+  #password {
     width: 100%;
     margin-left: 5px;
     margin-right: 5px;
