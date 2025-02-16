@@ -59,7 +59,7 @@ const Register = () => {
         formData
       );
       if (response.data) {
-        navigate('/login')
+        navigate("/login");
         Swal.fire({
           icon: "success",
           title: "Registrado exitosamente",
@@ -84,7 +84,6 @@ const Register = () => {
   const handleButtonClick = () => {
     navigate("/"); //Boton Volver
   };
-
 
   return (
     <Container className="container-register">
@@ -169,10 +168,10 @@ const Register = () => {
             <Button type="submit" id="button">
               Crear Cuenta
             </Button>
-            <Button type="submit" id="button" onClick={handleButtonClick} >
-            Volver
+            <Button type="submit" id="button" onClick={handleButtonClick}>
+              Volver
             </Button>
-           </div>
+          </div>
           <NavLink
             to="/Login"
             className="text-primary text-decoration-none d-flex justify-content-center"

@@ -17,10 +17,9 @@ const LoginPage = () => {
     return check.test(String(email).toLowerCase());
   };
 
-
   const validarDatos = async (e) => {
     e.preventDefault();
-  
+
     if (!emailCheck(email)) {
       Swal.fire({
         icon: "error",
@@ -29,7 +28,7 @@ const LoginPage = () => {
       });
       return;
     }
-  
+
     if (email.trim() === "" || password.trim() === "") {
       Swal.fire({
         icon: "error",
@@ -38,10 +37,10 @@ const LoginPage = () => {
       });
       return;
     }
-  
+
     // Llamada al login
     const loginSuccess = await userLogin(email, password);
-  
+
     if (loginSuccess) {
       setEmail("");
       setPassword("");

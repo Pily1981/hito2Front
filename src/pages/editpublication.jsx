@@ -15,7 +15,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditPublication = () => {
-  const { user, token } = useContext(AuthContext);
+  const { user, token, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);

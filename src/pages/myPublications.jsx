@@ -153,31 +153,31 @@ const MyPublications = () => {
             <div className="top-row-item">
               <h3>Mis Publicaciones</h3>
             </div>
-              {publications.map((producto) => (
-                <div className="mp-inf" key={producto.publication_id}>
-                  <div className="prodname">
-                    <h6>{producto.title ? producto.title : "sin título"}</h6>
-                  </div>
-                  <div className="price">
-                    <h6>${producto.price}</h6>
-                  </div>
-                  <div className="buttons-mp">
-                    <button
-                      onClick={() => handleEdit(producto.publication_id)}
-                      className="edit_button"
-                    >
-                      <FontAwesomeIcon icon={faPen} />
-                    </button>
-                    <span>|</span>
-                    <button
-                      onClick={() => handleDelete(producto.publication_id)}
-                      className="delete_btn"
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </div>
+            {publications.map((producto) => (
+              <div className="mp-inf" key={producto.publication_id}>
+                <div className="prodname">
+                  <h6>{producto.title ? producto.title : "sin título"}</h6>
                 </div>
-              ))}
+                <div className="price">
+                  <h6>${producto.price}</h6>
+                </div>
+                <div className="buttons-mp">
+                  <button
+                    onClick={() => handleEdit(producto.publication_id)}
+                    className="edit_button"
+                  >
+                    <FontAwesomeIcon icon={faPen} />
+                  </button>
+                  <span>|</span>
+                  <button
+                    onClick={() => handleDelete(producto.publication_id)}
+                    className="delete_btn"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              </div>
+            ))}
           </main>
         </div>
       </div>
