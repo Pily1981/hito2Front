@@ -89,10 +89,12 @@ body {
   font-weight: bolder;
   padding: 10px 15px;
   cursor: pointer;
-  width: 400px;
+  width: 300px;
 }
 
-
+#name {
+  background-color: white;
+}
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;

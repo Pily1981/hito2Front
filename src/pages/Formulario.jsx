@@ -13,7 +13,7 @@ const Formulario = () => {
   const [categories, setCategories] = useState([]);
 
   console.log("token", token);
-  
+
   useEffect(() => {
     if (!token) {
       navigate("/");
@@ -52,19 +52,6 @@ const Formulario = () => {
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
-  //const handleFileChange = (e) => {
-  //  const file = e.target.files[0];
-  //  if (file && file.type.startsWith("image/")) {
-  //    setProduct((prev) => ({ ...prev, image: file }));
-  //  } else {
-  //    Swal.fire({
-  //      icon: "error",
-  //      title: "Archivo no válido",
-  //      text: "Por favor, selecciona una imagen válida.",
-  //    });
-  //  }
-  //};
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -92,14 +79,6 @@ const Formulario = () => {
     }
 
     try {
-      //const formData = new FormData();
-      //formData.append("user_id", userId);
-      //formData.append("name", product.name);
-      //formData.append("price", Number(product.price));
-      //formData.append("category_id", mapCategoryToId(product.category));
-      //formData.append("description", product.description);
-      //formData.append("image", product.image);
-      //formData.append("state", product.state);
       const payload = {
         user_id: user.user_id,
         title: product.name,
@@ -147,17 +126,6 @@ const Formulario = () => {
     }
   };
 
-  //const mapCategoryToId = (category) => {
-  //  const categories = {
-  //    Ropa: 1,
-  //    Calzado: 2,
-  //    Rodados: 3,
-  //    Muebles: 4,
-  //    Accesorios: 5,
-  //  };
-  //  return categories[category] || null;
-  //};
-
   return (
     <div className="container form-upload">
       <main className="profile-content containter-form">
@@ -190,6 +158,7 @@ const Formulario = () => {
               type="number"
               id="price"
               name="price"
+              min="1"
               value={product.price}
               onChange={handleChange}
               required
@@ -204,9 +173,7 @@ const Formulario = () => {
               onChange={handleChange}
               required
             >
-              <option value="">
-                Selecciona una categoría
-              </option>
+              <option value="">Selecciona una categoría</option>
               {categories.map((cat) => (
                 <option key={cat.category_id} value={cat.category_id}>
                   {cat.name_category}
@@ -241,7 +208,7 @@ const Formulario = () => {
             />
           </div>
           <div className="upload">
-            <Button className="up_bt" type="submit" variant="warning">
+            <Button className="up_bt bt_up" type="submit" variant="warning">
               Guardar
             </Button>
           </div>

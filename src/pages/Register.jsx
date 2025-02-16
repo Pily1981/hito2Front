@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import perfil from "../assets/img/photo.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../Componentes/stylesheets/Register.css"
+import "../Componentes/stylesheets/Register.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -59,7 +59,7 @@ const Register = () => {
         formData
       );
       if (response.data) {
-        navigate('/login')
+        navigate("/login");
         Swal.fire({
           icon: "success",
           title: "Registrado exitosamente",
@@ -84,7 +84,6 @@ const Register = () => {
   const handleButtonClick = () => {
     navigate("/"); //Boton Volver
   };
-
 
   return (
     <Container className="container-rg">
@@ -169,10 +168,10 @@ const Register = () => {
             <Button type="submit" id="button">
               Crear Cuenta
             </Button>
-            <Button type="submit" id="button" onClick={handleButtonClick} >
-            Volver
+            <Button type="submit" id="button" onClick={handleButtonClick}>
+              Volver
             </Button>
-           </div>
+          </div>
           <NavLink
             to="/Login"
             className="text-primary text-decoration-none d-flex justify-content-center"

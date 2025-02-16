@@ -1,24 +1,24 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: "Karla", serif;
-    height: 100%;
-  }
-  
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Karla", serif;
+  height: 100%;
+}
+
 Footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 50px;
-    padding-top: 10px;
-    background-color: #000000;
-  }
-  
-  Footer h6 {
-    font-size: 14px;
-    color: #ffffff;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  padding-top: 10px;
+  background-color: #000000;
+}
+
+Footer h6 {
+  font-size: 14px;
+  color: #ffffff;
+}

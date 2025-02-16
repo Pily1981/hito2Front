@@ -11,7 +11,7 @@ const EditPublication = () => {
   const navigate = useNavigate();
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);
-  
+
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -28,7 +28,6 @@ const EditPublication = () => {
     }
   }, [token, navigate]);
 
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -38,7 +37,7 @@ const EditPublication = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        setCategories(response.data); 
+        setCategories(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
       }
@@ -62,7 +61,7 @@ const EditPublication = () => {
           description: response.data.description,
           price: response.data.price,
           category: response.data.category_id,
-          state: response.data.state ? "Nuevo" : "Usado", 
+          state: response.data.state ? "Nuevo" : "Usado",
           image: response.data.image,
         });
       } catch (error) {
@@ -76,7 +75,7 @@ const EditPublication = () => {
     };
 
     fetchPublication();
-  }, [publication_id, token]); 
+  }, [publication_id, token]);
 
   // Función para manejar los cambios en los campos del formulario
   const handleChange = (e) => {
@@ -102,7 +101,7 @@ const EditPublication = () => {
         title: "Campos incompletos",
         text: "Completa todos los campos antes de enviar.",
       });
-      return; 
+      return;
     }
 
     // Si todos los campos están completos, puedes enviar los datos a la API
@@ -146,7 +145,7 @@ const EditPublication = () => {
   const handleButtonClick = () => {
     navigate("/myPublications"); //Boton Volver
   };
-  
+
   return (
     <div className="container form-upload">
       <main className="profile-content containter-form">
@@ -232,7 +231,12 @@ const EditPublication = () => {
             <Button className="up_bt" type="submit" variant="warning">
               Guardar cambios
             </Button>
-            <Button  onClick={handleButtonClick} className="up_bt" type="submit" variant="warning">
+            <Button
+              onClick={handleButtonClick}
+              className="up_bt"
+              type="submit"
+              variant="warning"
+            >
               Volver
             </Button>
           </div>

@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const ProductPage = () => {
   const { id } = useParams();
-    const { user, token } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
@@ -43,7 +43,8 @@ const ProductPage = () => {
           publication_id: id,
           user_id: user.user_id,
           comment: nuevoComentario,
-        },  {
+        },
+        {
           headers: { Authorization: `Bearer ${token}` },
         }
       );

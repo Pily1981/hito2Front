@@ -16,7 +16,7 @@ function NavbarApp() {
   const handleLogout = () => {
     logout();
     navigate("/login");
-  }
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" className="custom-navbar" sticky="top">
@@ -27,7 +27,7 @@ function NavbarApp() {
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      
+
       <Navbar.Collapse id="responsive-navbar-nav">
         <ul className="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
           <li className="nav-home">
@@ -53,7 +53,7 @@ function NavbarApp() {
                   placeholder="Buscar..."
                   aria-label="Search"
                 />
-               <FontAwesomeIcon
+                <FontAwesomeIcon
                   icon={faMagnifyingGlass}
                   className="search-icon"
                 />
@@ -61,7 +61,7 @@ function NavbarApp() {
             </li>
           </div>
         </ul>
-     
+
         {token ? (
           <>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
@@ -73,7 +73,11 @@ function NavbarApp() {
             </ul>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-logout">
-                <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
+                <NavLink
+                  to="/"
+                  className={setActiveClass}
+                  onClick={handleLogout}
+                >
                   Logout
                 </NavLink>
               </li>

@@ -26,15 +26,14 @@ const Home = () => {
     <>
       <Header />
       <h2 className="mt-5 text-center">Últimos añadidos</h2>
-      <Container className="d-flex flex-column align-items-center">
+      <Container className="d-flex flex-column">
         <Row className="mt-5">
           {products.map((product) => (
-
             <Col
               key={product.publication_id}
-              lg={4} 
-              md={6}  
-              xs={12} 
+              lg={4}
+              md={6}
+              xs={12}
               className="mb-5 mt-1 g-5 d-flex justify-content-around"
             >
               <CardProducto product={product} />
