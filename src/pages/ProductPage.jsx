@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const { user, token } = useContext(AuthContext);
+    const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
@@ -47,8 +47,7 @@ const ProductPage = () => {
           publication_id: id,
           user_id: user.user_id,
           comment: nuevoComentario,
-        },
-        {
+        },  {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
@@ -96,7 +95,7 @@ const ProductPage = () => {
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
-        <Button variant="warning">Comprar</Button>
+        <Button variant="warning"  onClick={() => navigate("/orderdetail/:publication_id")}>Comprar</Button>
       </div>
       <div className="pd-desc">
         <p>{producto.description}</p>

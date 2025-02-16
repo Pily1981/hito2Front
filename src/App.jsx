@@ -16,6 +16,7 @@ import MyPublications from "./pages/myPublications";
 import PrivateRoute from "./context/PrivateRoute";
 import AuthProvider from "./context/AuthContext";
 import EditPublication from "./pages/editpublication";
+import OrderDetail from "./pages/OrderDetail";
 
 function App() {
   return (
@@ -28,15 +29,14 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<Productos />} />
-            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />            
+            <Route path="/upload" element={<Formulario />} />             
             <Route element={<PrivateRoute />}>
-              <Route path="/upload" element={<Formulario />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/myPublications" element={<MyPublications />} />
-              <Route
-                path="/editpublication/:publication_id"
-                element={<EditPublication />}
-              />
+              <Route path="/editpublication/:publication_id" element={<EditPublication/>}/>
+              <Route path="/orderdetail/:publication_id" element={<OrderDetail />} />
+            
             </Route>
           </Routes>
         </BrowserRouter>

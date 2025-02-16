@@ -1,3 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 
-/** styles de REGISTER estan en index.css**/
+body {
+  font-family: "Karla", serif;
+  height: 100%;
+}
 
+ /** Imagen Usuario**/
+.photo,
+img {
+  border-radius: 100px;
+  height: 180px;
+  margin: auto;
+}
+
+/** Tarjeta Register**/
+
+.container-register {
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
+
+#name,
+#lastname,
+#nickname,
+#confirmpassword, 
+#email,
+#password  {
+  background-color: #d9d9d9;
+  margin: 0px 10px 0px 10px;
+  width: 400px;
+}
+
+.tarjeta-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  width: 500px;
+  gap: 10px;
+  margin: 60px 0px 10px 0px;
+  padding: 20px 0px 20px 0px;
+  background-color: #f7f5f5;
+  border-radius: 10px;
+}
+
+#button {
+  background-color: #000000;
+  border: 0px;
+  margin: 8px 15px 5px 15px ;
+}
+
+input:invalid {
+  border-color: #d9d9d9; 
+}
+
+input:valid {
+  border-color: #d9d9d9; 
+}
+
+@media (max-width: 768px) {
+  .container-rg {
+    width: 80%;
+  }
+  .tarjeta {
+    width: 80%;
+  }
+  #name,
+  #lastname,
+  #email,
+  #nickname,
+  #password,
+  #confirmpassword { 
+   width: 80%;
+  }
+    
+}
