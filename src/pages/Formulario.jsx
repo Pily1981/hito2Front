@@ -20,6 +20,7 @@ const Formulario = () => {
   const { user, token } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   useEffect(() => {
     if (!token) {
@@ -31,7 +32,7 @@ const Formulario = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://proyecto-final-backend-1u96.onrender.com/api/get_categories",
+          `${urlBase}/api/get_categories`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -48,7 +49,7 @@ const Formulario = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -136,7 +137,7 @@ const Formulario = () => {
       };
 
       const response = await axios.post(
-        "https://proyecto-final-backend-1u96.onrender.com/api/create_publication",
+        `${urlBase}/api/create_publication`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },

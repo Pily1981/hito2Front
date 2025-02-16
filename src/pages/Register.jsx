@@ -55,8 +55,9 @@ const Register = () => {
     }
 
     try {
+      const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
       const response = await axios.post(
-        "https://proyecto-final-backend-1u96.onrender.com/api/create_user",
+        `${urlBase}/api/create_user`,
         formData
       );
       if (response.data) {

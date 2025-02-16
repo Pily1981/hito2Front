@@ -11,8 +11,9 @@ const Home = () => {
   useEffect(() => {
     const fetchAllPublicationsData = async () => {
       try {
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
         const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/publication_all`
+          `${urlBase}/api/publication_all`
         );
         setProducts(response.data.slice(0, 3)); // Usamos slice para obtener solo los primeros tres productos
       } catch (error) {

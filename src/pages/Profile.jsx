@@ -34,8 +34,9 @@ const Profile = () => {
       console.log("despues");
 
       try {
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
         const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

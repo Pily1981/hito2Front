@@ -12,12 +12,13 @@ const ProductPage = () => {
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
   const [nuevoComentario, setNuevoComentario] = useState("");
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   useEffect(() => {
     if (!id) return;
     axios
       .get(
-        `https://proyecto-final-backend-1u96.onrender.com/api/find_publication_by_id/${id}`
+        `${urlBase}/api/find_publication_by_id/${id}`
       )
       .then((response) => setProducto(response.data))
       .catch((error) =>
@@ -29,7 +30,7 @@ const ProductPage = () => {
   useEffect(() => {
     axios
       .get(
-        `https://proyecto-final-backend-1u96.onrender.com/api/find_comment_by_publication_id/${id}`
+        `${urlBase}/api/find_comment_by_publication_id/${id}`
       )
       .then((response) => setComentarios(response.data))
       .catch((error) => console.error("Error al cargar comentarios", error));
@@ -42,7 +43,7 @@ const ProductPage = () => {
 
     try {
       const response = await axios.post(
-        "https://proyecto-final-backend-1u96.onrender.com/api/create_comment",
+        `${urlBase}/api/create_comment`,
         {
           publication_id: id,
           user_id: user.user_id,
@@ -64,7 +65,7 @@ const ProductPage = () => {
   const handleEliminarComentario = async (comment_id) => {
     try {
       await axios.delete(
-        `https://proyecto-final-backend-1u96.onrender.com/api/delete_comment/${id}`
+        `${urlBase}/api/delete_comment/${id}`
       );
       setComentarios(
         comentarios.filter((comentario) => comentario.comment_id !== comment_id)

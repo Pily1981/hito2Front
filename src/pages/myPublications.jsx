@@ -21,12 +21,13 @@ const MyPublications = () => {
   const [publications, setPublications] = useState([]);
   const [data, setData] = useState(null);
   const navigate = useNavigate();
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   useEffect(() => {
     const fetchPublicationsData = async () => {
       try {
         const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/publication_user_by_id/${user.user_id}`,
+          `${urlBase}/api/publication_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -44,7 +45,7 @@ const MyPublications = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -66,7 +67,7 @@ const MyPublications = () => {
     if (confirmDelete) {
       try {
         await axios.delete(
-          `https://proyecto-final-backend-1u96.onrender.com/api/delete_publication/${publication_id}`,
+          `${urlBase}/api/delete_publication/${publication_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

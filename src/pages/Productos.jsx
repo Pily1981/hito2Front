@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardProducto from "../Componentes/CardProducto";
 import { Container, Row, Col } from "react-bootstrap";
-import productos from "../Componentes/Productos";
-import "../Componentes/stylesheets/Home.css"
+import "../Componentes/stylesheets/Home.css";
 import axios from "axios";
 
 const Productos = () => {
@@ -10,9 +9,8 @@ const Productos = () => {
   useEffect(() => {
     const fetchAllPublicationsData = async () => {
       try {
-        const response = await axios.get(
-          `https://proyecto-final-backend-1u96.onrender.com/api/publication_all`
-        );
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
+        const response = await axios.get(`${urlBase}/api/publication_all`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error al obtener las publicaciones del usuario:", error);
@@ -25,7 +23,6 @@ const Productos = () => {
     <Container className="mt-5 d-flex flex-column align-items-center">
       <Row className="mt-5">
         {products.map((product) => (
-          
           <Col
             key={product.publication_id}
             lg={4}
