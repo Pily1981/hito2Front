@@ -85,12 +85,18 @@ body {
   .navbar-nav .nav-item {
     width: 100%;
   }
+  .search-icon {
+    display: none;
+  }
 }
 
 /* Personaliza el tamaño de las tarjetas y la separación en pantallas pequeñas */
 @media (max-width: 768px) {
   .custom-navbar .navbar-nav .nav-link {
     margin-left: 10px;
+  }
+  .search-icon {
+    display: none;
   }
   #search {
     width: 60%;
