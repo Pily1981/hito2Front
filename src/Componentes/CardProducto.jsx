@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 //realizar un useEffect donde traiga la id del producto
 function CardProducto({ product }) {
   return (
-    <Card className="border border-dark">
+    <Card className="border border-dark Cardproducto">
       <Card.Img
         className="p-3"
         variant="top"
@@ -13,7 +13,7 @@ function CardProducto({ product }) {
         alt={product?.title || "Sin título"}
         style={{ height: "250px", objectFit: "cover" }}
       />
-      <Card.Body className="Cardproducto d-flex flex-column align-items-center">
+      <Card.Body className=" d-flex flex-column align-items-center">
         <Card.Title className="text-center">
           <strong>{product?.title || "Sin título"}</strong>
         </Card.Title>

@@ -25,13 +25,18 @@ header {
 /**Tarjeta Producto**/
 .product {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 40px;
+}
+.Cardproducto {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 400px;
 }
 
 .Cardproducto.card-body {
   display: flex;
-  width: 250px;
 }
 
 .Cardproducto,
