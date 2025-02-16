@@ -17,11 +17,6 @@ const LoginPage = () => {
     return check.test(String(email).toLowerCase());
   };
 
-  useEffect(() => {
-    if (token) {
-      navigate("/profile");
-    }
-  }, [token, navigate]);
 
   const validarDatos = async (e) => {
     e.preventDefault();
