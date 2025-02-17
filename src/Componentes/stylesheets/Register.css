@@ -19,38 +19,42 @@ img {
 /** Tarjeta Register**/
 
 .container-register {
-  min-height: 100vh;
-  display:flex;
-  flex-direction: column;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
 }
+
 
 #name,
 #lastname,
 #nickname,
-#confirmpassword, 
+#confirmpassword,
 #email,
-#password  {
-  background-color: #d9d9d9;
-  margin: 0px 10px 0px 10px;
-  width: 400px;
+#password {
+  background-color: #d9d9d9 !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  margin: 5px 0 !important;
 }
+
 
 .tarjeta-register {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-items: center;
   align-items: center;
-  width: 500px;
-  gap: 10px;
-  margin: 60px 0px 10px 0px;
-  padding: 20px 0px 20px 0px;
+  width: 450px !important;
+  padding: 20px !important;
   background-color: #f7f5f5;
-  border-radius: 10px;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
 #button {
-  background-color: #000000;
   border: 0px;
   margin: 8px 15px 5px 15px ;
 }
@@ -64,19 +68,17 @@ input:valid {
 }
 
 @media (max-width: 768px) {
-  .container-rg {
-    width: 80%;
-  }
-  .tarjeta {
-    width: 80%;
+  .tarjeta-register {
+    width: 90%;
   }
   #name,
   #lastname,
   #email,
   #nickname,
   #password,
-  #confirmpassword { 
-   width: 80%;
+  #confirmpassword {
+    width: 100% !important;
+    max-width: none !important;
   }
-    
 }
+

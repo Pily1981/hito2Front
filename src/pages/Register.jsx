@@ -88,7 +88,7 @@ const Register = () => {
   };
 
   return (
-    <Container className="container-register">
+    <Container fluid className="container-register">
       <div className="tarjeta-register">
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />

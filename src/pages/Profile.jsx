@@ -61,9 +61,9 @@ const Profile = () => {
 
   return (
     <div className="container-profile">
-      <div className="grid-container-pf">
+      <div className="grid-container">
         <div className="left-column">
-          <div className="left-row-1-pf">
+          <div className="left-row-1">
             <div className="Welcome">
               {data ? (
                 <p>Hola, {data.name}</p>
@@ -118,7 +118,7 @@ const Profile = () => {
         </div>
 
         <div className="center-column-profile">
-          <main className="profile-content-profile">
+          <main className="profile-content">
             <div className="top-row-item">
               <h3>Datos Personales</h3>
             </div>
@@ -127,7 +127,7 @@ const Profile = () => {
                 {data ? (
                   <p>
                     Nombre:
-                    <div className="data">{data.name}</div>
+                    <span className="data">{data.name}</span>
                   </p>
                 ) : (
                   <p>Cargando datos del usuario...</p>
@@ -137,7 +137,7 @@ const Profile = () => {
                 {data ? (
                   <p>
                     Apellido:
-                    <div className="data">{data.last_name}</div>
+                    <span className="data">{data.last_name}</span>
                   </p>
                 ) : (
                   <p>Cargando datos del usuario...</p>
@@ -157,7 +157,7 @@ const Profile = () => {
                 {data ? (
                   <p>
                     Usuario:
-                    <div className="data">{data.nick_name}</div>
+                    <span className="data">{data.nick_name}</span>
                   </p>
                 ) : (
                   <p>Cargando datos del usuario...</p>
