@@ -83,7 +83,7 @@
 }
 
 @media (max-width: 768px) {
-  .container {
+  .container-product {
     grid-template-columns: 1fr;
     grid-template-areas:
       "img"
