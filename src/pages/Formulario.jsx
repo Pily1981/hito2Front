@@ -20,7 +20,7 @@ const Formulario = () => {
   const { user, token, logout } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
-  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   useEffect(() => {
     if (!token) {
@@ -31,12 +31,9 @@ const Formulario = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          `${urlBase}/api/get_categories`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`${urlBase}/api/get_categories`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setCategories(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
@@ -254,6 +251,7 @@ const Formulario = () => {
                     type="number"
                     id="price-form"
                     name="price"
+                    min="1"
                     value={product.price}
                     onChange={handleChange}
                     required
@@ -309,14 +307,6 @@ const Formulario = () => {
                     variant="warning"
                   >
                     Guardar cambios
-                  </Button>
-                  <Button
-                    onClick={handleButtonClick}
-                    className="upload_btn_form"
-                    type="button"
-                    variant="warning"
-                  >
-                    Volver
                   </Button>
                 </div>
               </form>

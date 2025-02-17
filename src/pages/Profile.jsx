@@ -34,7 +34,7 @@ const Profile = () => {
       console.log("despues");
 
       try {
-        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
         const response = await axios.get(
           `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
@@ -126,7 +126,7 @@ const Profile = () => {
               <div className="middle-left item">
                 {data ? (
                   <p>
-                    Nombre:
+                    <strong>Nombre</strong>:
                     <span className="data">{data.name}</span>
                   </p>
                 ) : (
@@ -136,7 +136,7 @@ const Profile = () => {
               <div className="middle-right item">
                 {data ? (
                   <p>
-                    Apellido:
+                    <strong>Apellido</strong>:
                     <span className="data">{data.last_name}</span>
                   </p>
                 ) : (
@@ -146,7 +146,7 @@ const Profile = () => {
               <div className="middle-left item">
                 {data ? (
                   <p>
-                    Email:
+                    <strong>Email</strong>:
                     <div className="data">{data.email}</div>
                   </p>
                 ) : (
@@ -156,18 +156,13 @@ const Profile = () => {
               <div className="middle-right item">
                 {data ? (
                   <p>
-                    Usuario:
+                    <strong>Nickname</strong>:
                     <span className="data">{data.nick_name}</span>
                   </p>
                 ) : (
                   <p>Cargando datos del usuario...</p>
                 )}
               </div>
-            </div>
-            <div className="boton-row item">
-              <Button className="save-bt" variant="warning">
-                Guardar
-              </Button>
             </div>
           </main>
         </div>
