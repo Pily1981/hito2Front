@@ -8,8 +8,6 @@ body {
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
-  align-content: space-around;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -51,13 +49,9 @@ body {
   background-color: #e9ecef;
 }
 
-<<<<<<< HEAD
-.profile-content-profile {
-=======
 .profile-content {
   display: grid;
   grid-area: prof;
->>>>>>> e3e9ece5add9fb743fd8c80cdfe456a1dabd9e45
   padding: 20px;
   margin-top: 90px;
   background-color: #d9d9d9;
@@ -67,7 +61,7 @@ body {
   width: 570px;
 }
 
-.profile-content-profile h2 {
+.profile-content h2 {
   margin-top: 0;
 }
 
@@ -80,6 +74,7 @@ body {
   color: white;
   cursor: pointer;
 }
+
 .save-bt:hover {
   background-color: #0056b3;
 }
@@ -120,33 +115,27 @@ textarea {
   bottom: 0;
 }
 
-.grid-container-pf {
+.grid-container {
   display: grid;
-<<<<<<< HEAD
-  grid-template-columns: 1fr 1fr 3fr;
-=======
   grid-template-columns: 1fr 3fr;
   gap: 20px;
->>>>>>> e3e9ece5add9fb743fd8c80cdfe456a1dabd9e45
 }
+
 
 .left-column {
   display: grid;
-<<<<<<< HEAD
-  grid-template-rows: 0.5fr 1.5fr;
-=======
   grid-template-rows: 0.5fr 1fr;
->>>>>>> e3e9ece5add9fb743fd8c80cdfe456a1dabd9e45
   gap: 10px;
 }
 
-.left-row-1-pf,
-.left-row-2-pf {
-  display: flex;
-  flex-direction: column;
+.left-row-1,
+.left-row-2 {
+  padding: 20px;
+}
+
+.left-row-1 {
   justify-content: center;
   justify-items: center;
-  padding: 20px;
 }
 
 .data {
@@ -155,8 +144,7 @@ textarea {
 
 .Welcome {
   font-family: "kaushan script", sans-serif;
-  font-size: 35px;
-  text-align: center;
+  font-size: 40px;
 }
 
 .image-text-container {
@@ -181,24 +169,15 @@ textarea {
 .central-column-profile {
   display: grid;
   grid-template-rows: auto 1fr auto;
-<<<<<<< HEAD
-  width: 100%;
-  max-width: 500px;
-  margin-left: 50px;
-=======
   justify-items: center;
   width: 100%;
   max-width: 600px;
->>>>>>> e3e9ece5add9fb743fd8c80cdfe456a1dabd9e45
 }
 
 .top-row {
   background-color: #d9d9d9;
   padding: 20px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  justify-items: center;
 }
 
 .middle-row {

@@ -9,9 +9,8 @@ const Productos = () => {
   useEffect(() => {
     const fetchAllPublicationsData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/publication_all`
-        );
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
+        const response = await axios.get(`${urlBase}/api/publication_all`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error al obtener las publicaciones del usuario:", error);

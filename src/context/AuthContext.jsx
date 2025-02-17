@@ -32,10 +32,14 @@ export const AuthProvider = ({ children }) => {
 
   const userLogin = async (email, password) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/api/login", {
-        email,
-        password,
-      });
+      const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+      const { data } = await axios.post(
+        `${urlBase}/api/login`,
+        {
+          email,
+          password,
+        }
+      );
 
       setToken(data.token);
       setUser(data.user);
@@ -59,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
   //const registerUser = async (email, password, confirmPassword) => {
   //  try {
-  //    const { data } = await axios.post("http://localhost:3000/api/create_user", {
+  //    const { data } = await axios.post("https://proyecto-final-backend-1u96.onrender.com/api/create_user", {
   //      email,
   //      password,
   //      confirmPassword,

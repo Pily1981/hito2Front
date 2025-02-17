@@ -12,11 +12,14 @@ const ProductPage = () => {
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
   const [nuevoComentario, setNuevoComentario] = useState("");
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`http://localhost:3000/api/find_publication_by_id/${id}`)
+      .get(
+        `${urlBase}/api/find_publication_by_id/${id}`
+      )
       .then((response) => setProducto(response.data))
       .catch((error) =>
         console.error("Error al cargar la publicación:", error)
@@ -26,7 +29,9 @@ const ProductPage = () => {
   // 🚀 Obtener comentarios del backend al cargar la página
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/find_comment_by_publication_id/${id}`)
+      .get(
+        `${urlBase}/api/find_comment_by_publication_id/${id}`
+      )
       .then((response) => setComentarios(response.data))
       .catch((error) => console.error("Error al cargar comentarios", error));
   }, [id]);
@@ -38,7 +43,7 @@ const ProductPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/create_comment",
+        `${urlBase}/api/create_comment`,
         {
           publication_id: id,
           user_id: user.user_id,
@@ -59,7 +64,9 @@ const ProductPage = () => {
   // 🗑 Eliminar comentario corregir ruta
   const handleEliminarComentario = async (comment_id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/delete_comment/${id}`);
+      await axios.delete(
+        `${urlBase}/api/delete_comment/${id}`
+      );
       setComentarios(
         comentarios.filter((comentario) => comentario.comment_id !== comment_id)
       );

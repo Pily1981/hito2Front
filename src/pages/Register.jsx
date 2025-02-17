@@ -55,8 +55,9 @@ const Register = () => {
     }
 
     try {
+      const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
       const response = await axios.post(
-        "http://localhost:3000/api/create_user",
+        `${urlBase}/api/create_user`,
         formData
       );
       if (response.data) {
@@ -87,7 +88,7 @@ const Register = () => {
   };
 
   return (
-    <Container className="container-register">
+    <Container fluid className="container-register">
       <div className="tarjeta-register">
         <div className="photo">
           <img src={perfil} alt="Imagen perfil" />

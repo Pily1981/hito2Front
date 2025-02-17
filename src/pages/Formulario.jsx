@@ -20,6 +20,7 @@ const Formulario = () => {
   const { user, token, logout } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   useEffect(() => {
     if (!token) {
@@ -31,7 +32,7 @@ const Formulario = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/get_categories",
+          `${urlBase}/api/get_categories`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -48,7 +49,7 @@ const Formulario = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -67,7 +68,7 @@ const Formulario = () => {
     name: "",
     description: "",
     price: "",
-    category: null,
+    category: "",
     state: "",
     image: "",
   });
@@ -92,14 +93,6 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(product.name);
-    console.log(product.description);
-    console.log(product.price);
-    console.log(product.category);
-    console.log(product.state);
-
-    console.log(product.image);
     if (
       !product.name.trim() ||
       !product.description.trim() ||
@@ -117,14 +110,6 @@ const Formulario = () => {
     }
 
     try {
-      //const formData = new FormData();
-      //formData.append("user_id", userId);
-      //formData.append("name", product.name);
-      //formData.append("price", Number(product.price));
-      //formData.append("category_id", mapCategoryToId(product.category));
-      //formData.append("description", product.description);
-      //formData.append("image", product.image);
-      //formData.append("state", product.state);
       const payload = {
         user_id: user.user_id,
         title: product.name,
@@ -136,7 +121,7 @@ const Formulario = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/api/create_publication",
+        `${urlBase}/api/create_publication`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -171,17 +156,6 @@ const Formulario = () => {
       });
     }
   };
-
-  //const mapCategoryToId = (category) => {
-  //  const categories = {
-  //    Ropa: 1,
-  //    Calzado: 2,
-  //    Rodados: 3,
-  //    Muebles: 4,
-  //    Accesorios: 5,
-  //  };
-  //  return categories[category] || null;
-  //};
 
   // Botón Volver
   const handleButtonClick = () => {

@@ -20,6 +20,7 @@ const EditPublication = () => {
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   const [product, setProduct] = useState({
     name: "",
@@ -42,7 +43,7 @@ const EditPublication = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/get_categories",
+          `${urlBase}/api/get_categories`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -60,7 +61,7 @@ const EditPublication = () => {
     const fetchPublication = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_publication_by_id/${publication_id}`,
+          `${urlBase}/api/find_publication_by_id/${publication_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -91,7 +92,7 @@ const EditPublication = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -156,7 +157,7 @@ const EditPublication = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/api/update_publication/${publication_id}`,
+        `${urlBase}/api/update_publication/${publication_id}`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
