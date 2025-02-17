@@ -304,6 +304,7 @@ const Formulario = () => {
                 </div>
                 <div className="upload-form">
                   <Button
+                    onClick={handleButtonClick}
                     className="upload_btn_form"
                     type="submit"
                     variant="warning"
