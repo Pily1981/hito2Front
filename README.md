@@ -1,7 +1,10 @@
 💻Proyecto final BabiesMarket para Academia Desafío Latam 🚀
 
-📝Integrantes: Tomás Corvalán
-                M° Pilar Jeréz
+Para hacer deploy: https://dancing-halva-906a5d.netlify.app/
+
+
+📝Integrantes: Tomás Corvalán,
+                M° Pilar Jeréz,
                 Paz Arancibia
 
 
