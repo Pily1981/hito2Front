@@ -15,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const MyPublications = () => {
   const { user, token } = useContext(AuthContext);
@@ -61,11 +62,19 @@ const MyPublications = () => {
 
   // Función para eliminar una publicación
   const handleDelete = async (publication_id) => {
-    const confirmDelete = window.confirm(
-      "¿Estás seguro de que deseas eliminar esta publicación?"
-    );
-    if (confirmDelete) {
+    const result = await Swal.fire({
+      title: "¿Estás seguro de eliminar la publicación?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
       try {
+        // Realizar la solicitud DELETE para eliminar la publicación
         await axios.delete(
           `${urlBase}/api/delete_publication/${publication_id}`,
           {
@@ -77,11 +86,18 @@ const MyPublications = () => {
             (publication) => publication.publication_id !== publication_id
           )
         );
-        alert("Publicación eliminada con éxito.");
+        Swal.fire("Eliminado", "La publicación ha sido eliminada.", "success");
       } catch (error) {
         console.error("Error al eliminar la publicación:", error);
-        alert("Hubo un problema al eliminar la publicación.");
+        Swal.fire(
+          "Error",
+          "Hubo un problema al eliminar la publicación.",
+          "error"
+        );
       }
+    } else {
+      console.log("Acción cancelada");
+      Swal.fire("Cancelado", "La publicación no fue eliminada.", "info");
     }
   };
 
