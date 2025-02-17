@@ -1,24 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Karla", serif;
-  height: 100%;
-}
-
-Footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 50px;
-  padding-top: 10px;
+.footer {
   background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;  /* Esto mantiene el footer fijo en la parte inferior */
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1000;  /* Asegura que el footer se quede sobre otros contenidos */
 }
 
-Footer h6 {
-  font-size: 14px;
-  color: #ffffff;
+footer {
+  padding-top: 10px;
 }

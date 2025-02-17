@@ -1,8 +1,4 @@
-body {
-  margin: 0;
-  font-family: "Karla", sans-serif;
-  background-color: #f4f4f4;
-}
+
 .grid-container-ep {
   display: grid;
 }

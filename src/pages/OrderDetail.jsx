@@ -40,12 +40,12 @@ const OrderDetail = () => {
           }
         );
         setProduct({
-          name: response.product.title,
-          description: response.product.description,
-          price: response.product.price,
-          category: response.product.category_id,
-          state: response.product.state ? "Nuevo" : "Usado",
-          image: response.product.image,
+          name: response.data.title,
+          description: response.data.description,
+          price: response.data.price,
+          category: response.data.category_id,
+          state: response.data.state ? "Nuevo" : "Usado",
+          image: response.data.image,
         });
       } catch (error) {
         console.error("Error al obtener la publicación:", error);
@@ -78,8 +78,7 @@ const OrderDetail = () => {
 
     fetchUser();
   }, [user.user_id, token]);
-
-
+  
   return (
     <div className="container-od">
       <div className="grid-container">
@@ -102,7 +101,7 @@ const OrderDetail = () => {
               </div>
               <div className="Detalle_Order">
                 <h5>Detalle de tu pedido</h5>
-                <h6>Producto: {product.title}</h6>
+                <h6>Producto: {product.name}</h6>
                 <h6>Descripción: {product.description}</h6>
                 <h6>Precio: ${product.price}</h6>
                 <h6>Estado: {product.state}</h6>

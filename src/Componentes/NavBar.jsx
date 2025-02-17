@@ -42,7 +42,7 @@ function NavbarApp() {
           </li>
         </ul>
 
-        <ul className="navbar-nav mb-2 ms-5 mb-lg-2">
+        {/*<ul className="navbar-nav mb-2 ms-5 mb-lg-2">
           <div className="searcher">
             <li className="nav-item">
               <div className="search-container">
@@ -60,7 +60,7 @@ function NavbarApp() {
               </div>
             </li>
           </div>
-        </ul>
+        </ul>*/}
      
         {token ? (
           <>

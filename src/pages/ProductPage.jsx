@@ -96,7 +96,7 @@ const ProductPage = () => {
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
-        <Button variant="warning"  onClick={() => navigate("/orderdetail/:publication_id")}>Comprar</Button>
+        <Button variant="warning"  onClick={() => navigate(`/orderdetail/${producto.publication_id}`)}>Comprar</Button>
       </div>
       <div className="pd-desc">
         <p>{producto.description}</p>
@@ -115,6 +115,7 @@ const ProductPage = () => {
               <Button
                 variant="danger"
                 size="sm"
+                className="mb-2"
                 onClick={() => handleEliminarComentario(comentario.comment_id)}
               >
                 Eliminar

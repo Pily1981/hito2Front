@@ -5,21 +5,23 @@ import { NavLink } from "react-router-dom";
 //realizar un useEffect donde traiga la id del producto
 function CardProducto({ product }) {
   return (
-    <Card className="border border-dark">
+    <Card className="border border-dark shadow-sm" style={{ width: "18rem", height: "100%" }}>
       <Card.Img
         className="p-3"
         variant="top"
-        src={product?.image || "producto sin imagen"}
-        alt={product?.title || "Sin título" }
-        style={{ height: "250px", objectFit: "cover" }}
+        src={product?.image || "/images/default-product.jpg"} // Imagen por defecto
+        alt={product?.title || "Sin título"}
+        style={{ height: "180px", objectFit: "cover" }} // Imagen con tamaño fijo
       />
-      <Card.Body className="Cardproducto d-flex flex-column align-items-center">
-        <Card.Title className="text-center">
-          <strong>{product?.title || "Sin título" }</strong>
-        </Card.Title>
-        <Card.Text className="text-center">Precio: ${product.price}</Card.Text>
-        <NavLink to={`/product/${product.publication_id}`}>
-          <Button type="button" className="w-90 mt-2" id="buttonCompras">
+      <Card.Body className="d-flex flex-column justify-content-between text-center">
+        <div>
+          <Card.Title className="text-truncate" title={product?.title || "Sin título"}>
+            <strong>{product?.title || "Sin título"}</strong>
+          </Card.Title>
+          <Card.Text className="text-truncate">Precio: ${product?.price || "0"}</Card.Text>
+        </div>
+        <NavLink to={`/product/${product?.publication_id || "#"}`} className="w-100">
+          <Button type="button" className="w-100 mt-2" variant="dark">
             Comprar
           </Button>
         </NavLink>
@@ -27,7 +29,6 @@ function CardProducto({ product }) {
     </Card>
   );
 }
-
 CardProducto.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string,
