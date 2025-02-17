@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button"; 
+import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import "../Componentes/stylesheets/orderdetail.css";
 import { useContext, useEffect, useState } from "react";
@@ -22,7 +22,6 @@ const OrderDetail = () => {
     image: "",
   });
 
-
   useEffect(() => {
     if (!token) {
       navigate("/myPublications");
@@ -32,7 +31,7 @@ const OrderDetail = () => {
   useEffect(() => {
     const fetchPublication = async () => {
       try {
-        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
         const response = await axios.get(
           `${urlBase}/api/find_publication_by_id/${publication_id}`,
           {
@@ -63,7 +62,7 @@ const OrderDetail = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
         const response = await axios.get(
           `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
@@ -72,32 +71,24 @@ const OrderDetail = () => {
         );
         setData(response.data);
       } catch (error) {
-        console.log("Error al obtener los datos del usuario:");
+        console.log("Error al obtener los datos del usuario:", error);
       }
     };
 
     fetchUser();
   }, [user.user_id, token]);
-  
+
   return (
     <div className="container-od">
-      <div className="grid-container">
+      <div className="grid-container-order-detail">
         <div className="grid-item top-column">
           <div className="Order-detail-superior">
             <div className="Saludo">
-              {data ? (
-                <p>Gracias, {data.name}!</p>
-              ) : (
-                <p>Cargando datos del usuario...</p>
-              )}
+              {data ? <p>Gracias, {data.name}!</p> : <p>Cargando datos...</p>}
             </div>
             <div className="Grip_Orden">
               <div className="Imagen_order">
-                <img
-                  src={Order}
-                  alt="Imagen de venta"
-                  style={{ width: "200px", height: "200px" }}
-                />
+                <img src={Order} alt="Imagen de venta" />
               </div>
               <div className="Detalle_Order">
                 <h5>Detalle de tu pedido</h5>
@@ -109,21 +100,21 @@ const OrderDetail = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="grid-item bottom-column">
-        <div className="Order-detail-inf">
-          <div className="Mensaje">
-            <h6>Tu Orden de Compra está siendo procesada!</h6>
-            <h6>En breve nos contactaremos contigo</h6>
-          </div>
-          <div className="back_btn">
-            <Button
-              variant="primary"
-              className="order_btn"
-              onClick={() => navigate("/")} 
-            >
-              Volver al Inicio
-            </Button>
+        <div className="grid-item bottom-column">
+          <div className="Order-detail-inf">
+            <div className="Mensaje">
+              <h6>Tu Orden de Compra está siendo procesada!</h6>
+              <h6>En breve nos contactaremos contigo</h6>
+            </div>
+            <div className="back_btn">
+              <Button
+                variant="dark"
+                className="order_btn"
+                onClick={() => navigate("/")}
+              >
+                Volver al Inicio
+              </Button>
+            </div>
           </div>
         </div>
       </div>

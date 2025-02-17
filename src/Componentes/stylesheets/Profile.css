@@ -105,12 +105,7 @@ textarea {
   min-height: 80px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-}
-
-.grid-container {
+.grid-container-profile {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
@@ -134,7 +129,7 @@ textarea {
 
 .data {
   font-weight: bold;
-  color: #007bff; /* Resaltar los datos */
+  color: #007bff;
   text-decoration: none;
 }
 
@@ -143,7 +138,7 @@ textarea {
   font-size: 40px;
   font-weight: bold;
   color: #333;
-  text-align: center; /* Centrar el saludo */
+  text-align: center;
 }
 
 .image-text-container {
@@ -157,12 +152,6 @@ textarea {
   padding-left: 5px;
   padding-right: 20px;
   font-size: 20px;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
 }
 
 .central-column-profile {
@@ -194,13 +183,13 @@ textarea {
 
 /* Centrar el texto de "Cargando datos..." */
 .middle-left p, .middle-right p {
-  text-align: left; /* Asegura que el texto se alinee a la izquierda */
+  text-align: left;
 }
 
 /* Mejorar el espaciado de los campos */
 .middle-left .item, .middle-right .item {
   padding: 10px;
-  border-bottom: 1px solid #ddd; /* Agregar una línea de separación */
+  border-bottom: 1px solid #ddd;
 }
 
 /* Ajustes para mejorar la visibilidad de los textos */

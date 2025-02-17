@@ -87,7 +87,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container-product">
       <div className="pd-img">
         <img src={producto.image} alt={producto.title} className="img-fluid" />
       </div>
