@@ -109,7 +109,7 @@ const ProductPage = () => {
           comentarios.map((comentario) => (
             <div key={comentario.comment_id} className="comentario">
               <p>
-                <strong>Usuario {comentario.user_id}:</strong>{" "}
+                <strong>{comentario.name}:</strong>{" "}
                 {comentario.comment}
               </p>
               <Button
