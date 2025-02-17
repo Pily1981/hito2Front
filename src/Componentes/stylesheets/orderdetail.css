@@ -1,65 +1,111 @@
+body {
+  font-family: "Karla", serif;
+  height: 100%;
+}
+
 .container-od {
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
+  align-content: space-around;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
+  max-width: 900px;
   width: 90%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: auto;
   flex-grow: 1;
   min-height: 100vh;
 }
 
-.Saludo {
-  text-align: center;
-  margin-bottom: 10px;
+.Saludo-OrderDetail {
   font-family: "kaushan script", sans-serif;
   font-size: 35px;
-  margin-top: -30px;
+  text-align: center;
 }
 
-.Detalle_Order {
+.order-detail-section {
+  margin: 10px;
+}
+
+.order-detail-left {
+  margin: 20px;
+  font-weight: 100px;
+}
+
+.order-details {
+  list-style-type: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 200px;
-  padding-top: 10px;
+  justify-content: left;
+  padding-left: 0px;
 }
 
-.Detalle_Order h5 {
-  font-size: 18px;
-  font-weight: lighter;
-  text-align: center;
+.order-details li {
+  margin: 10px;
+  margin-left: 0px;
 }
 
-.Detalle_Order h6 {
-  font-size: 18px;
-  font-weight: lighter;
-}
-
-.Mensaje {
-  padding-top: 10px;
-}
-
-.Mensaje h6 {
-  font-size: 18px;
-  text-align: center;
-}
-
-.back_btn {
+.order-detail-right {
+  padding: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-button.order_btn {
-  margin: 20px;
-  margin-top: 10px;
-  background-color: black;
+.order-detail-left {
+  padding: 20px;
+}
+
+.order-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.message-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.message-container h6 {
+  font-size: 18px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.order-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: black;
   border: none;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .order-detail-left,
+  .order-detail-right {
+    padding: 15px;
+  }
+
+  .order-detail-right img {
+    width: 60%;
+    height: auto;
+  }
+
+  .order-detail-section .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-detail-left {
+    margin-bottom: 20px;
+  }
 }
