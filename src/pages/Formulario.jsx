@@ -17,7 +17,7 @@ import {
 const Formulario = () => {
   // Redirige si no hay token
   const navigate = useNavigate();
-  const { user, token } = useContext(AuthContext);
+  const { user, token, logout } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
 

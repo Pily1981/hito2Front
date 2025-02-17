@@ -25,17 +25,19 @@ body {
   gap: 20px;
 }
 
+.left-row-1-form {
+  padding-top: 125px;
+  display: flex;
+  flex-direction: column;
+}
+
 .left-row-2-form {
   display: flex;
   justify-content: flex-start;
   padding-top: 40px;
 }
 
-.left-row-1-form {
-  padding-top: 125px;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .left-row-1-form,
 .left-row-2-form {
