@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    font-family: "Karla", serif;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
+
+.container {
+  min-height: 100vh;
+}

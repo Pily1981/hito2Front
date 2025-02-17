@@ -1,7 +1,4 @@
-body {
-  font-family: "Karla", serif;
-  height: 100%;
-}
+
 
 /** Tarjeta Login-Register**/
 .photo,
@@ -11,11 +8,11 @@ img {
   margin: auto;
 }
 
-.container-login.container {
+.container-login {
   min-height: 100vh;
   display: flex;
-  margin-top: 0px;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #checkbox {

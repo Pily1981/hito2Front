@@ -1,7 +1,3 @@
-body {
-  font-family: "Karla", serif;
-  height: 100%;
-}
 
 .custom-navbar {
   background-color: #000000; 
@@ -87,7 +83,6 @@ body {
   }
  }
 
-/* Personaliza el tamaño de las tarjetas y la separación en pantallas pequeñas */
 @media (max-width: 768px) {
   .custom-navbar .navbar-nav .nav-link {
     margin-left: 10px;

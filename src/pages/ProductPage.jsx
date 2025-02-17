@@ -87,7 +87,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container-product">
       <div className="pd-img">
         <img src={producto.image} alt={producto.title} className="img-fluid" />
       </div>
@@ -96,7 +96,7 @@ const ProductPage = () => {
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
-        <Button variant="warning"  onClick={() => navigate("/orderdetail/:publication_id")}>Comprar</Button>
+        <Button variant="warning"  onClick={() => navigate(`/orderdetail/${producto.publication_id}`)}>Comprar</Button>
       </div>
       <div className="pd-desc">
         <p>{producto.description}</p>
@@ -109,12 +109,13 @@ const ProductPage = () => {
           comentarios.map((comentario) => (
             <div key={comentario.comment_id} className="comentario">
               <p>
-                <strong>Usuario {comentario.user_id}:</strong>{" "}
+                <strong>{comentario.name}:</strong>{" "}
                 {comentario.comment}
               </p>
               <Button
                 variant="danger"
                 size="sm"
+                className="mb-2"
                 onClick={() => handleEliminarComentario(comentario.comment_id)}
               >
                 Eliminar
