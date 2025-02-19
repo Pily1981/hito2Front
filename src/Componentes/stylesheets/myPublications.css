@@ -29,7 +29,8 @@
   gap: 10px;
 }
 
-.left-row-1, .left-row-2 {
+.left-row-1,
+.left-row-2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +55,8 @@
   width: 570px;
 }
 
-.Welcome, .Welcome-mp {
+.Welcome,
+.Welcome-mp {
   font-family: "Kaushan Script", sans-serif;
   font-size: 25px;
   text-align: center;
@@ -104,7 +106,8 @@
   width: 120px;
 }
 
-.edit_button, .delete_btn {
+.edit_button,
+.delete_btn {
   border: none;
   text-decoration: none;
   background-color: #d9d9d9;
@@ -114,7 +117,8 @@
   transition: background-color 0.3s ease;
 }
 
-.edit_button:hover, .delete_btn:hover {
+.edit_button:hover,
+.delete_btn:hover {
   background-color: #e76f51;
   color: white;
 }
@@ -160,3 +164,29 @@ span {
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .grid-container-mp {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "column";
+    justify-content: center;
+    align-items: center;
+  }
+  .Welcome {
+    text-align: center;
+  }
+
+  .left-row-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-content-mp {
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 95%;
+  }
+}

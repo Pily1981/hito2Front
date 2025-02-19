@@ -1,4 +1,3 @@
-
 .container-form {
   background-color: #ffffff;
   border-radius: 10px;
@@ -33,8 +32,6 @@
   justify-content: flex-start;
   padding-top: 40px;
 }
-
-
 
 .left-row-1-form,
 .left-row-2-form {
@@ -72,7 +69,7 @@
   font-weight: bolder;
   padding: 5px 5px;
   cursor: pointer;
-  padding:  35px;
+  padding: 35px;
 }
 
 .upload-form {
@@ -80,4 +77,27 @@
   justify-items: center;
   justify-content: space-evenly;
   background-color: #d9d9d9;
+}
+@media (max-width: 768px) {
+  .grid-container-formulario {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "column";
+    justify-content: center;
+    align-items: center;
+  }
+  .left-column-form {
+    justify-content: center;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .profile-form {
+    max-width: 300px;
+  }
+
+  #image {
+    max-width: 260px;
+  }
 }
