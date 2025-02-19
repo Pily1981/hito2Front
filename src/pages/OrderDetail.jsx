@@ -103,16 +103,16 @@ const OrderDetail = () => {
         <div className="grid-item bottom-column">
           <div className="Order-detail-inf">
             <div className="Mensaje">
-              <h6>Tu Orden de Compra está siendo procesada!</h6>
+              <h6>Tu orden de compra está siendo procesada!</h6>
               <h6>En breve nos contactaremos contigo</h6>
             </div>
             <div className="back_btn">
               <Button
-                variant="dark"
-                className="order_btn"
+                type="button"
+                variant="warning"
                 onClick={() => navigate("/")}
               >
-                Volver al Inicio
+                Volver al inicio
               </Button>
             </div>
           </div>

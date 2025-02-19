@@ -7,8 +7,6 @@ import {
   faBookOpen,
   faPenToSquare,
   faPowerOff,
-} from "@fortawesome/free-solid-svg-icons";
-import {
   faPen,
   faTrash,
   faChevronRight,
@@ -17,7 +15,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
 const MyPublications = () => {
-  const { user, token } = useContext(AuthContext);
+  const { user, token, logout } = useContext(AuthContext);
   const [publications, setPublications] = useState([]);
   const [data, setData] = useState(null);
   const navigate = useNavigate();
@@ -51,7 +49,6 @@ const MyPublications = () => {
           }
         );
         setData(response.data);
-        console.log("data -->", data);
       } catch (error) {
         console.log("Error al obtener los datos del usuario:");
       }

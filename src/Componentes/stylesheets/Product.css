@@ -1,6 +1,6 @@
 .container-product {
   display: grid;
-  height: 100vh;
+  height: auto;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
