@@ -28,13 +28,11 @@ const Profile = () => {
   // Obtiene datos del usuario
   useEffect(() => {
     const fetchProfileData = async () => {
-      console.log("antes");
 
       if (!token || !user.user_id) return;
-      console.log("despues");
 
       try {
-        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+        const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
         const response = await axios.get(
           `${urlBase}/api/find_user_by_id/${user.user_id}`,
           {
@@ -42,7 +40,6 @@ const Profile = () => {
           }
         );
         setData(response.data);
-        console.log("data -->", data);
       } catch (error) {
         console.error("Error al obtener los datos del usuario:", error);
       }
@@ -147,7 +144,7 @@ const Profile = () => {
                 {data ? (
                   <p>
                     Email:
-                    <div className="data">{data.email}</div>
+                    <span className="data">{data.email}</span>
                   </p>
                 ) : (
                   <p>Cargando datos del usuario...</p>
@@ -156,7 +153,7 @@ const Profile = () => {
               <div className="middle-right item">
                 {data ? (
                   <p>
-                    Usuario:
+                    Nickname:
                     <span className="data">{data.nick_name}</span>
                   </p>
                 ) : (
@@ -165,9 +162,9 @@ const Profile = () => {
               </div>
             </div>
             <div className="boton-row item">
-              <Button className="save-bt" variant="warning">
+              {/*<Button className="save-bt" type="button" variant="warning">
                 Guardar
-              </Button>
+              </Button>*/}
             </div>
           </main>
         </div>

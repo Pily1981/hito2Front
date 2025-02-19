@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function NavbarApp() {
-  const { token, logout } = useContext(AuthContext);
+  const { token, logout, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const setActiveClass = ({ isActive }) => (isActive ? "active" : "NoActive");
@@ -32,12 +32,12 @@ function NavbarApp() {
         <ul className="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
           <li className="nav-home">
             <NavLink to="/" className={setActiveClass}>
-              Home
+              Inicio
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/products" className={setActiveClass}>
-              Market
+              Publicaciones
             </NavLink>
           </li>
         </ul>
@@ -67,14 +67,14 @@ function NavbarApp() {
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-profile">
                 <NavLink to="/profile" className={setActiveClass}>
-                  Profile
+                  {user.name}
                 </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-logout">
                 <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
-                  Logout
+                  Cerrar sesión
                 </NavLink>
               </li>
             </ul>
@@ -84,14 +84,14 @@ function NavbarApp() {
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-item">
                 <NavLink to="/login" className={setActiveClass}>
-                  Log In
+                  Iniciar sesión
                 </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 mx-5 mb-lg-0">
               <li className="nav-item">
                 <NavLink to="/register" className={setActiveClass}>
-                  Sign Up
+                  Registrarse
                 </NavLink>
               </li>
             </ul>

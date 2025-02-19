@@ -75,7 +75,7 @@ const LoginPage = () => {
               id="email"
               type="email"
               className="text-dark"
-              placeholder="✉         EMAIL"
+              placeholder="✉     EMAIL"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -86,7 +86,7 @@ const LoginPage = () => {
               id="password"
               type="password"
               className="text-dark"
-              placeholder="🔒          PASSWORD"
+              placeholder="🔒      CONTRASEÑA"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -105,7 +105,7 @@ const LoginPage = () => {
           </div>
           <div className="d-flex justify-content-center mt-3 mb-5">
             <Button type="submit" id="button" onClick={(e) => validarDatos(e)}>
-              Iniciar Sesion
+              Iniciar sesión
             </Button>
             <Button type="submit" id="button" onClick={handleButtonClick}>
               Volver

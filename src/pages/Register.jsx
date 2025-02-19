@@ -100,7 +100,7 @@ const Register = () => {
               name="name"
               className="text-dark"
               type="text"
-              placeholder=" 👤         NAME"
+              placeholder=" 👤    NOMBRE"
               value={formData.name}
               onChange={handleChange}
               required
@@ -112,7 +112,7 @@ const Register = () => {
               name="lastName"
               type="text"
               className="text-dark"
-              placeholder=" 👤         LAST NAME"
+              placeholder=" 👤    APELLIDO"
               value={formData.lastName}
               onChange={handleChange}
               required
@@ -124,7 +124,7 @@ const Register = () => {
               name="email"
               type="email"
               className="text-dark"
-              placeholder="✉         EMAIL"
+              placeholder="✉    EMAIL"
               value={formData.email}
               onChange={handleChange}
               required
@@ -136,7 +136,7 @@ const Register = () => {
               name="nick_name"
               type="text"
               className="text-dark"
-              placeholder=" 👤         NICK NAME"
+              placeholder=" 👤    NICK NAME"
               value={formData.nick_name}
               onChange={handleChange}
               required
@@ -148,7 +148,7 @@ const Register = () => {
               name="password"
               type="password"
               className="text-dark"
-              placeholder="🔒          PASSWORD"
+              placeholder="🔒    CONTRASEÑA"
               value={formData.password}
               onChange={handleChange}
               required
@@ -160,7 +160,7 @@ const Register = () => {
               name="confPassword"
               type="password"
               className="text-dark"
-              placeholder="🔒          CONFIRM PASSWORD"
+              placeholder="🔒    CONFIRMAR CONTRASEÑA"
               value={formData.confPassword}
               onChange={handleChange}
               required
@@ -168,7 +168,7 @@ const Register = () => {
           </InputGroup>
           <div className="d-flex justify-content-center mt-3 mb-2">
             <Button type="submit" id="button">
-              Crear Cuenta
+              Crear cuenta
             </Button>
             <Button type="submit" id="button" onClick={handleButtonClick}>
               Volver
@@ -178,7 +178,7 @@ const Register = () => {
             to="/Login"
             className="text-primary text-decoration-none d-flex justify-content-center"
           >
-            ¿Ya estás registrado? Iniciar Sesión
+            ¿Ya estás registrado? Iniciar sesión
           </NavLink>
         </form>
       </div>

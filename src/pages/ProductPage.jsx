@@ -4,22 +4,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Componentes/stylesheets/Product.css";
 import { AuthContext } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPage = () => {
   const { id } = useParams();
-    const { user, token } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [comentarios, setComentarios] = useState([]);
   const [nuevoComentario, setNuevoComentario] = useState("");
-  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   useEffect(() => {
     if (!id) return;
     axios
-      .get(
-        `${urlBase}/api/find_publication_by_id/${id}`
-      )
+      .get(`${urlBase}/api/find_publication_by_id/${id}`)
       .then((response) => setProducto(response.data))
       .catch((error) =>
         console.error("Error al cargar la publicación:", error)
@@ -29,9 +29,7 @@ const ProductPage = () => {
   // 🚀 Obtener comentarios del backend al cargar la página
   useEffect(() => {
     axios
-      .get(
-        `${urlBase}/api/find_comment_by_publication_id/${id}`
-      )
+      .get(`${urlBase}/api/find_comment_by_publication_id/${id}`)
       .then((response) => setComentarios(response.data))
       .catch((error) => console.error("Error al cargar comentarios", error));
   }, [id]);
@@ -48,13 +46,19 @@ const ProductPage = () => {
           publication_id: id,
           user_id: user.user_id,
           comment: nuevoComentario,
-        },  {
+        },
+        {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
 
+      const comment = { ...response.data };
+      comment.name = user.name;
+      const data = [comment, ...comentarios].sort(
+        (a, b) => b.comment_id - a.comment_id
+      );
       // Agregar el nuevo comentario a la lista sin recargar
-      setComentarios([response.data, ...comentarios]);
+      setComentarios(data);
       setNuevoComentario("");
     } catch (error) {
       console.error("Error al enviar comentario", error);
@@ -64,9 +68,9 @@ const ProductPage = () => {
   // 🗑 Eliminar comentario corregir ruta
   const handleEliminarComentario = async (comment_id) => {
     try {
-      await axios.delete(
-        `${urlBase}/api/delete_comment/${id}`
-      );
+      await axios.delete(`${urlBase}/api/delete_comment/${comment_id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setComentarios(
         comentarios.filter((comentario) => comentario.comment_id !== comment_id)
       );
@@ -80,7 +84,7 @@ const ProductPage = () => {
       <div className="container text-center">
         <h2>Producto no encontrado</h2>
         <Button variant="primary" onClick={() => navigate("/")}>
-          Volver a Inicio
+          Volver al Inicio
         </Button>
       </div>
     );
@@ -96,7 +100,12 @@ const ProductPage = () => {
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
-        <Button variant="warning"  onClick={() => navigate(`/orderdetail/${producto.publication_id}`)}>Comprar</Button>
+        <Button
+          variant="warning"
+          onClick={() => navigate(`/orderdetail/${producto.publication_id}`)}
+        >
+          Comprar
+        </Button>
       </div>
       <div className="pd-desc">
         <p>{producto.description}</p>
@@ -107,19 +116,25 @@ const ProductPage = () => {
         <h3>Comentarios</h3>
         {comentarios.length > 0 ? (
           comentarios.map((comentario) => (
-            <div key={comentario.comment_id} className="comentario">
+            <div
+              key={comentario.comment_id}
+              className="comentario d-flex justify-content-between"
+            >
               <p>
-                <strong>{comentario.name}:</strong>{" "}
-                {comentario.comment}
+                <strong>{comentario.name}:</strong> {comentario.comment}
               </p>
-              <Button
-                variant="danger"
-                size="sm"
-                className="mb-2"
-                onClick={() => handleEliminarComentario(comentario.comment_id)}
-              >
-                Eliminar
-              </Button>
+              {user?.user_id == comentario.user_id ? (
+                <Button
+                  variant="danger"
+                  size="sm"
+                  className="mb-2"
+                  onClick={() =>
+                    handleEliminarComentario(comentario.comment_id)
+                  }
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Button>
+              ) : null}
             </div>
           ))
         ) : (
@@ -135,7 +150,7 @@ const ProductPage = () => {
             value={nuevoComentario}
             onChange={(e) => setNuevoComentario(e.target.value)}
           />
-          <Button variant="primary" type="submit" className="mt-2">
+          <Button variant="dark" type="submit" className="mt-2">
             Enviar
           </Button>
         </form>

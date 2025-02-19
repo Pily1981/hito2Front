@@ -55,7 +55,7 @@ const Formulario = () => {
           }
         );
         setData(response.data);
-        console.log("data -->", data);
+
       } catch (error) {
         console.log("Error al obtener los datos del usuario:");
       }
@@ -147,6 +147,7 @@ const Formulario = () => {
 
       // Resetear input file manualmente
       document.getElementById("image").value = "";
+      navigate(`/product/${response.data.publication_id}`)
     } catch (error) {
       console.error("Error al subir la publicación:", error);
       Swal.fire({
@@ -308,7 +309,7 @@ const Formulario = () => {
                     type="submit"
                     variant="warning"
                   >
-                    Guardar cambios
+                    Crear publicación
                   </Button>
                   <Button
                     onClick={handleButtonClick}
