@@ -103,7 +103,7 @@ const ProductPage = () => {
 
   //Gestion de la compra
   const handleComprar = async () => {
-    if (producto && String(producto.user_id) === String(userData.user_id)) { //valida que no sea una publicacion del usuario logeado
+    if (producto && String(producto.user_id) === String(userData.user_id)) { 
       Swal.fire({
         icon: "error",
         title: "¡Error!",
@@ -112,52 +112,69 @@ const ProductPage = () => {
       }).then(() => {
         navigate("/products");
       });
+      return;
+    }
   
-    } else {
-      // Crear la orden
-      try {
-        const orderResponse = await axios.post(
-          `${urlBase}/api/create_order`,
-          {
-            user_id: user.user_id,
-            state: true, // Estado de la orden (puede cambiar según lógica)
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        
-        const orderId = orderResponse.data.order_id; // ID de la nueva orden
-        
-        // Crear el detalle de la orden
-        await axios.post(
-          `${urlBase}/api/create_order_detail`,
-          {
-            order_id: orderId,
-            publication_id: producto.publication_id,
-            price: producto.price,
-            quantity: 1, // La cantidad de productos que se compran
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        
-        Swal.fire({
-          icon: "success",
-          title: "Compra Exitosa",
-          text: "Tu orden ha sido creada correctamente.",
-        }).then(() => {
-          navigate(`/orderdetail/${producto.publication_id}`); // Redirige al detalle de la orden
-        });
-      } catch (error) {
-        console.error("Error al crear la orden:", error);
+    try {
+      // Verificar si el producto ya fue vendido
+      const checkResponse = await axios.get(
+        `${urlBase}/api/find_order_detail_by_publication_id/${producto.publication_id}`
+      );
+  
+      if (checkResponse.data.sold) {
         Swal.fire({
           icon: "error",
-          title: "¡Error!",
-          text: "Hubo un problema al realizar la compra. Intenta nuevamente.",
+          title: "Producto No Disponible",
+          text: "Este producto ya ha sido vendido.",
+        }).then(() => {
+          navigate("/products");
         });
+        return; // Detener la ejecución si el producto ya fue vendido
       }
+  
+      // Crear la orden si el producto sigue disponible
+      const orderResponse = await axios.post(
+        `${urlBase}/api/create_order`,
+        {
+          user_id: user.user_id,
+          state: true,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+  
+      const orderId = orderResponse.data.order_id; 
+  
+      // Crear el detalle de la orden
+      await axios.post(
+        `${urlBase}/api/create_order_detail`,
+        {
+          order_id: orderId,
+          publication_id: producto.publication_id,
+          price: producto.price,
+          quantity: 1, // La cantidad de productos que se compran
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+  
+      Swal.fire({
+        icon: "success",
+        title: "Compra Exitosa",
+        text: "Tu orden ha sido creada correctamente.",
+      }).then(() => {
+        navigate(`/orderdetail/${producto.publication_id}`);
+      });
+      
+    } catch (error) {
+      console.error("Error al realizar la compra:", error);
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "Hubo un problema al realizar la compra. Intenta nuevamente.",
+      });
     }
   };
   
