@@ -142,6 +142,7 @@ const ProductPage = () => {
         )}
 
         {/* 📌 Formulario para enviar comentario */}
+
         <form onSubmit={handleComentarioSubmit}>
           <textarea
             className="form-control"
@@ -150,9 +151,11 @@ const ProductPage = () => {
             value={nuevoComentario}
             onChange={(e) => setNuevoComentario(e.target.value)}
           />
-          <Button variant="dark" type="submit" className="mt-2">
-            Enviar
-          </Button>
+          {user ? (
+            <Button variant="dark" type="submit" className="mt-2">
+              Enviar
+            </Button>
+          ) : null}
         </form>
       </div>
     </div>
