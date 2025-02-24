@@ -199,6 +199,7 @@ const ProductPage = () => {
         <p>
           Precio: <strong>${producto.price}</strong>
         </p>
+        <p>Vendido por: {producto.user_name}</p>
         <Button
           variant="warning"
           onClick={handleComprar}
