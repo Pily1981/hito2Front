@@ -17,6 +17,7 @@ import PrivateRoute from "./context/PrivateRoute";
 import AuthProvider from "./context/AuthContext";
 import EditPublication from "./pages/editpublication";
 import OrderDetail from "./pages/OrderDetail";
+import OrdersPage from "./pages/OrdersPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/myPublications" element={<MyPublications />} />
               <Route path="/editpublication/:publication_id" element={<EditPublication/>}/>
               <Route path="/orderdetail/:publication_id" element={<OrderDetail />} />
+              <Route path="/ordersPage/:user_id" element={<OrdersPage />} /> 
             
             </Route>
           </Routes>
