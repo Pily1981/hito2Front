@@ -17,7 +17,7 @@ const ProductPage = () => {
   const [comentarios, setComentarios] = useState([]);
   const [nuevoComentario, setNuevoComentario] = useState("");
   const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
+  
   useEffect(() => {
     if (!id) return;
     axios
@@ -46,7 +46,7 @@ const ProductPage = () => {
     };
 
     fetchUser();
-  }, [user.user_id, token]);
+  }, [user?.user_id, token]);
 
   // 🚀 Obtener comentarios del backend al cargar la página
   useEffect(() => {
@@ -118,9 +118,9 @@ const ProductPage = () => {
     try {
       // Verificar si el producto ya fue vendido
       const checkResponse = await axios.get(
-        `${urlBase}/api/find_order_detail_by_publication_id/${producto.publication_id}`
+        `${urlBase}/api/find_publication_by_id/${producto.publication_id}`
       );
-  
+
       if (checkResponse.data.sold) {
         Swal.fire({
           icon: "error",
