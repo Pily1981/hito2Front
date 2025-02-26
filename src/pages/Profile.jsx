@@ -34,13 +34,14 @@ const Profile = () => {
       try {
         const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
         const response = await axios.get(
-          `${urlBase}/api/find_user_by_id/${user.user_id}`,
+          `${urlBase}/api/find_user_by_id/${user?.user_id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
         setData(response.data);
       } catch (error) {
+        navigate("/login")
         console.error("Error al obtener los datos del usuario:", error);
       }
     };
@@ -107,7 +108,7 @@ const Profile = () => {
                   <div className="icon-menu">
                     <FontAwesomeIcon icon={faPowerOff} />
                   </div>
-                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
+                  Cerrar sesión <FontAwesomeIcon icon={faChevronRight} />
                 </li>
               </ul>
             </aside>

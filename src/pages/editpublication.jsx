@@ -257,7 +257,7 @@ const EditPublication = () => {
             </aside>
           </div>
         </div>
-        <div className="center-column">
+        <div className="center-column-edit">
           <main className="profile-edit">
             <div className="top-row-item">
               <h3>Editar publicación</h3>

@@ -63,7 +63,7 @@
   color: #3e3e3e;
 }
 
-.grid-container-mp .center-column {
+.grid-container-mp .center-column-publications {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,11 +72,11 @@
 
 .mp-inf {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
   background-color: #e9e9e9;
-  width: 100%;
+  width: auto;
   text-align: left;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -183,10 +183,17 @@ span {
     align-items: center;
   }
   .profile-content-mp {
-    max-width: 300px;
-    justify-content: center;
-    align-items: center;
+    width: auto;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 95%;
+  }
+  .mp-inf {
+    text-align: center;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }

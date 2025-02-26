@@ -1,26 +1,17 @@
 
 
 .container-ep {
-  background-color: #ffffff;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
   max-width: 900px;
-  width: 90%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: auto;
-  flex-grow: 1;
-  min-height: 100vh;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 .grid-container-ep {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px; 
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
 }
 
 .left-row-edit,
@@ -57,25 +48,25 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 570px;
+  width: 100%;
+  max-width: 570px;
 }
 
 #description,
 #name,
 #category,
 #state,
-#image {
+#image,
+#price {
   display: flex;
   justify-items: left;
   background-color: #ffffff;
-  width: 530px;
-  margin: 0px;
-}
-
-#price {
-  background-color: #ffffff;
-  width: 530px;
-  margin: 0px;
+  width: 100%;
+  max-width: 530px;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .edit-btn {
@@ -97,4 +88,29 @@
   font-family: "kaushan script", sans-serif;
   font-size: 35px;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .grid-container-ep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .profile-edit {
+    width: 100%;
+  }
+
+  #description,
+  #name,
+  #category,
+  #state,
+  #image,
+  #price {
+    width: 100%;
+  }
+
+  .edit-btn {
+    gap: 1rem;
+  }
 }

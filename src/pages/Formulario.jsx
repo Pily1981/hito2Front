@@ -179,7 +179,7 @@ const Formulario = () => {
               <div className="icon-profile">
                 <FontAwesomeIcon icon={faUser} />
               </div>
-              <div className="text-wrapper">Crear Publicacion</div>
+              <div className="text-wrapper">Crear Publicación</div>
             </div>
           </div>
 
@@ -217,13 +217,13 @@ const Formulario = () => {
                   <div className="icon-menu">
                     <FontAwesomeIcon icon={faPowerOff} />
                   </div>
-                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
+                  Cerrar sesión <FontAwesomeIcon icon={faChevronRight} />
                 </li>
               </ul>
             </aside>
           </div>
         </div>
-        <div className="center-column">
+        <div className="center-column-form">
           <main className="profile-form">
             <div className="top-row-item">
               <h3>Crear publicación</h3>

@@ -13,11 +13,11 @@ const ProductPage = () => {
   const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
-  const [userData, setUserData] = useState(null); 
+  const [userData, setUserData] = useState(null);
   const [comentarios, setComentarios] = useState([]);
   const [nuevoComentario, setNuevoComentario] = useState("");
   const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
-  
+
   useEffect(() => {
     if (!id) return;
     axios
@@ -103,7 +103,21 @@ const ProductPage = () => {
 
   //Gestion de la compra
   const handleComprar = async () => {
-    if (producto && String(producto.user_id) === String(userData.user_id)) { 
+    // Verificar si el usuario ha iniciado sesión
+    if (!userData || !userData.user_id) {
+      Swal.fire({
+        icon: "warning",
+        title: "Inicia sesión",
+        text: "Debes iniciar sesión para comprar un producto.",
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+        navigate("/login");
+      });
+      return; // Detener la ejecución si el usuario no está autenticado
+    }
+
+    // Verificar si el usuario intenta comprar su propio producto
+    if (producto && String(producto.user_id) === String(userData.user_id)) {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
@@ -112,9 +126,9 @@ const ProductPage = () => {
       }).then(() => {
         navigate("/products");
       });
-      return;
+      return; // Asegurar que la función se detiene aquí
     }
-  
+
     try {
       // Verificar si el producto ya fue vendido
       const checkResponse = await axios.get(
@@ -131,7 +145,7 @@ const ProductPage = () => {
         });
         return; // Detener la ejecución si el producto ya fue vendido
       }
-  
+
       // Crear la orden si el producto sigue disponible
       const orderResponse = await axios.post(
         `${urlBase}/api/create_order`,
@@ -143,9 +157,9 @@ const ProductPage = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-  
-      const orderId = orderResponse.data.order_id; 
-  
+
+      const orderId = orderResponse.data.order_id;
+
       // Crear el detalle de la orden
       await axios.post(
         `${urlBase}/api/create_order_detail`,
@@ -159,7 +173,7 @@ const ProductPage = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-  
+
       Swal.fire({
         icon: "success",
         title: "Compra Exitosa",
@@ -167,7 +181,6 @@ const ProductPage = () => {
       }).then(() => {
         navigate(`/orderdetail/${producto.publication_id}`);
       });
-      
     } catch (error) {
       console.error("Error al realizar la compra:", error);
       Swal.fire({
@@ -177,7 +190,7 @@ const ProductPage = () => {
       });
     }
   };
-  
+
   if (!producto) {
     return (
       <div className="container text-center">
@@ -200,10 +213,7 @@ const ProductPage = () => {
           Precio: <strong>${producto.price}</strong>
         </p>
         <p>Vendido por: {producto.user_name}</p>
-        <Button
-          variant="warning"
-          onClick={handleComprar}
-        >
+        <Button variant="warning" onClick={handleComprar}>
           Comprar
         </Button>
       </div>

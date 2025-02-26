@@ -162,7 +162,7 @@ const MyPublications = () => {
             </aside>
           </div>
         </div>
-        <div className="center-column">
+        <div className="center-column-publications">
           <main className="profile-content-mp">
             <div className="top-row-item">
               <h3>Mis Publicaciones</h3>
