@@ -22,7 +22,7 @@
 }
 
 .left-row-1-form {
-  padding-top: 125px;
+  padding-top: 103px;
   display: flex;
   flex-direction: column;
 }
@@ -60,8 +60,10 @@
 
 .Welcome-form {
   font-family: "kaushan script", sans-serif;
-  font-size: 35px;
+  font-size: 25px;
   text-align: center;
+  color: #3e3e3e;
+  font-weight: bold;
 }
 
 .upload-btn-form {

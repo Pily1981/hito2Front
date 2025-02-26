@@ -38,9 +38,13 @@
   padding: 20px;
 }
 
+.left-row-1{
+  padding-top: 74px;
+} 
+
 .profile-sidebar-mp {
   width: 250px;
-  background-color: #f1f1f1;
+  background-color: #d9d9d9;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -61,6 +65,7 @@
   font-size: 25px;
   text-align: center;
   color: #3e3e3e;
+  font-weight: bold;
 }
 
 .grid-container-mp .center-column-publications {

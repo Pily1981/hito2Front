@@ -1,0 +1,207 @@
+.container-orderPage {
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: auto;
+  flex-grow: 1;
+  min-height: 100vh;
+  padding: 0 15px;
+}
+
+.grid-container-orderPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.left-column-orderPage {
+  display: grid;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 10px;
+}
+
+.left-row-1-orderPage,
+.left-row-2-orderPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-row-1-orderPage {
+  padding-top: 83px;
+}
+
+.Welcome-orderPage {
+  font-family: "kaushan script", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.image-text-container-orderPage {
+  font-size: 20px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.icon-orderPage {
+  font-size: 30px;
+  color: #2a9d8f;
+  margin-bottom: 10px;
+}
+
+.icon-menu-orderPage {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+.orderPage-sidebar {
+  width: 250px;
+  background-color: #d9d9d9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.menu-list-orderPage {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px;
+}
+
+.menu-item-orderPage {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #333;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.menu-item-orderPage:hover {
+  background-color: #e76f51;
+  color: white;
+}
+
+.orderPage-content {
+  display: grid;
+  grid-area: prof;
+  margin-top: 90px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.container-table {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.text-wrapper-orderPage {
+  font-size: 18px;
+  font-weight: bold;
+  color: #3e3e3e;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  display: block;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .grid-container-orderPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .orderPage-sidebar {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    order: 1;
+    box-sizing: border-box;
+  }
+
+  .menu-item-orderPage {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .center-colum-orderPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container-table {
+    width: 100%; 
+    max-width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+
+  .table-responsive {
+    width: 100%;    
+    overflow-x: auto;
+    margin-top: 10px;
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 10px;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    text-align: center;
+    word-wrap: break-word;
+  }
+}

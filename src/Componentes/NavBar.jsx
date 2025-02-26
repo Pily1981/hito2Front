@@ -72,13 +72,6 @@ function NavbarApp() {
               </li>
             </ul>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
-              <li className="nav-profile">
-                <NavLink to="/ordersPage/:user_id" className={setActiveClass}>
-                Mis compras
-                </NavLink>
-              </li>
-            </ul>
-            <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-logout">
                 <NavLink to="/" className={setActiveClass} onClick={handleLogout}>
                   Cerrar sesión
