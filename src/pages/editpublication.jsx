@@ -78,7 +78,7 @@ const EditPublication = () => {
         console.error("Error al obtener la publicación:", error);
         Swal.fire({
           icon: "error",
-          title: "Error",
+          title: "¡Error!",
           text: "Hubo un problema al obtener la publicación.",
         });
       }
@@ -127,7 +127,7 @@ const EditPublication = () => {
     ) {
       Swal.fire({
         icon: "error",
-        title: "Campos incompletos",
+        title: "¡Campos incompletos!",
         text: "Completa todos los campos antes de enviar.",
       });
       return;
@@ -168,7 +168,7 @@ const EditPublication = () => {
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
-          title: "¡Éxito!",
+          title: "¡Sí!",
           text: "La publicación se ha actualizado correctamente.",
         });
 
@@ -186,7 +186,7 @@ const EditPublication = () => {
       console.error("Error al actualizar la publicación:", error);
       Swal.fire({
         icon: "error",
-        title: "Error",
+        title: "¡Error!",
         text: "Hubo un problema al realizar la solicitud.",
       });
     }

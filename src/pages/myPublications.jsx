@@ -62,7 +62,7 @@ const MyPublications = () => {
     const result = await Swal.fire({
       title: "¿Estás seguro de eliminar la publicación?",
       text: "",
-      icon: "warning",
+      icon: "error",
       showCancelButton: true,
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
@@ -83,7 +83,7 @@ const MyPublications = () => {
             (publication) => publication.publication_id !== publication_id
           )
         );
-        Swal.fire("Exito", "La publicación ha sido eliminada con exito.", "success");
+        Swal.fire("¡Sí!", "La publicación ha sido eliminada con éxito.", "success");
       } catch (error) {
         console.error("Error al eliminar la publicación:", error);
         Swal.fire(
@@ -94,7 +94,7 @@ const MyPublications = () => {
       }
     } else {
       console.log("Acción cancelada");
-      Swal.fire("Cancelado", "La publicación no fue eliminada con exito.", "info");
+      Swal.fire("Cancelado", "La publicación no fue eliminada con éxito.", "info");
     }
   };
 

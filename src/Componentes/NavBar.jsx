@@ -67,14 +67,14 @@ function NavbarApp() {
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-profile">
                 <NavLink to="/profile" className={setActiveClass}>
-                  {user.name}
+                  ¡Hola!, {user.name}
                 </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav mb-2 ms-5 mb-lg-0">
               <li className="nav-profile">
                 <NavLink to="/ordersPage/:user_id" className={setActiveClass}>
-                Mis Ordenes
+                Mis compras
                 </NavLink>
               </li>
             </ul>

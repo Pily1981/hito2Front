@@ -37,7 +37,7 @@ const OrdersPage = () => {
 
   return (
     <Container>
-      <h2 className="my-4 text-center">Órdenes Compradas</h2>
+      <h2 className="my-4 text-center">Mis productos comprados</h2>
       {orders.length === 0 ? (
         <p className="text-center">No has comprado ningún producto.</p>
       ) : (

@@ -48,7 +48,7 @@
   grid-area: prof;
   padding: 20px;
   margin-top: 90px;
-  background-color: #f9f9f9; /* Cambié el fondo para que se vea más suave */
+  background-color: #f9f9f9;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 570px;
@@ -67,7 +67,7 @@
   color: white;
   cursor: pointer;
   margin-top: 20px;
-  width: 100%; /* Botón de ancho completo para mayor accesibilidad */
+  width: 100%;
 }
 
 .save-bt:hover {
@@ -197,7 +197,7 @@ textarea {
 /* Ajustes para mejorar la visibilidad de los textos */
 .data {
   font-weight: bold;
-  color: #007bff; /* Resaltar los datos */
+  color: #007bff;
   text-decoration: none;
 }
 
@@ -212,7 +212,7 @@ textarea {
     width: 100%;
     text-align: center;
     padding: 15px;
-    order: 1; /* Se asegura de que vaya abajo */
+    order: 1;
   }
 
   .menu-item {
@@ -221,17 +221,16 @@ textarea {
   }
 
   .profile-content {
-    max-width: 100%;
-    width: 260px;
+    width: 100%;
     padding: 15px;
     margin-top: 20px;
   }
 
   .middle-left {
-    width: 190px;
+    width: 100%;
   }
   .middle-right {
-    width: 190px;
+    width: 100%;
   }
   .middle-row {
     grid-template-columns: 1fr;

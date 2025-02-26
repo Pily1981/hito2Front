@@ -131,7 +131,7 @@ const Formulario = () => {
       console.log("Producto subido:", response.data);
       Swal.fire({
         icon: "success",
-        title: "¡Éxito!",
+        title: "¡Sí!",
         text: "El producto se ha subido correctamente.",
       });
 
@@ -152,7 +152,7 @@ const Formulario = () => {
       console.error("Error al subir la publicación:", error);
       Swal.fire({
         icon: "error",
-        title: "Error",
+        title: "¡Error!",
         text: "Hubo un problema al subir el producto.",
       });
     }

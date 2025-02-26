@@ -107,7 +107,7 @@ const ProductPage = () => {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
-        text: "No puedes comprar tu propia publicación.",
+        text: "No puedes comprar tu propio producto.",
         confirmButtonText: "Aceptar",
       }).then(() => {
         navigate("/products");
@@ -124,7 +124,7 @@ const ProductPage = () => {
       if (checkResponse.data.sold) {
         Swal.fire({
           icon: "error",
-          title: "Producto No Disponible",
+          title: "Producto no disponible",
           text: "Este producto ya ha sido vendido.",
         }).then(() => {
           navigate("/products");
