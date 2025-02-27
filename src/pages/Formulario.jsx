@@ -12,6 +12,7 @@ import {
   faPenToSquare,
   faChevronRight,
   faPowerOff,
+  faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Formulario = () => {
@@ -163,6 +164,11 @@ const Formulario = () => {
     navigate("/myPublications");
   };
 
+  //Boton que dirige a Mis Compras
+  const MisCompras = () => {
+    navigate("/ordersPage/:user_id");
+  };
+
   return (
     <div className="container-form">
       <div className="grid-container-formulario">
@@ -200,6 +206,12 @@ const Formulario = () => {
                     <FontAwesomeIcon icon={faBookOpen} />
                   </div>
                   Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={MisCompras}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBagShopping} />
+                  </div>
+                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
                 </li>
                 <li className="menu-item" onClick={() => navigate("/upload")}>
                   <div className="icon-menu">
