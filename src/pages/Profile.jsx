@@ -7,6 +7,7 @@ import {
   faBookOpen,
   faPenToSquare,
   faPowerOff,
+  faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -57,6 +58,11 @@ const Profile = () => {
     navigate("/upload");
   };
 
+//Boton que dirige a Mis Compras
+  const MisCompras = () => {
+    navigate("/ordersPage/:user_id");
+  };
+
   return (
     <div className="container-profile">
       <div className="grid-container-profile">
@@ -91,6 +97,12 @@ const Profile = () => {
                     <FontAwesomeIcon icon={faBookOpen} />
                   </div>
                   Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={MisCompras}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBagShopping} />
+                  </div>
+                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
                 </li>
                 <li className="menu-item" onClick={createPublication}>
                   <div className="icon-menu">
