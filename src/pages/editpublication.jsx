@@ -9,6 +9,7 @@ import {
   faPenToSquare,
   faChevronRight,
   faPowerOff,
+  faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -197,6 +198,11 @@ const EditPublication = () => {
     navigate("/myPublications");
   };
 
+   // Botón que dirige a Mis Compras
+  const MisCompras = () => {
+    navigate("/ordersPage/:user_id");
+  };
+
   return (
     <div className="container-ep">
       <div className="grid-container-ep">
@@ -234,6 +240,12 @@ const EditPublication = () => {
                     <FontAwesomeIcon icon={faBookOpen} />
                   </div>
                   Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={MisCompras}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBagShopping} />
+                  </div>
+                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
                 </li>
                 <li className="menu-item" onClick={() => navigate("/upload")}>
                   <div className="icon-menu">
