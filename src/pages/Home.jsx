@@ -27,7 +27,7 @@ const Home = () => {
     <>
       <Header />
       <h2 className="mt-5 text-center">Últimas publicaciones</h2>
-      <Container className="d-flex flex-column align-items-center">
+      <Container className="d-flex flex-column">
         <Row className="mt-5">
           {products.map((product) => (
             <Col

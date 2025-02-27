@@ -20,7 +20,7 @@ const Productos = () => {
   }, []);
 
   return (
-    <Container className="mt-5 d-flex flex-column align-items-center">
+    <Container className="mt-5 d-flex flex-column">
       <Row className="mt-5">
         {products.map((product) => (
           <Col
