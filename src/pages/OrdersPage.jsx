@@ -2,23 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../Componentes/stylesheets/OrdersPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import {
   faUser,
-  faBookOpen,
-  faPenToSquare,
-  faPowerOff,
-  faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
-import { Table, Button, Container } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Componentes/Sidebar";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
-  const { user, logout, token } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [data, setData] = useState(null);
   const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -74,22 +70,6 @@ const OrdersPage = () => {
     fetchOrders();
   }, [user?.user_id, token]);
 
-  const profile = () => {
-    navigate("/profile");
-  };
-
-  const myPublications = () => {
-    navigate("/myPublications");
-  };
-
-  const createPublication = () => {
-    navigate("/upload");
-  };
-
-  const MisCompras = () => {
-    navigate("/ordersPage/:user_id");
-  };
-
   return (
     <div className="container-orderPage">
       <div className="grid-container-orderPage">
@@ -112,44 +92,7 @@ const OrdersPage = () => {
 
           <div className="left-row-2-orderPage">
             <aside className="orderPage-sidebar">
-              <ul className="menu-list-orderPage">
-                <li className="menu-item-orderPage" onClick={profile}>
-                  <div className="icon-menu-orderPage">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item-orderPage" onClick={myPublications}>
-                  <div className="icon-menu-orderPage">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item-orderPage" onClick={MisCompras}>
-                  <div className="icon-menu-orderPage">
-                    <FontAwesomeIcon icon={faBagShopping} />
-                  </div>
-                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item-orderPage" onClick={createPublication}>
-                  <div className="icon-menu-orderPage">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item-orderPage"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu-orderPage">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
+              <Sidebar/>
             </aside>
           </div>
         </div>

@@ -4,23 +4,20 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
-  faBookOpen,
-  faPenToSquare,
-  faPowerOff,
   faPen,
-  faTrash,
-  faChevronRight,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import Sidebar from "../Componentes/Sidebar";
 
 const MyPublications = () => {
-  const { user, token, logout } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [publications, setPublications] = useState([]);
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   useEffect(() => {
     const fetchPublicationsData = async () => {
@@ -57,8 +54,8 @@ const MyPublications = () => {
     fetchUser();
   }, [user.user_id, token]);
 
-   // Función para eliminar una publicación
-   const handleDelete = async (publication_id) => {
+  // Función para eliminar una publicación
+  const handleDelete = async (publication_id) => {
     const result = await Swal.fire({
       title: "¿Estás seguro de eliminar la publicación?",
       text: "",
@@ -83,7 +80,11 @@ const MyPublications = () => {
             (publication) => publication.publication_id !== publication_id
           )
         );
-        Swal.fire("¡Sí!", "La publicación ha sido eliminada con éxito.", "success");
+        Swal.fire(
+          "¡Sí!",
+          "La publicación ha sido eliminada con éxito.",
+          "success"
+        );
       } catch (error) {
         console.error("Error al eliminar la publicación:", error);
         Swal.fire(
@@ -94,12 +95,20 @@ const MyPublications = () => {
       }
     } else {
       console.log("Acción cancelada");
-      Swal.fire("Cancelado", "La publicación no fue eliminada con éxito.", "info");
+      Swal.fire(
+        "Cancelado",
+        "La publicación no fue eliminada con éxito.",
+        "info"
+      );
     }
   };
 
   const handleEdit = (publication_id) => {
     navigate(`/editpublication/${publication_id}`);
+  };
+
+  const MisCompras = () => {
+    navigate(`/ordersPage/${user.user_id}`);
   };
 
   return (
@@ -124,41 +133,7 @@ const MyPublications = () => {
 
           <div className="left-row-2">
             <aside className="profile-sidebar-mp">
-              <ul className="menu-list">
-                <li className="menu-item" onClick={() => navigate("/profile")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => navigate("/myPublications")}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={() => navigate("/upload")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
+              <Sidebar />
             </aside>
           </div>
         </div>

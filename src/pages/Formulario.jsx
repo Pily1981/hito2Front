@@ -6,21 +6,16 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faBookOpen,
-  faPenToSquare,
-  faChevronRight,
-  faPowerOff,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "../Componentes/Sidebar";
 
 const Formulario = () => {
   // Redirige si no hay token
   const navigate = useNavigate();
-  const { user, token, logout } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
-  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   useEffect(() => {
     if (!token) {
@@ -31,12 +26,9 @@ const Formulario = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          `${urlBase}/api/get_categories`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`${urlBase}/api/get_categories`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setCategories(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
@@ -55,14 +47,13 @@ const Formulario = () => {
           }
         );
         setData(response.data);
-
       } catch (error) {
         console.log("Error al obtener los datos del usuario:");
       }
     };
 
     fetchUser();
-  }, [user.user_id, token]);
+  }, [user?.user_id, token]);
 
   const [product, setProduct] = useState({
     name: "",
@@ -147,7 +138,7 @@ const Formulario = () => {
 
       // Resetear input file manualmente
       document.getElementById("image").value = "";
-      navigate(`/product/${response.data.publication_id}`)
+      navigate(`/product/${response.data.publication_id}`);
     } catch (error) {
       console.error("Error al subir la publicación:", error);
       Swal.fire({
@@ -185,41 +176,7 @@ const Formulario = () => {
 
           <div className="left-row-2-form">
             <aside className="profile-sidebar-formulario">
-              <ul className="menu-list">
-                <li className="menu-item" onClick={() => navigate("/profile")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => navigate("/myPublications")}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={() => navigate("/upload")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
+              <Sidebar />
             </aside>
           </div>
         </div>

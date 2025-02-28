@@ -3,24 +3,19 @@ import Swal from "sweetalert2";
 import "../Componentes/stylesheets/editpublications.css";
 import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faBookOpen,
-  faPenToSquare,
-  faChevronRight,
-  faPowerOff,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
+import Sidebar from "../Componentes/Sidebar";
 
 const EditPublication = () => {
-  const { user, token, logout } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const { publication_id } = useParams();
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState(null);
-  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const urlBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   const [product, setProduct] = useState({
     name: "",
@@ -42,12 +37,9 @@ const EditPublication = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          `${urlBase}/api/get_categories`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`${urlBase}/api/get_categories`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setCategories(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
@@ -219,41 +211,7 @@ const EditPublication = () => {
 
           <div className="left-row-ep">
             <aside className="profile-sidebar-edit">
-              <ul className="menu-list">
-                <li className="menu-item" onClick={() => navigate("/profile")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => navigate("/myPublications")}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={() => navigate("/upload")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
+              <Sidebar />
             </aside>
           </div>
         </div>
