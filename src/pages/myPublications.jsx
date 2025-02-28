@@ -5,7 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faPen,
+<<<<<<< HEAD
   faTrash
+=======
+  faTrash,
+  faChevronRight,
+  faBagShopping,
+>>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
@@ -107,8 +113,14 @@ const MyPublications = () => {
     navigate(`/editpublication/${publication_id}`);
   };
 
+<<<<<<< HEAD
   const MisCompras = () => {
     navigate(`/ordersPage/${user.user_id}`);
+=======
+  //Boton que dirige a Mis Compras
+  const MisCompras = () => {
+    navigate("/ordersPage/:user_id");
+>>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
   };
 
   return (
@@ -133,7 +145,51 @@ const MyPublications = () => {
 
           <div className="left-row-2">
             <aside className="profile-sidebar-mp">
+<<<<<<< HEAD
               <Sidebar />
+=======
+              <ul className="menu-list">
+                <li className="menu-item" onClick={() => navigate("/profile")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faUser} />
+                  </div>
+                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => navigate("/myPublications")}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBookOpen} />
+                  </div>
+                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={MisCompras}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faBagShopping} />
+                  </div>
+                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li className="menu-item" onClick={() => navigate("/upload")}>
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </div>
+                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+                <li
+                  className="menu-item"
+                  onClick={() => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  <div className="icon-menu">
+                    <FontAwesomeIcon icon={faPowerOff} />
+                  </div>
+                  Cerrar Sesión <FontAwesomeIcon icon={faChevronRight} />
+                </li>
+              </ul>
+>>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
             </aside>
           </div>
         </div>
