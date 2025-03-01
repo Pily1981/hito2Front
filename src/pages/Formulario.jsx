@@ -6,19 +6,10 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-<<<<<<< HEAD
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "../Componentes/Sidebar";
-=======
 import {
-  faUser,
-  faBookOpen,
-  faPenToSquare,
-  faChevronRight,
-  faPowerOff,
-  faBagShopping,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
->>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
+import Sidebar from "../Componentes/Sidebar";
 
 const Formulario = () => {
   // Redirige si no hay token
@@ -192,51 +183,7 @@ const Formulario = () => {
 
           <div className="left-row-2-form">
             <aside className="profile-sidebar-formulario">
-<<<<<<< HEAD
-              <Sidebar />
-=======
-              <ul className="menu-list">
-                <li className="menu-item" onClick={() => navigate("/profile")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => navigate("/myPublications")}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={MisCompras}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBagShopping} />
-                  </div>
-                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={() => navigate("/upload")}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
->>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
+              <Sidebar/>
             </aside>
           </div>
         </div>

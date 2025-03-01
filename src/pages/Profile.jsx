@@ -1,18 +1,8 @@
-import Button from "react-bootstrap/Button";
 import "../Componentes/stylesheets/Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-<<<<<<< HEAD
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-=======
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import {
-  faUser,
-  faBookOpen,
-  faPenToSquare,
-  faPowerOff,
-  faBagShopping,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
->>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
@@ -54,22 +44,6 @@ const Profile = () => {
     fetchProfileData();
   }, [token, user]); // 👈 Aquí está el arreglo de dependencias
 
-<<<<<<< HEAD
-=======
-  const myPublications = () => {
-    navigate("/myPublications");
-  };
-
-  const createPublication = () => {
-    navigate("/upload");
-  };
-
-//Boton que dirige a Mis Compras
-  const MisCompras = () => {
-    navigate("/ordersPage/:user_id");
-  };
-
->>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
   return (
     <div className="container-profile">
       <div className="grid-container-profile">
@@ -92,48 +66,7 @@ const Profile = () => {
 
           <div className="left-row-2-pf">
             <aside className="profile-sidebar">
-<<<<<<< HEAD
               <Sidebar />
-=======
-              <ul className="menu-list">
-                <li className="menu-item">
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  Datos Personales <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={myPublications}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBookOpen} />
-                  </div>
-                  Mis publicaciones <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={MisCompras}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faBagShopping} />
-                  </div>
-                  Mis Compras <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li className="menu-item" onClick={createPublication}>
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                  </div>
-                  Crear publicación <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-                <li
-                  className="menu-item"
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <div className="icon-menu">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                  </div>
-                  Cerrar sesión <FontAwesomeIcon icon={faChevronRight} />
-                </li>
-              </ul>
->>>>>>> f474f3bd4ab97b428c78a9f154a669f0462c96f5
             </aside>
           </div>
         </div>
