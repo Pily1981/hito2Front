@@ -7,6 +7,7 @@ import {
   faPowerOff,
   faBagShopping,
   faChevronRight,
+  faCommentsDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -25,6 +26,11 @@ const Sidebar = () => {
   const MisCompras = () => {
     navigate(`/ordersPage/${user.user_id}`);
   };
+
+  const MisVentas = () => {
+    navigate(`/orderSale/${user.user_id}`);
+  };
+
   return (
     <>
       <ul className="menu-list">
@@ -51,6 +57,12 @@ const Sidebar = () => {
             <FontAwesomeIcon icon={faBagShopping} />
           </div>
           Mis Compras <FontAwesomeIcon icon={faChevronRight} />
+        </li>
+        <li className="menu-item-orderPage" onClick={MisVentas}>
+          <div className="icon-menu-orderPage">
+            <FontAwesomeIcon icon={faCommentsDollar} />
+          </div>
+          Mis Ventas <FontAwesomeIcon icon={faChevronRight}/>
         </li>
         <li
           className="menu-item"

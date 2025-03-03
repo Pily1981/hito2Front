@@ -109,7 +109,6 @@ textarea {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
-  padding: 20px;
 }
 
 .left-column {
@@ -118,14 +117,21 @@ textarea {
   gap: 10px;
 }
 
-.left-row-1,
-.left-row-2 {
-  padding: 20px;
+.left-row-1 {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.left-row-1 {
-  justify-content: center;
-  justify-items: center;
+.left-row-2-pf {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.left-row-1,
+.left-row-2-pf {
+  padding: 20px;
 }
 
 .data {

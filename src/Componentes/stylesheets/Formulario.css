@@ -13,6 +13,7 @@
   height: auto;
   flex-grow: 1;
   min-height: 100vh;
+  grid-area: side;
 }
 
 .grid-container-formulario {
@@ -22,7 +23,7 @@
 }
 
 .left-row-1-form {
-  padding-top: 103px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -35,7 +36,7 @@
 
 .left-row-1-form,
 .left-row-2-form {
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .profile-sidebar-formulario {
@@ -55,7 +56,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 570px;
+  width: 550px;
 }
 
 .Welcome-form {
@@ -80,13 +81,15 @@
   justify-content: space-evenly;
   background-color: #d9d9d9;
 }
+
+.center-column-form {
+  padding: 20px;
+}
+
 @media (max-width: 768px) {
   .grid-container-formulario {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "left"
-      "column";
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
   .left-column-form {

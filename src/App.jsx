@@ -18,6 +18,7 @@ import AuthProvider from "./context/AuthContext";
 import EditPublication from "./pages/editpublication";
 import OrderDetail from "./pages/OrderDetail";
 import OrdersPage from "./pages/OrdersPage";
+import OrderSale from "./pages/OrderSale";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/editpublication/:publication_id" element={<EditPublication/>}/>
               <Route path="/orderdetail/:publication_id" element={<OrderDetail />} />
               <Route path="/ordersPage/:user_id" element={<OrdersPage />} /> 
+              <Route path="/orderSale/:user_id" element={<OrderSale />} /> 
             
             </Route>
           </Routes>
