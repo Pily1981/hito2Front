@@ -86,7 +86,7 @@ const OrderSale = () => {
               <div className="icon-orderSale">
                 <FontAwesomeIcon icon={faUser} />
               </div>
-              <div className="text-wrapper-orderSale">Mis Compras</div>
+              <div className="text-wrapper-orderSale">Mis ventas</div>
             </div>
           </div>
 
