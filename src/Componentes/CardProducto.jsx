@@ -5,13 +5,13 @@ import { NavLink } from "react-router-dom";
 //realizar un useEffect donde traiga la id del producto
 function CardProducto({ product }) {
   return (
-    <Card className="border border-dark shadow-sm" style={{ width: "18rem", height: "100%" }}>
+    <Card className="border border-dark shadow-sm" style={{ width: "18rem"}}>
       <Card.Img
         className="p-3"
         variant="top"
         src={product?.image || "/images/default-product.jpg"} // Imagen por defecto
         alt={product?.title || "Sin título"}
-        style={{ height: "180px", objectFit: "cover" }} // Imagen con tamaño fijo
+        style={{ height: "200px", objectFit: "contain", width: "100%" }} // Imagen con tamaño fijo
       />
       <Card.Body className="d-flex flex-column justify-content-between text-center">
         <div>
